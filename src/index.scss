@@ -1,0 +1,42 @@
+:root {
+   --primary: #00bcd4;
+   --secondary: #24262e;
+   --light-gray: #99a9b5;
+   --dark: #1a1c21;
+}
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+body {
+   margin: 0;
+   font-family: 'Montserrat', sans-serif;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+a {
+   text-decoration: none;
+   color: inherit;
+   cursor: pointer;
+}
+
+button,
+input,
+textarea {
+   border: none;
+   outline: none;
+   cursor: pointer;
+   background: none;
+}
+
+ul {
+   list-style: none;
+}
