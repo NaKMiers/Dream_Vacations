@@ -3,12 +3,18 @@
    --secondary: #24262e;
    --light-gray: #99a9b5;
    --dark: #1a1c21;
+
+   --standard-duration: 0.2s;
 }
 
 * {
    margin: 0;
    padding: 0;
    box-sizing: border-box;
+}
+
+html {
+   overflow-y: overlay;
 }
 
 body {
@@ -39,4 +45,20 @@ textarea {
 
 ul {
    list-style: none;
+}
+
+.container {
+   max-width: 1212px;
+   width: 100%;
+   margin: 0 auto;
+}
+
+.no-scrollbar {
+   height: 100vh;
+   overflow: hidden;
+   margin-right: 16.8px;
+}
+
+::-webkit-scrollbar {
+   display: none;
 }
