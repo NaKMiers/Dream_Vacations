@@ -1,12 +1,12 @@
 import { faMessage, faShareAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { memo } from 'react'
-import authorAvt1 from '../../assets/imgs/authorAvt1.jpeg'
-import blogThumb1 from '../../assets/imgs/blogThumb1.png'
 import styles from './style.module.scss'
+import { useNavigate } from 'react-router-dom'
 
 function BlogType1({ data }) {
-   console.log('data:', data)
+   const navigate = useNavigate()
+
    let { visual, small, extraSmall, noOverlayContent } = data.styles
    if (extraSmall) {
       visual = true
@@ -17,6 +17,7 @@ function BlogType1({ data }) {
          className={`${styles.blogType1} ${small ? styles.small : ''} ${
             extraSmall ? styles.extraSmall : ''
          } ${visual ? styles.visual : ''}`}
+         onClick={() => navigate('/blogs/1')}
       >
          <div className={styles.blogType1Container}>
             <div className={`${styles.thumbnail} ${visual ? styles.visual : ''}`}>
