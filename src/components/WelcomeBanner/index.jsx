@@ -6,6 +6,7 @@ import welcomeBanner1 from '../../assets/imgs/welcomeBanner1.jpg'
 import welcomeBanner2 from '../../assets/imgs/welcomeBanner2.png'
 import welcomeBanner3 from '../../assets/imgs/welcomeBanner3.png'
 import welcomeBanner4 from '../../assets/imgs/welcomeBanner4.jpg'
+import { Link } from 'react-router-dom'
 
 function WelcomeBanner() {
    const [isSliding, setSliding] = useState(false)
@@ -78,7 +79,9 @@ function WelcomeBanner() {
 
                <h5 className={styles.date}>August 27, 2023</h5>
 
-               <button className={styles.btn}>READ MORE</button>
+               <Link to='/blogs/1' className={`button`}>
+                  READ MORE
+               </Link>
             </div>
          </div>
 
@@ -98,7 +101,9 @@ function WelcomeBanner() {
 
                <h5 className={styles.date}>August 27, 2023</h5>
 
-               <button className={styles.btn}>READ MORE</button>
+               <Link to='/blogs/1' className={`button`}>
+                  READ MORE
+               </Link>
             </div>
          </div>
 
@@ -120,7 +125,9 @@ function WelcomeBanner() {
 
                <h5 className={styles.date}>August 27, 2023</h5>
 
-               <button className={styles.btn}>READ MORE</button>
+               <Link to='/blogs/1' className={`button`}>
+                  READ MORE
+               </Link>
             </div>
          </div>
          <div
@@ -139,7 +146,9 @@ function WelcomeBanner() {
 
                <h5 className={styles.date}>August 27, 2023</h5>
 
-               <button className={styles.btn}>READ MORE</button>
+               <Link to='/blogs/1' className={`button`}>
+                  READ MORE
+               </Link>
             </div>
          </div>
       </section>

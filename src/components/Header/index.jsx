@@ -235,16 +235,13 @@ function Header() {
 
             {/* search modal */}
             <div className={`${styles.searchModal} ${openSearch ? styles.open : ''}`}>
-               <button className={styles.closeSearchBtn} onClick={handleShowSearchModal}>
-                  <FontAwesomeIcon icon={faX} />
-               </button>
+               <div className={styles.inputWrap}>
+                  <input type='text' name='search' placeholder='Start typing to search...' />
 
-               <input
-                  className={styles.searchInput}
-                  type='text'
-                  name='search'
-                  placeholder='Start typing to search...'
-               />
+                  <button className={styles.closeSearchBtn} onClick={handleShowSearchModal}>
+                     <FontAwesomeIcon icon={faX} />
+                  </button>
+               </div>
 
                <div className={styles.popularSearch}>
                   <span>Polular Searches:</span>

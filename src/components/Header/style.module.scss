@@ -4,7 +4,7 @@
    position: fixed;
    width: 100%;
    top: 0;
-   z-index: 1;
+   z-index: 3;
    color: var(--text-color);
 
    &.fixed {
@@ -221,16 +221,24 @@
    }
 }
 
-.searchInput {
-   width: 100%;
-   padding: 25px 70px;
+.inputWrap {
+   position: sticky;
+   top: 0;
+   left: 0;
+   z-index: 1;
+   background: inherit;
    border-bottom: 1px solid var(--light-gray);
-   text-align: center;
 
-   font-size: 28px;
-   font-weight: 200;
-   font-family: 'Montserrat', sans-serif;
-   line-height: 42px;
+   & > input {
+      width: 100%;
+      padding: 25px 70px;
+      text-align: center;
+
+      font-size: 28px;
+      font-weight: 200;
+      font-family: 'Montserrat', sans-serif;
+      line-height: 42px;
+   }
 }
 
 .popularSearch {

@@ -1,0 +1,21 @@
+.BlogFeed {
+   background: #000;
+   width: 100%;
+}
+
+.container {
+   position: relative;
+   z-index: 1;
+
+   display: flex;
+   flex-wrap: wrap;
+
+   padding: 70px 70px 60px;
+   margin: -75px 0 0;
+   background: #fff;
+
+   // mobile large
+   @media (max-width: 768px) {
+      padding: 70px 21px 60px;
+   }
+}

@@ -54,6 +54,25 @@ ul {
    margin: 0 auto;
 }
 
+.button {
+   display: inline-flex;
+   align-items: center;
+   height: 50px;
+   padding: 0 25px;
+   border: 1px solid #fff;
+   border-radius: 24px;
+
+   font-size: 19px;
+   text-transform: uppercase;
+   color: #fff;
+   transition: var(--standard-duration) ease-in-out;
+
+   &:hover {
+      color: #000;
+      background: #fff;
+   }
+}
+
 .no-scrollbar {
    height: 100vh;
    overflow: hidden;
@@ -63,3 +82,35 @@ ul {
 // ::-webkit-scrollbar {
 //    display: none;
 // }
+
+.floatUp {
+   opacity: 0;
+   animation: floatUp 0.6s ease-in-out 0.2s forwards;
+}
+
+@keyframes floatUp {
+   from {
+      opacity: 0;
+      transform: translateY(30px);
+   }
+   to {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
+
+.floatLeft {
+   opacity: 0;
+   animation: floatLeft 0.6s ease-in-out 0.2s forwards;
+}
+
+@keyframes floatLeft {
+   from {
+      opacity: 0;
+      transform: translateX(30px);
+   }
+   to {
+      opacity: 1;
+      transform: translateX(0);
+   }
+}

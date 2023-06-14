@@ -15,7 +15,7 @@
    justify-content: center;
    width: 28px;
    height: 28px;
-   z-index: 1;
+   z-index: 2;
 
    color: #fff;
    font-size: 28px;
@@ -44,11 +44,11 @@
    bottom: 50px;
    left: 50%;
    transform: translateX(-50%);
+   z-index: 2;
 
    display: none;
    gap: 16px;
    // background: #000;
-   z-index: 1;
 
    // mobile medium
    @media (max-width: 520px) {
@@ -83,6 +83,7 @@
    transition: 1s ease-in-out;
 
    &.active {
+      z-index: 1;
       opacity: 1;
    }
 }
@@ -149,6 +150,8 @@
    }
 
    & > .btn {
+      display: inline-flex;
+      align-items: center;
       height: 50px;
       padding: 0 25px;
       border: 1px solid #fff;
@@ -160,7 +163,7 @@
 
       &:hover {
          color: #000;
-         background-color: #fff;
+         background: #fff;
       }
    }
 }
