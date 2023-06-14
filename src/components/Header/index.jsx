@@ -1,17 +1,18 @@
 import { faBars, faChevronRight, faSearch, faX } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { memo, useRef, useState } from 'react'
+import React, { memo, useCallback, useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import authorAvt1 from '../../assets/imgs/authorAvt1.jpeg'
-import logo from '../../assets/imgs/logo.png'
-import resultThumb1 from '../../assets/imgs/resultThumb1.jpg'
-import styles from './style.module.scss'
 import facebook from '../../assets/imgs/facebook.png'
-import linkedin from '../../assets/imgs/linkedin.png'
-import twitter from '../../assets/imgs/twitter.png'
 import instagram from '../../assets/imgs/instagram.png'
+import linkedin from '../../assets/imgs/linkedin.png'
+import logo from '../../assets/imgs/logo.png'
+import logo2 from '../../assets/imgs/logo-black.png'
 import pinterest from '../../assets/imgs/pinterest.png'
+import resultThumb1 from '../../assets/imgs/resultThumb1.jpg'
+import twitter from '../../assets/imgs/twitter.png'
 import youtube from '../../assets/imgs/youtube.png'
+import styles from './style.module.scss'
 
 function Header() {
    const location = useLocation()
@@ -22,6 +23,8 @@ function Header() {
    const travelActive = location.pathname === '/categories/travel'
    const adventureActive = location.pathname === '/categories/adventure'
 
+   const headerRef = useRef(null)
+   const [isFixed, setFixed] = useState(false)
    const menuPanelRef1 = useRef(null)
    const menuPanelRef2 = useRef(null)
 
@@ -33,7 +36,8 @@ function Header() {
    const [openAboutCollapse, setOpenAboutCollapse] = useState(false)
    const [openCategoriesCollapse, setOpenCategoriesCollapse] = useState(false)
 
-   const handleShowMenuPanel1 = () => {
+   // show menu panel "about"
+   const handleShowMenuPanel1 = useCallback(() => {
       clearTimeout(timeout1.current)
       menuPanelRef1.current.style.display = 'block'
 
@@ -41,18 +45,20 @@ function Header() {
          menuPanelRef1.current.style.opacity = 1
          menuPanelRef1.current.style.transform = 'translateY(0)'
       }, 0)
-   }
+   }, [])
 
-   const handleHideMenuPanel1 = () => {
+   // hide menu panel "about"
+   const handleHideMenuPanel1 = useCallback(() => {
       menuPanelRef1.current.style.opacity = 0
       menuPanelRef1.current.style.transform = 'translateY(30px)'
 
       timeout1.current = setTimeout(() => {
          menuPanelRef1.current.style.display = 'none'
       }, 310) // transition duration: 0.3s
-   }
+   }, [])
 
-   const handleShowMenuPanel2 = () => {
+   // show menu panel "categories"
+   const handleShowMenuPanel2 = useCallback(() => {
       clearTimeout(timeout2.current)
       menuPanelRef2.current.style.display = 'block'
 
@@ -60,18 +66,20 @@ function Header() {
          menuPanelRef2.current.style.opacity = 1
          menuPanelRef2.current.style.transform = 'translateY(0)'
       }, 0)
-   }
+   }, [])
 
-   const handleHideMenuPanel2 = () => {
+   // hide menu panel "categories"
+   const handleHideMenuPanel2 = useCallback(() => {
       menuPanelRef2.current.style.opacity = 0
       menuPanelRef2.current.style.transform = 'translateY(30px)'
 
       timeout1.current = setTimeout(() => {
          menuPanelRef2.current.style.display = 'none'
       }, 310) // transition duration: 0.3s
-   }
+   }, [])
 
-   const handleShowSearchModal = () => {
+   // show search modal
+   const handleShowSearchModal = useCallback(() => {
       if (!openSearch) {
          setOpenSearch(true)
          document.body.classList.add('no-scrollbar')
@@ -79,13 +87,33 @@ function Header() {
          setOpenSearch(false)
          document.body.classList.remove('no-scrollbar')
       }
-   }
+   }, [openSearch])
+
+   // fixed header
+   const handleScroll = useCallback(() => {
+      const position = window.scrollY || window.pageYOffset
+
+      if (position > 0 && !isFixed) {
+         setFixed(true)
+      } else if (position <= 0 && isFixed) {
+         setFixed(false)
+      }
+   }, [isFixed])
+
+   useEffect(() => {
+      handleScroll()
+      window.addEventListener('scroll', handleScroll)
+
+      return () => {
+         window.removeEventListener('scroll', handleScroll)
+      }
+   }, [handleScroll])
 
    return (
-      <header className={styles.Header}>
+      <header className={`${styles.Header} ${isFixed ? styles.fixed : ''}`} ref={headerRef}>
          <div className={`${styles.container} container`}>
             <div className={styles.logo}>
-               <img src={logo} alt='logo' />
+               <img src={isFixed ? logo2 : logo} alt='logo' />
             </div>
 
             <nav className={styles.navBar}>

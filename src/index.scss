@@ -1,6 +1,7 @@
 :root {
    --primary: #00bcd4;
    --secondary: #24262e;
+   --text: #3c3950;
    --light-gray: #99a9b5;
    --dark: #1a1c21;
 
@@ -59,6 +60,6 @@ ul {
    margin-right: 16.8px;
 }
 
-::-webkit-scrollbar {
-   display: none;
-}
+// ::-webkit-scrollbar {
+//    display: none;
+// }
