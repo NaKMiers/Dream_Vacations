@@ -1,5 +1,4 @@
 .BlogGallery {
-   height: 500vh;
    overflow: hidden;
 }
 
@@ -19,14 +18,4 @@
    display: flex;
    flex-wrap: wrap;
    width: 50%;
-
-   // // pc
-   // @media (max-width: 1200px) {
-   //    &.col1 {
-   //       width: calc(2 * 100% / 3);
-   //    }
-   //    &.col2 {
-   //       width: calc(100% / 3);
-   //    }
-   // }
 }

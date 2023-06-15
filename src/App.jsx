@@ -1,19 +1,22 @@
+import { Route, Routes } from 'react-router-dom'
 import styles from './App.module.scss'
-import { Routes, Route } from 'react-router-dom'
-import HomePage from './pages/HomePage'
+import Header from './components/Header'
+import ScrollToTopButton from './components/ScrollToTopButton'
+import Subscribe from './components/Subscribe'
 import AboutUsPage from './pages/AboutUsPage'
-import AuthorPage from './pages/AuthorPage'
 import AdventurePage from './pages/AdventurePage'
+import AuthorPage from './pages/AuthorPage'
 import BlogCategoryPage from './pages/BlogCategoryPage'
 import BlogPage from './pages/BlogPage'
 import CategoriesPage from './pages/CategoriesPage'
 import ContactPage from './pages/ContactPage'
 import ContributorsPage from './pages/ContributorsPage'
+import HomePage from './pages/HomePage'
 import LifeStylePage from './pages/LifeStylePage'
 import PodcastPage from './pages/PodcastPage'
 import PolicyPage from './pages/PolicyPage'
 import TravelPage from './pages/TravelPage'
-import Header from './components/Header'
+import TravelPurchase from './components/TravelPurchase'
 
 function App() {
    return (
@@ -35,6 +38,12 @@ function App() {
             <Route path='/blogs/:id' element={<BlogPage />} />
             <Route path='/blogs/categories/:id' element={<BlogCategoryPage />} />
          </Routes>
+
+         <ScrollToTopButton />
+
+         <Subscribe />
+         <TravelPurchase />
+         {/* <Footer /> */}
       </div>
    )
 }

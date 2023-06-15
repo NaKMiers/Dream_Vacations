@@ -1,0 +1,89 @@
+.TravelPurchase {
+   padding: 200px 0 92px;
+}
+
+.container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   text-align: center;
+   color: #fff;
+   padding: 0 21px;
+}
+
+.title {
+   display: inline-block;
+   font-size: 195px;
+   font-weight: 300;
+   font-family: 'Maulidah Script', sans-serif;
+   opacity: 0; // for appear
+
+   // pc
+   @media (max-width: 1200px) {
+      font-size: 125px;
+   }
+
+   // pc
+   @media (max-width: 768px) {
+      font-size: 90px;
+   }
+}
+
+.paragraph {
+   max-width: 968px;
+   font-size: 19px;
+   font-weight: 200;
+   line-height: 30px;
+   letter-spacing: 0.04em;
+   margin-bottom: 50px;
+   opacity: 0; // for appear
+
+   background: #000;
+}
+
+.socialWrap {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   margin: 0 -10px 15px;
+   opacity: 0; // for appear
+
+   min-height: 42px;
+   background: cyan;
+}
+
+.socialItem {
+   width: 32px;
+   height: 32px;
+   margin: 0 10px 10px 10px;
+   opacity: 0; // for appear
+
+   & > img {
+      width: 100%;
+   }
+}
+
+.button {
+   display: inline-flex;
+   align-items: center;
+   height: 50px;
+   padding: 0 25px;
+   border: 1px solid var(--primary);
+   border-radius: 24px;
+   margin: 30px 0;
+
+   font-size: 19px;
+   font-weight: 300;
+   letter-spacing: 0.025em;
+   font-family: 'Montserrat', sans-serif;
+
+   text-transform: uppercase;
+   color: var(--primary);
+   transition: var(--standard-duration) ease-in-out;
+   opacity: 0; // for appear
+
+   &:hover {
+      color: #fff;
+      background: var(--primary);
+   }
+}
