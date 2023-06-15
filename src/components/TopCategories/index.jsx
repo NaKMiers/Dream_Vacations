@@ -16,11 +16,11 @@ function TopCategories() {
 
    // appear animation on scroll
    const handleScroll = useCallback(() => {
-      const element = [...categoriesWrapRef.current.children]
+      const elements = [...categoriesWrapRef.current.children]
 
       // 1
       let delay = 0.2
-      element.forEach(e => {
+      elements.forEach(e => {
          const top = e.getBoundingClientRect().top
          const bottom = e.getBoundingClientRect().bottom
 
@@ -42,7 +42,7 @@ function TopCategories() {
 
       // remove event when all are appeared
       let countAppeared = 0
-      element.forEach(e => {
+      elements.forEach(e => {
          if (e.className.includes(styles.appeared)) {
             countAppeared++
          }
@@ -52,7 +52,7 @@ function TopCategories() {
          countAppeared++
       }
 
-      if (countAppeared === element.length + 1) {
+      if (countAppeared === elements.length + 1) {
          console.log('remove---TopCategories')
          window.removeEventListener('scroll', handleScroll)
       }

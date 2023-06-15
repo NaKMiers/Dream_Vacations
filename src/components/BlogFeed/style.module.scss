@@ -1,6 +1,7 @@
 .BlogFeed {
-   background: #000;
    width: 100%;
+   margin: -75px 0 -140px;
+   // background: #000;
 }
 
 .container {
@@ -11,8 +12,8 @@
    flex-wrap: wrap;
 
    padding: 49px 49px 39px;
-   margin: -75px 0 0;
    background: #fff;
+   box-shadow: 0px 0px 80px 0 rgba(93, 232, 248, 0.3);
 
    // mobile large
    @media (max-width: 768px) {

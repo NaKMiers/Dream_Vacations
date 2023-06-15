@@ -17,9 +17,9 @@ function BlogFeed() {
 
    // appear animation on scroll
    const handleScroll = useCallback(() => {
-      const element = [...containerRef.current.children]
+      const elements = [...containerRef.current.children]
 
-      element.forEach(e => {
+      elements.forEach(e => {
          const top = e.getBoundingClientRect().top
          const bottom = e.getBoundingClientRect().bottom
 
@@ -31,13 +31,13 @@ function BlogFeed() {
 
       // remove event when all are appeared
       let countAppeared = 0
-      element.forEach(e => {
+      elements.forEach(e => {
          if (e.className.includes(styles.appeared)) {
             countAppeared++
          }
       })
 
-      if (countAppeared === element.length) {
+      if (countAppeared === elements.length) {
          console.log('remove---BlogFeed')
          window.removeEventListener('scroll', handleScroll)
       }
@@ -58,15 +58,15 @@ function BlogFeed() {
          <div className={`${styles.container} container`} ref={containerRef}>
             {data.map(blog => {
                if (blog.type === 1) {
-                  return <BlogType1 data={blog} />
+                  return <BlogType1 data={blog} key={blog.id} />
                }
 
                if (blog.type === 2) {
-                  return <BlogType2 data={blog} />
+                  return <BlogType2 data={blog} key={blog.id} />
                }
 
                if (blog.type === 3) {
-                  return <BlogQuote data={blog} />
+                  return <BlogQuote data={blog} key={blog.id} />
                }
 
                return null

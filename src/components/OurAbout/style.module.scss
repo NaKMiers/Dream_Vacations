@@ -1,0 +1,130 @@
+.container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   text-align: center;
+
+   padding: 180px 21px 150px;
+   // background: aquamarine;
+
+   // mobile large
+   @media (max-width: 1200px) {
+      padding: 150px 21px 170px;
+   }
+}
+
+.title {
+   position: relative;
+
+   & > h1 {
+      position: relative;
+      font-size: 200px;
+      font-weight: 300;
+      font-family: 'Maulidah Script', sans-serif;
+      color: var(--secondary);
+      z-index: 1;
+
+      // pc
+      @media (max-width: 1200px) {
+         font-size: 92px;
+         margin-bottom: 30px;
+      }
+
+      // mobile large
+      @media (max-width: 768px) {
+         font-size: 80px;
+      }
+   }
+
+   & > .textBackground {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      // mobile large
+      @media (max-width: 1200px) {
+         top: 80%;
+      }
+
+      // mobile large
+      @media (max-width: 768px) {
+         top: 90%;
+      }
+
+      font-size: 408px;
+      font-weight: 300;
+      font-family: 'Maulidah Script', sans-serif;
+      color: #f0f3f2;
+   }
+}
+
+.paragraph {
+   max-width: 740px;
+   font-size: 24px;
+   font-weight: 300;
+   font-family: 'Source Sans Pro', sans-serif;
+   color: #5f727f;
+   line-height: 37px;
+   margin-bottom: 107px;
+   z-index: 1;
+
+   // background: #ccc;
+}
+
+.categories {
+   display: flex;
+   flex-wrap: wrap;
+   margin: 0 -21px;
+   // background: aquamarine;
+}
+
+.cateItem {
+   width: calc(100% / 3);
+   padding: 0 21px;
+
+   opacity: 0; // for appear
+   // background: cyan;
+
+   // mobile large
+   @media (max-width: 768px) {
+      width: 100%;
+   }
+
+   & > .icon {
+      margin-bottom: 28.4px;
+      // background: #000;
+
+      & > img {
+         width: 63px;
+      }
+   }
+
+   & > .text {
+      font-size: 16px;
+      font-family: 'Source Sans Pro', sans-serif;
+      color: #b6c6c9;
+      line-height: 25px;
+      margin-bottom: 1.1rem;
+      // background: #000;
+   }
+
+   & > .btn {
+      display: inline-block;
+      font-size: 14px;
+      height: 41px;
+      line-height: 40px;
+      margin: 25px 0;
+      color: #000;
+      border: 1px solid #000;
+
+      border-radius: 24px;
+      padding: 0 17px;
+      transition: var(--standard-duration) ease-in-out;
+
+      &:hover {
+         color: #fff;
+         background: #000;
+      }
+   }
+}
