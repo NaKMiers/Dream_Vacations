@@ -17,6 +17,7 @@ import PodcastPage from './pages/PodcastPage'
 import PolicyPage from './pages/PolicyPage'
 import TravelPage from './pages/TravelPage'
 import TravelPurchase from './components/TravelPurchase'
+import Footer from './components/Footer'
 
 function App() {
    return (
@@ -43,7 +44,7 @@ function App() {
 
          <Subscribe />
          <TravelPurchase />
-         {/* <Footer /> */}
+         <Footer />
       </div>
    )
 }

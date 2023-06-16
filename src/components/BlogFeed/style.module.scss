@@ -8,15 +8,45 @@
    position: relative;
    z-index: 1;
 
-   display: flex;
-   flex-wrap: wrap;
-
    padding: 49px 49px 39px;
    background: #fff;
    box-shadow: 0px 0px 80px 0 rgba(93, 232, 248, 0.3);
 
    // mobile large
    @media (max-width: 768px) {
-      padding: 70px 21px 60px;
+      padding: 49px 0 39px;
    }
+}
+
+.container1 {
+   display: grid;
+   grid-template-areas:
+      'myArea myArea myArea myArea'
+      'myArea myArea myArea myArea';
+   grid-auto-flow: dense;
+
+   // tablet extra-large
+   @media (max-width: 1100px) {
+      grid-template-areas:
+         'myArea myArea myArea'
+         'myArea myArea myArea';
+   }
+
+   // mobile large
+   @media (max-width: 768px) {
+      grid-template-areas:
+         'myArea myArea'
+         'myArea myArea';
+      padding: 49px 0 39px;
+   }
+
+   // mobile medium
+   @media (max-width: 548px) {
+      grid-template-areas: 'myArea';
+   }
+}
+
+.container2 {
+   display: flex;
+   flex-wrap: wrap;
 }

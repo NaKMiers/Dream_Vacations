@@ -13,11 +13,12 @@ function BlogFeed() {
       return { ...datum, ...blog }
    })
 
-   const containerRef = useRef(null)
+   const container1Ref = useRef(null)
+   const container2Ref = useRef(null)
 
    // appear animation on scroll
    const handleScroll = useCallback(() => {
-      const elements = [...containerRef.current.children]
+      const elements = [...container1Ref.current.children, ...container2Ref.current.children]
 
       elements.forEach(e => {
          const top = e.getBoundingClientRect().top
@@ -55,22 +56,22 @@ function BlogFeed() {
 
    return (
       <section className={styles.BlogFeed}>
-         <div className={`${styles.container} container`} ref={containerRef}>
-            {data.map(blog => {
-               if (blog.type === 1) {
-                  return <BlogType1 data={blog} key={blog.id} />
-               }
+         <div className={`${styles.container} container`} ref={container1Ref}>
+            <div className={styles.container1}>
+               {data.map((blog, index) => {
+                  if (blog.type === 1) {
+                     return <BlogType1 myArea={index === 0} data={blog} key={blog.id} />
+                  } else if (blog.type === 3) {
+                     return <BlogQuote data={blog} key={blog.id} />
+                  } else {
+                     return null
+                  }
+               })}
+            </div>
 
-               if (blog.type === 2) {
-                  return <BlogType2 data={blog} key={blog.id} />
-               }
-
-               if (blog.type === 3) {
-                  return <BlogQuote data={blog} key={blog.id} />
-               }
-
-               return null
-            })}
+            <div className={styles.container2} ref={container2Ref}>
+               {data.map(blog => blog.type === 2 && <BlogType2 data={blog} key={blog.id} />)}
+            </div>
          </div>
       </section>
    )

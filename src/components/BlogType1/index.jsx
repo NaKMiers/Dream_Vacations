@@ -1,10 +1,11 @@
-import { faMessage, faShareAlt } from '@fortawesome/free-solid-svg-icons'
+import { faMessage } from '@fortawesome/free-regular-svg-icons'
+import { faShareAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { memo } from 'react'
-import styles from './style.module.scss'
 import { useNavigate } from 'react-router-dom'
+import styles from './style.module.scss'
 
-function BlogType1({ data }) {
+function BlogType1({ data, myArea }) {
    const navigate = useNavigate()
 
    let { visual, small, extraSmall, noOverlayContent } = data.styles
@@ -14,7 +15,7 @@ function BlogType1({ data }) {
 
    return (
       <div
-         className={`${styles.blogType1} ${small ? styles.small : ''} ${
+         className={`${styles.blogType1} ${myArea ? styles.myArea : ''} ${small ? styles.small : ''} ${
             extraSmall ? styles.extraSmall : ''
          } ${visual ? styles.visual : ''}`}
          onClick={() => navigate('/blogs/1')}

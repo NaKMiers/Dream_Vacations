@@ -6,6 +6,17 @@ import blogThumb5 from '../assets/imgs/blogThumb5.jpg'
 import blogThumb6 from '../assets/imgs/blogThumb6.jpg'
 import blogThumb7 from '../assets/imgs/blogThumb7.jpg'
 import blogThumb8 from '../assets/imgs/blogThumb8.jpg'
+import blogThumb9 from '../assets/imgs/blogThumb9.jpg'
+import blogThumb10 from '../assets/imgs/blogThumb10.jpg'
+import blogThumb11 from '../assets/imgs/blogThumb11.jpg'
+import blogThumb12 from '../assets/imgs/blogThumb12.jpg'
+import blogThumb13 from '../assets/imgs/blogThumb13.jpg'
+import blogThumb14 from '../assets/imgs/blogThumb14.jpg'
+import blogThumb15 from '../assets/imgs/blogThumb15.jpg'
+import blogThumb16 from '../assets/imgs/blogThumb16.jpg'
+import blogThumb17 from '../assets/imgs/blogThumb17.jpg'
+import blogThumb18 from '../assets/imgs/blogThumb18.jpg'
+import blogThumb19 from '../assets/imgs/blogThumb19.jpg'
 import authorAvt1 from '../assets/imgs/authorAvt1.jpeg'
 
 const initState = {
@@ -116,12 +127,171 @@ const initState = {
          styles: {},
          type: 1,
       },
+
+      {
+         id: 9,
+         image: blogThumb9,
+         author: 'By Scott Jackson',
+         avatar: authorAvt1,
+         title: 'Double Item Blog Post',
+         desc: 'Lorem ipsum dolor sit ametcon sectetur adipisicing elit, sed doiusmod tempor incidi labore et dolore. agna aliqua lorem ipsum. Dolore magnam aliquam quaerat voluptatem. Nemo enim ipsam voluptatem quia voluptas.',
+         date: 'July 3, 2023',
+         createAt: 1686735683881,
+         comments: 2,
+         styles: {},
+         type: 4,
+      },
+      {
+         id: 10,
+         image: blogThumb10,
+         author: 'By Scott Jackson',
+         avatar: authorAvt1,
+         title: 'Medium Blog Post',
+         desc: 'Lorem ipsum dolor sit ametcon sectetur adipisicing elit, sed doiusmod tempor incidi labore et dolore. agna aliqua lorem ipsum. Dolore magnam aliquam quaerat voluptatem. Nemo enim ipsam voluptatem quia voluptas.',
+         date: 'July 3, 2023',
+         createAt: 1686735683881,
+         comments: 2,
+         styles: {},
+         type: 4,
+      },
+      {
+         id: 11,
+         image: blogThumb11,
+         author: 'By Scott Jackson',
+         avatar: authorAvt1,
+         title: 'Medium Blog Post',
+         desc: 'Lorem ipsum dolor sit ametcon sectetur adipisicing elit, sed doiusmod tempor incidi labore et dolore. agna aliqua lorem ipsum. Dolore magnam aliquam quaerat voluptatem. Nemo enim ipsam voluptatem quia voluptas.',
+         date: 'July 3, 2023',
+         createAt: 1686735683881,
+         comments: 2,
+         styles: {},
+         type: 4,
+      },
+      {
+         id: 12,
+         image: blogThumb12,
+         author: 'By Scott Jackson',
+         avatar: authorAvt1,
+         title: 'Medium Blog Post',
+         desc: 'Lorem ipsum dolor sit ametcon sectetur adipisicing elit, sed doiusmod tempor incidi labore et dolore. agna aliqua lorem ipsum. Dolore magnam aliquam quaerat voluptatem. Nemo enim ipsam voluptatem quia voluptas.',
+         date: 'July 3, 2023',
+         createAt: 1686735683881,
+         comments: 2,
+         styles: {},
+         type: 4,
+      },
+      {
+         id: 13,
+         image: blogThumb13,
+         author: 'By Scott Jackson',
+         avatar: authorAvt1,
+         title: 'Medium Blog Post',
+         desc: 'Lorem ipsum dolor sit ametcon sectetur adipisicing elit, sed doiusmod tempor incidi labore et dolore. agna aliqua lorem ipsum. Dolore magnam aliquam quaerat voluptatem. Nemo enim ipsam voluptatem quia voluptas.',
+         date: 'July 3, 2023',
+         createAt: 1686735683881,
+         comments: 2,
+         styles: {},
+         type: 4,
+      },
+      {
+         id: 14,
+         image: blogThumb14,
+         author: 'By Scott Jackson',
+         avatar: authorAvt1,
+         title: 'Medium Blog Post',
+         desc: 'Lorem ipsum dolor sit ametcon sectetur adipisicing elit, sed doiusmod tempor incidi labore et dolore. agna aliqua lorem ipsum. Dolore magnam aliquam quaerat voluptatem. Nemo enim ipsam voluptatem quia voluptas.',
+         date: 'July 3, 2023',
+         createAt: 1686735683881,
+         comments: 2,
+         styles: {},
+         type: 4,
+      },
+      {
+         id: 15,
+         image: blogThumb15,
+         author: 'By Scott Jackson',
+         avatar: authorAvt1,
+         title: 'Medium Blog Post',
+         desc: 'Lorem ipsum dolor sit ametcon sectetur adipisicing elit, sed doiusmod tempor incidi labore et dolore. agna aliqua lorem ipsum. Dolore magnam aliquam quaerat voluptatem. Nemo enim ipsam voluptatem quia voluptas.',
+         date: 'July 3, 2023',
+         createAt: 1686735683881,
+         comments: 2,
+         styles: {},
+         type: 4,
+      },
+      {
+         id: 16,
+         image: blogThumb16,
+         author: 'By Scott Jackson',
+         avatar: authorAvt1,
+         title: 'Medium Blog Post',
+         desc: 'Lorem ipsum dolor sit ametcon sectetur adipisicing elit, sed doiusmod tempor incidi labore et dolore. agna aliqua lorem ipsum. Dolore magnam aliquam quaerat voluptatem. Nemo enim ipsam voluptatem quia voluptas.',
+         date: 'July 3, 2023',
+         createAt: 1686735683881,
+         comments: 2,
+         styles: {},
+         type: 4,
+      },
+      {
+         id: 17,
+         image: blogThumb17,
+         author: 'By Scott Jackson',
+         avatar: authorAvt1,
+         title: 'Medium Blog Post',
+         desc: 'Lorem ipsum dolor sit ametcon sectetur adipisicing elit, sed doiusmod tempor incidi labore et dolore. agna aliqua lorem ipsum. Dolore magnam aliquam quaerat voluptatem. Nemo enim ipsam voluptatem quia voluptas.',
+         date: 'July 3, 2023',
+         createAt: 1686735683881,
+         comments: 2,
+         styles: {},
+         type: 4,
+      },
+      {
+         id: 18,
+         image: blogThumb18,
+         author: 'By Scott Jackson',
+         avatar: authorAvt1,
+         title: 'Medium Blog Post',
+         desc: 'Lorem ipsum dolor sit ametcon sectetur adipisicing elit, sed doiusmod tempor incidi labore et dolore. agna aliqua lorem ipsum. Dolore magnam aliquam quaerat voluptatem. Nemo enim ipsam voluptatem quia voluptas.',
+         date: 'July 3, 2023',
+         createAt: 1686735683881,
+         comments: 2,
+         styles: {},
+         type: 4,
+      },
+      {
+         id: 19,
+         image: blogThumb19,
+         author: 'By Scott Jackson',
+         avatar: authorAvt1,
+         title: 'Medium Blog Post',
+         desc: 'Lorem ipsum dolor sit ametcon sectetur adipisicing elit, sed doiusmod tempor incidi labore et dolore. agna aliqua lorem ipsum. Dolore magnam aliquam quaerat voluptatem. Nemo enim ipsam voluptatem quia voluptas.',
+         date: 'July 3, 2023',
+         createAt: 1686735683881,
+         comments: 2,
+         styles: {},
+         type: 4,
+      },
+
       {
          id: 99,
          image: null,
          author: 'By Scott Jackson',
          avatar: null,
          title: ['Life if a Journey.', 'Make', 'the Best of it.'],
+         desc: '',
+         createAt: 1686735683881,
+         date: 'July 3, 2023',
+         styles: {},
+         type: 3,
+         comments: 0,
+         likes: 0,
+      },
+      {
+         id: 98,
+         image: null,
+         author: 'Lao Tzu, Chinese philosopher',
+         avatar: null,
+         title: ['A journey is Best Measured.', 'in Friend,', 'Rather Than Miles'],
          desc: '',
          createAt: 1686735683881,
          date: 'July 3, 2023',
@@ -143,6 +313,8 @@ const initState = {
       { blogId: 7, type: 2 },
       { blogId: 8, type: 2 },
    ],
+
+   blogGallery: [9, 10, 11, 12, 13, 98, 14, 15, 16, 17, 18, 19],
 }
 
 function blogReducer(state = initState, action) {

@@ -1,19 +1,14 @@
 .BlogGalleryItem {
    position: relative;
    overflow: hidden;
+   opacity: 0; // for appear
 
    width: 100%;
    padding-top: 100%;
    cursor: pointer;
 
-   &.small {
-      width: 100%;
-      padding-top: 50%;
-   }
-
-   &.extraSmall {
-      width: 50%;
-      padding-top: 50%;
+   &.myArea {
+      grid-area: myArea;
    }
 }
 
@@ -119,7 +114,7 @@
    }
 
    & > .caption {
-      --duration1: 0.2s;
+      --duration1: 0.3s;
       --duration2: 0.3s;
       --delay1: 0.1s;
       --delay2: 0.15s;
@@ -194,11 +189,15 @@
    margin-top: 8px;
 
    & > p {
-      font-size: 24px;
+      font-size: 19px;
       font-weight: 700;
       line-height: 30px;
       letter-spacing: 0.05em;
       color: #fff;
+
+      &.myArea {
+         font-size: 24px;
+      }
 
       &::-webkit-scrollbar {
          display: none;

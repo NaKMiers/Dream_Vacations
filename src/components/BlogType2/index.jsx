@@ -1,4 +1,5 @@
-import { faComment, faHeart, faPlusCircle, faShareAlt } from '@fortawesome/free-solid-svg-icons'
+import { faComment, faPlusCircle, faShareAlt } from '@fortawesome/free-solid-svg-icons'
+import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { memo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
