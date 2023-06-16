@@ -8,6 +8,11 @@
       padding-top: 50%;
       opacity: 0; // for appeard
 
+      // mobile medium
+      @media (max-width: 548px) {
+         grid-column: span 1;
+      }
+
       & > .content {
          top: 0;
          width: 100%;

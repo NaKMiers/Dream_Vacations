@@ -26,4 +26,9 @@
          'myArea myArea'
          'myArea myArea';
    }
+
+   // mobile modium
+   @media (max-width: 830px) {
+      grid-template-areas: 'myArea';
+   }
 }
