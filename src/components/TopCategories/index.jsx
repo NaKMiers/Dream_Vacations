@@ -74,7 +74,7 @@ function TopCategories() {
          style={{ background: `url(${topCategoriesBG}) no-repeat center / cover` }}
       >
          <div className={`${styles.container} container`}>
-            <SeparatorTitle />
+            <SeparatorTitle title='Top Categories' />
 
             <div className={styles.categoriesWrap} ref={categoriesWrapRef}>
                <div className={styles.categoriesItem}>

@@ -5,6 +5,8 @@ import BlogFeed from '../../components/BlogFeed'
 import TopCategories from '../../components/TopCategories'
 import OurAbout from '../../components/OurAbout'
 import BlogGallery from '../../components/BlogGallery'
+import AuthorReviews from '../../components/AuthorReviews'
+import EditorPickedNews from '../../components/EditorPickedNews'
 
 function HomePage() {
    return (
@@ -14,6 +16,8 @@ function HomePage() {
          <TopCategories />
          <OurAbout />
          <BlogGallery />
+         <AuthorReviews />
+         <EditorPickedNews />
       </div>
    )
 }

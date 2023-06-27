@@ -1,53 +1,44 @@
 .Footer {
    padding: 110px 0 45px;
-   background: #000;
+   background: var(--secondary);
 }
 
 .container {
-   display: grid;
-   grid-template-columns: repeat(4, 1fr);
-   grid-auto-rows: none;
-}
-
-.item1 {
-   // height: 300px;
-}
-.item2 {
-   // height: 350px;
-}
-.item3 {
-   // grid-area: myArea;
-   // height: 650px;
-
-   grid-column: 3;
-   grid-row: 1 / 3;
-}
-
-.item4 {
-   // height: 600px;
-}
-.item5 {
-   // height: 350px;
-}
-.item6 {
-   // height: 300px;
+   position: relative;
+   width: 100%;
+   height: 500px;
+   // background: #eee;
 }
 
 .item {
-   grid-column: auto;
-   grid-row: auto;
+   position: absolute;
+
+   width: 25%;
    padding: 0 21px;
    overflow: hidden;
    margin-bottom: 42px;
+   transition: 0.5s ease-in-out;
+
+   opacity: 0; // for appear
+
+   // tablet
+   @media (max-width: 980px) {
+      width: 50%;
+   }
+
+   // mobile large
+   @media (max-width: 768px) {
+      position: unset;
+      width: 100%;
+   }
 }
 
 .item1 {
-   background: aquamarine;
-   width: 100%;
+   // background: aquamarine;
 
    & > .logo {
       height: 66px;
-      background: #000;
+      // background: #000;
       margin: 27px 0 48px;
 
       & > img {
@@ -56,18 +47,27 @@
    }
 }
 
+.title {
+   font-size: 19px;
+   font-weight: 700;
+   line-height: 34px;
+   color: #fff;
+
+   margin: 22px 0 40px;
+   // background: cyan;
+}
+
 .desc {
    font-size: 16px;
    font-family: 'Source Sans Pro', sans-serif;
    line-height: 25px;
    color: var(--light-gray);
-
-   background: azure;
+   margin-bottom: 1.1rem;
+   // background: azure;
 }
 
 .item2 {
-   background: blue;
-   width: 100%;
+   // background: blue;
 
    & > .features {
       & > li {
@@ -79,7 +79,7 @@
          font-family: 'Source Sans Pro', sans-serif;
          line-height: 25px;
          color: var(--light-gray);
-         background: aquamarine;
+         // background: aquamarine;
 
          &::before {
             content: '';
@@ -98,24 +98,13 @@
    }
 }
 
-.title {
-   font-size: 19px;
-   font-weight: 700;
-   line-height: 34px;
-   color: #fff;
-
-   margin: 22px 0 40px;
-   background: cyan;
-}
-
 .item3 {
-   background: cyan;
-   width: 100%;
+   // background: cyan;
 
    & > .tweetWrap {
       display: flex;
       flex-direction: column;
-      background: aquamarine;
+      // background: aquamarine;
 
       & > .tweetItem {
          padding: 27px 0 24px;
@@ -129,9 +118,9 @@
          }
 
          & > .icon {
-            background: #eee;
             display: flex;
             margin-bottom: 12px;
+            // background: #eee;
 
             & > img {
                display: block;
@@ -152,11 +141,16 @@
             font-size: 16px;
             font-family: 'Source Sans Pro', sans-serif;
             line-height: 25px;
-            background: #000;
             color: var(--light-gray);
+            // background: #000;
 
             & > .link {
                color: var(--primary);
+               transition: var(--standard-duration) ease-in-out;
+
+               &:hover {
+                  color: inherit;
+               }
             }
          }
       }
@@ -164,10 +158,7 @@
 }
 
 .item4 {
-   background: violet;
-   width: 100%;
-
-   // grid-row: span 2;
+   // background: violet;
 
    & > .recentCommentWrap {
       display: flex;
@@ -178,7 +169,7 @@
          border-top-left-radius: 50px;
          border-top-right-radius: 50px;
          border-bottom-right-radius: 50px;
-         background: var(--secondary);
+         background: var(--dark);
          margin-bottom: 24px;
 
          & > .icon {
@@ -186,8 +177,8 @@
             display: flex;
             justify-content: center;
             font-size: 20px;
-            background: beige;
             color: var(--light-gray);
+            // background: beige;
          }
 
          & > .authorLink {
@@ -213,8 +204,7 @@
 }
 
 .item5 {
-   background: coral;
-   width: 100%;
+   // background: coral;
 
    & > .inputWrap {
       display: flex;
@@ -228,10 +218,13 @@
          height: 100%;
          background: var(--secondary);
          padding: 7px 21px;
+         border: 0.8px solid var(--text);
+         border-radius: 4px;
 
          font-size: 16px;
          font-weight: 300;
          font-family: 'Source Sans Pro', sans-serif;
+         background: var(--dark);
          color: var(--light-gray);
 
          &::placeholder {
@@ -261,13 +254,12 @@
       margin-bottom: 15px;
       line-height: 23px;
 
-      background: bisque;
+      // background: bisque;
    }
 }
 
 .item6 {
-   background: bisque;
-   width: 100%;
+   // background: bisque;
 
    & > .tagWrap {
       display: flex;

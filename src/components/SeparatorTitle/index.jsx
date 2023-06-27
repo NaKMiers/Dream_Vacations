@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useEffect, useRef } from 'react'
 import styles from './style.module.scss'
 
-function SeparatorTitle() {
+function SeparatorTitle({ title, dark, style }) {
    const titleRef = useRef(null)
 
    // appear animation on scroll
@@ -29,10 +29,12 @@ function SeparatorTitle() {
    }, [handleScroll])
 
    return (
-      <div className={styles.SeparatorTitle} ref={titleRef}>
-         <div />
-         <h2 className={styles.tilte}>Top Categories</h2>
-         <div />
+      <div className={styles.SeparatorTitle} ref={titleRef} style={style}>
+         <div className={`${styles.container} ${dark ? styles.dark : styles.light} container`}>
+            <div />
+            <h2 className={styles.tilte}>{title}</h2>
+            <div />
+         </div>
       </div>
    )
 }

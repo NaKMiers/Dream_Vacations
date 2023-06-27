@@ -18,6 +18,7 @@ import PolicyPage from './pages/PolicyPage'
 import TravelPage from './pages/TravelPage'
 import TravelPurchase from './components/TravelPurchase'
 import Footer from './components/Footer'
+import FooterNav from './components/FooterNav'
 
 function App() {
    return (
@@ -45,6 +46,7 @@ function App() {
          <Subscribe />
          <TravelPurchase />
          <Footer />
+         <FooterNav />
       </div>
    )
 }

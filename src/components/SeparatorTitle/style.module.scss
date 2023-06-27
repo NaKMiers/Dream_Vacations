@@ -1,9 +1,23 @@
 .SeparatorTitle {
-   display: flex;
-   align-items: center;
    width: 100%;
    margin-bottom: 30px;
    // background: #000;
+}
+
+.container {
+   display: flex;
+   align-items: center;
+   padding: 0 21px;
+
+   &.dark {
+      & > .tilte {
+         color: var(--secondary);
+      }
+
+      & > div {
+         background: rgba(0, 0, 0, 0.2);
+      }
+   }
 
    & > .tilte {
       padding: 0 25.2px;
