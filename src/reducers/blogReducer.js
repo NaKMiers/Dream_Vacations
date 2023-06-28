@@ -20,6 +20,8 @@ import blogThumb19 from '../assets/imgs/blogThumb19.jpg'
 import blogThumb20 from '../assets/imgs/blogThumb20.jpg'
 import blogThumb21 from '../assets/imgs/blogThumb21.jpg'
 import blogThumb22 from '../assets/imgs/blogThumb22.jpg'
+import blogThumb23 from '../assets/imgs/blogThumb23.jpg'
+import blogThumb24 from '../assets/imgs/blogThumb24.jpg'
 import authorAvt1 from '../assets/imgs/authorAvt1.jpeg'
 
 const initState = {
@@ -294,7 +296,7 @@ const initState = {
          image: blogThumb21,
          author: 'By Scott Jackson',
          avatar: authorAvt1,
-         title: 'You don’t have to be rich to travel well',
+         title: 'Travel is never a matter of money but of courage',
          desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam…',
          date: 'November 30, 2020',
          createAt: 1686735683123,
@@ -308,10 +310,38 @@ const initState = {
          image: blogThumb22,
          author: 'By Scott Jackson',
          avatar: authorAvt1,
-         title: 'You don’t have to be rich to travel well',
+         title: 'Then I realized adventures are the best way to learn',
          desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam…',
          date: 'November 30, 2020',
          createAt: 1686735683777,
+         comments: 2,
+         styles: {},
+         type: 1,
+      },
+
+      {
+         id: 23,
+         image: blogThumb23,
+         author: 'By Scott Jackson',
+         avatar: authorAvt1,
+         title: 'Lorem ipsum dolor sit amet, consectetur adipisicing',
+         desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam…',
+         date: 'October 26, 2020',
+         createAt: 1686735682890,
+         comments: 2,
+         styles: {},
+         type: 1,
+      },
+
+      {
+         id: 24,
+         image: blogThumb24,
+         author: 'By Scott Jackson',
+         avatar: authorAvt1,
+         title: 'Lorem ipsum dolor sit amet, consectetur adipisicing',
+         desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam…',
+         date: 'October 11, 2020',
+         createAt: 1686735683583,
          comments: 2,
          styles: {},
          type: 1,
@@ -361,7 +391,7 @@ const initState = {
 
    blogGallery: [9, 10, 11, 12, 13, 98, 14, 15, 16, 17, 18, 19],
 
-   recentPosts: [20, 21, 22],
+   recentPosts: [20, 21, 22, 23, 24],
 }
 
 function blogReducer(state = initState, action) {

@@ -274,6 +274,13 @@
          font-family: 'Source Sans Pro', sans-serif;
          color: var(--light-gray);
          border: 1px solid var(--light-gray);
+         transition: var(--standard-duration) ease-in-out;
+
+         &:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #101213;
+         }
       }
    }
 }

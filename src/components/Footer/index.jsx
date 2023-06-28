@@ -294,19 +294,45 @@ function Footer() {
                <h3 className={styles.title}>Tags</h3>
 
                <div className={styles.tagWrap}>
-                  <div className={styles.tagItem}>Agency</div>
-                  <div className={styles.tagItem}>Design</div>
-                  <div className={styles.tagItem}>Fy</div>
-                  <div className={styles.tagItem}>Holiday</div>
-                  <div className={styles.tagItem}>Lifestyle</div>
-                  <div className={styles.tagItem}>Media</div>
-                  <div className={styles.tagItem}>Nature</div>
-                  <div className={styles.tagItem}>News</div>
-                  <div className={styles.tagItem}>People</div>
-                  <div className={styles.tagItem}>Photo</div>
-                  <div className={styles.tagItem}>Sea</div>
-                  <div className={styles.tagItem}>Sun</div>
-                  <div className={styles.tagItem}>Travel</div>
+                  <Link to='/blogs/categories/1' className={styles.tagItem}>
+                     Agency
+                  </Link>
+                  <Link to='/blogs/categories/1' className={styles.tagItem}>
+                     Design
+                  </Link>
+                  <Link to='/blogs/categories/1' className={styles.tagItem}>
+                     Fy
+                  </Link>
+                  <Link to='/blogs/categories/1' className={styles.tagItem}>
+                     Holiday
+                  </Link>
+                  <Link to='/blogs/categories/1' className={styles.tagItem}>
+                     Lifestyle
+                  </Link>
+                  <Link to='/blogs/categories/1' className={styles.tagItem}>
+                     Media
+                  </Link>
+                  <Link to='/blogs/categories/1' className={styles.tagItem}>
+                     Nature
+                  </Link>
+                  <Link to='/blogs/categories/1' className={styles.tagItem}>
+                     News
+                  </Link>
+                  <Link to='/blogs/categories/1' className={styles.tagItem}>
+                     People
+                  </Link>
+                  <Link to='/blogs/categories/1' className={styles.tagItem}>
+                     Photo
+                  </Link>
+                  <Link to='/blogs/categories/1' className={styles.tagItem}>
+                     Sea
+                  </Link>
+                  <Link to='/blogs/categories/1' className={styles.tagItem}>
+                     Sun
+                  </Link>
+                  <Link to='/blogs/categories/1' className={styles.tagItem}>
+                     Travel
+                  </Link>
                </div>
             </div>
          </div>
