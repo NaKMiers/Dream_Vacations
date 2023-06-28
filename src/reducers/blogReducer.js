@@ -17,6 +17,9 @@ import blogThumb16 from '../assets/imgs/blogThumb16.jpg'
 import blogThumb17 from '../assets/imgs/blogThumb17.jpg'
 import blogThumb18 from '../assets/imgs/blogThumb18.jpg'
 import blogThumb19 from '../assets/imgs/blogThumb19.jpg'
+import blogThumb20 from '../assets/imgs/blogThumb20.jpg'
+import blogThumb21 from '../assets/imgs/blogThumb21.jpg'
+import blogThumb22 from '../assets/imgs/blogThumb22.jpg'
 import authorAvt1 from '../assets/imgs/authorAvt1.jpeg'
 
 const initState = {
@@ -273,6 +276,48 @@ const initState = {
       },
 
       {
+         id: 20,
+         image: blogThumb20,
+         author: 'By Scott Jackson',
+         avatar: authorAvt1,
+         title: 'You don’t have to be rich to travel well',
+         desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam…',
+         date: 'November 30, 2020',
+         createAt: 1686735683888,
+         comments: 2,
+         styles: {},
+         type: 1,
+      },
+
+      {
+         id: 21,
+         image: blogThumb21,
+         author: 'By Scott Jackson',
+         avatar: authorAvt1,
+         title: 'You don’t have to be rich to travel well',
+         desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam…',
+         date: 'November 30, 2020',
+         createAt: 1686735683123,
+         comments: 2,
+         styles: {},
+         type: 1,
+      },
+
+      {
+         id: 22,
+         image: blogThumb22,
+         author: 'By Scott Jackson',
+         avatar: authorAvt1,
+         title: 'You don’t have to be rich to travel well',
+         desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam…',
+         date: 'November 30, 2020',
+         createAt: 1686735683777,
+         comments: 2,
+         styles: {},
+         type: 1,
+      },
+
+      {
          id: 99,
          image: null,
          author: 'By Scott Jackson',
@@ -315,6 +360,8 @@ const initState = {
    ],
 
    blogGallery: [9, 10, 11, 12, 13, 98, 14, 15, 16, 17, 18, 19],
+
+   recentPosts: [20, 21, 22],
 }
 
 function blogReducer(state = initState, action) {

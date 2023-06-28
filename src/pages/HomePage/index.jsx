@@ -7,6 +7,8 @@ import OurAbout from '../../components/OurAbout'
 import BlogGallery from '../../components/BlogGallery'
 import AuthorReviews from '../../components/AuthorReviews'
 import EditorPickedNews from '../../components/EditorPickedNews'
+import FeaturedAuthors from '../../components/FeaturedAuthors'
+import RecentPosts from '../../components/RecentPosts'
 
 function HomePage() {
    return (
@@ -18,6 +20,8 @@ function HomePage() {
          <BlogGallery />
          <AuthorReviews />
          <EditorPickedNews />
+         <FeaturedAuthors />
+         <RecentPosts />
       </div>
    )
 }
