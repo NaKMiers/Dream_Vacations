@@ -9,16 +9,8 @@ function BlogType3({ data }) {
    const thumbnailRef = useRef(null)
    const navigate = useNavigate()
 
-   const handleMouseOver = () => {
-      thumbnailRef.current.classList.add(styles.active)
-   }
-
-   const handleMouseLeave = () => {
-      thumbnailRef.current.classList.remove(styles.active)
-   }
-
    return (
-      <div className={styles.BlogType3} onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave}>
+      <div className={styles.BlogType3}>
          <div className={styles.container}>
             <div className={styles.thumbnail} ref={thumbnailRef} onClick={() => navigate('/blogs/1')}>
                <img src={data.image} alt='thumbnail' />

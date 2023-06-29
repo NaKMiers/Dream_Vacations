@@ -3,6 +3,7 @@
    width: 100%;
    padding-top: 50%;
    margin-bottom: 42px;
+   cursor: pointer;
 
    // mobile medium
    @media (max-width: 548px) {
@@ -20,20 +21,12 @@
    height: 100%;
 
    background: #fff;
-}
 
-.thumbnail {
-   position: relative;
-   width: 50%;
-   cursor: pointer;
-   overflow: hidden;
+   &:hover > .thumbnail {
+      & > img {
+         transform: scale(1.15);
+      }
 
-   // mobile medium
-   @media (max-width: 548px) {
-      width: 100%;
-   }
-
-   &.active {
       & > .overlay {
          background: rgba(255, 255, 255, 0.8);
       }
@@ -68,12 +61,24 @@
          }
       }
    }
+}
+
+.thumbnail {
+   position: relative;
+   width: 50%;
+   overflow: hidden;
+
+   // mobile medium
+   @media (max-width: 548px) {
+      width: 100%;
+   }
 
    & > img {
       display: block;
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: var(--standard-duration) ease-in-out;
    }
 
    & > .overlay {

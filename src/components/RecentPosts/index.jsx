@@ -13,6 +13,7 @@ import instagram from '../../assets/imgs/instagram-color.png'
 import pinterest from '../../assets/imgs/pinterest-color.png'
 import youtube from '../../assets/imgs/youtube-color.png'
 import { Link } from 'react-router-dom'
+import MoreStories from '../MoreStories'
 
 function RecentPosts() {
    const { blogs, recentPosts } = useSelector(state => state.blogs)
@@ -204,6 +205,8 @@ function RecentPosts() {
                   </Link>
                </div>
             </div>
+
+            <MoreStories />
          </div>
       </section>
    )

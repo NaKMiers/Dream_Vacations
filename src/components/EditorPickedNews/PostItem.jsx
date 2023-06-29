@@ -38,16 +38,13 @@ function PostItem({ data }) {
          <div className={styles.postContent}>
             <Link to='/blogs/1'>
                <h5 className={styles.title}>
-                  <span>{data.date}:</span> <span>Simple Blog Post</span>
+                  <span>{data.date}:</span> <span>{data.title}</span>
                </h5>
             </Link>
 
-            <p className={styles.desc}>
-               Lorem ipsum dolor sit ametcon sectetur adipisicing elit, sed doiusmod tempor incidi labore
-               et dolore. agna aliqua. Ut enim ad mini veniam, quis nostrud
-            </p>
+            <p className={styles.desc}>{data.desc}</p>
 
-            <p className={styles.author}>By Scott Jackson</p>
+            <p className={styles.author}>By {data.author}</p>
          </div>
       </div>
    )

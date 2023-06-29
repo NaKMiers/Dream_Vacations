@@ -12,16 +12,13 @@ function Slide({ data, nextSlide, prevSlide }) {
          <div className={styles.content}>
             <Link to='/blogs/1'>
                <h5 className={styles.title}>
-                  <span>{data.date}:</span> <span>Medium Blog Post</span>
+                  <span>{data.date}:</span> <span>{data.title}</span>
                </h5>
             </Link>
 
-            <p className={styles.desc}>
-               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-               ut labore et dolore magna aliqua. Enim ad minim veniam, quis ut aliquip exea
-            </p>
+            <p className={styles.desc}>{data.desc}</p>
 
-            <p className={styles.author}>{data.author}</p>
+            <p className={styles.author}>By {data.author}</p>
 
             <div className={styles.btnWrap}>
                <button onClick={prevSlide}>

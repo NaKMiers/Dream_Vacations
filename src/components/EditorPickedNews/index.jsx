@@ -1,14 +1,7 @@
 import React, { memo, useCallback, useEffect, useRef, useState } from 'react'
+import { useSelector } from 'react-redux'
 import SeparatorTitle from '../../components/SeparatorTitle'
 import PostItem from './PostItem'
-import editorPickedImage1 from '../../assets/imgs/editorPickedImage1.jpg'
-import editorPickedImage2 from '../../assets/imgs/editorPickedImage2.jpg'
-import editorPickedImage3 from '../../assets/imgs/editorPickedImage3.jpg'
-import editorPickedImage4 from '../../assets/imgs/editorPickedImage4.jpg'
-import editorPickedImage5 from '../../assets/imgs/editorPickedImage5.jpg'
-import editorPickedImage6 from '../../assets/imgs/editorPickedImage6.jpg'
-import editorPickedImage7 from '../../assets/imgs/editorPickedImage7.jpg'
-import editorPickedImage8 from '../../assets/imgs/editorPickedImage8.jpg'
 import Slide from './Slide'
 import styles from './style.module.scss'
 
@@ -16,6 +9,15 @@ const slideLength = 5
 const maxSlideIndex = 5 + 2 - 1
 
 function EditorPickedNews() {
+   const { blogs, editorPinkedNews } = useSelector(state => state.blogs)
+   const data = editorPinkedNews.map(id => {
+      return blogs.find(blog => blog.id === id)
+   })
+
+   // const sliderData = data.slice()
+   const postData = data.slice(0, 3)
+   const slideData = data.slice(3)
+
    const [isSliding, setSliding] = useState(false)
    const [slide, setSlide] = useState(1)
    const slideTrackRef = useRef(null)
@@ -123,61 +125,23 @@ function EditorPickedNews() {
             <div className={styles.sliderWrap}>
                <div className={styles.slider} ref={sliderRef}>
                   <div className={styles.slideTrack} ref={slideTrackRef}>
-                     <Slide
-                        data={{ image: editorPickedImage5, author: 'By Herman Ledford', date: '20 Nov' }}
-                     />
+                     <Slide data={slideData[slideData.length - 1]} />
                      {/* --- */}
 
-                     <Slide
-                        nextSlide={nextSlide}
-                        prevSlide={prevSlide}
-                        data={{
-                           image: editorPickedImage1,
-                           author: 'By Nathan Matthews',
-                           date: '20 Nov',
-                        }}
-                     />
-                     <Slide
-                        nextSlide={nextSlide}
-                        prevSlide={prevSlide}
-                        data={{
-                           image: editorPickedImage2,
-                           author: 'By Julianna Galanis',
-                           date: '20 Nov',
-                        }}
-                     />
-                     <Slide
-                        nextSlide={nextSlide}
-                        prevSlide={prevSlide}
-                        data={{ image: editorPickedImage3, author: 'By Mel Granville', date: '20 Nov' }}
-                     />
-                     <Slide
-                        nextSlide={nextSlide}
-                        prevSlide={prevSlide}
-                        data={{ image: editorPickedImage4, author: 'By Cassandra Lynn', date: '19 Nov' }}
-                     />
-                     <Slide
-                        nextSlide={nextSlide}
-                        prevSlide={prevSlide}
-                        data={{ image: editorPickedImage5, author: 'By Herman Ledford', date: '20 Nov' }}
-                     />
+                     {slideData.map(slide => (
+                        <Slide nextSlide={nextSlide} prevSlide={prevSlide} data={slide} key={slide.id} />
+                     ))}
 
                      {/* --- */}
-                     <Slide
-                        data={{
-                           image: editorPickedImage1,
-                           author: 'By Nathan Matthews',
-                           date: '20 Nov',
-                        }}
-                     />
+                     <Slide data={slideData[0]} />
                   </div>
                </div>
             </div>
 
             <div className={styles.postWrap} ref={postWrapRef}>
-               <PostItem data={{ image: editorPickedImage6, date: '20 Nov' }} />
-               <PostItem data={{ image: editorPickedImage7, date: '19 Nov' }} />
-               <PostItem data={{ image: editorPickedImage8, date: '18 Nov' }} />
+               {postData.map(post => (
+                  <PostItem data={post} key={post.id} />
+               ))}
             </div>
          </div>
       </section>
