@@ -1,0 +1,139 @@
+.ImageReviewOverlay {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   z-index: 2;
+
+   display: none; // flex
+   align-items: center;
+   justify-content: center;
+   transition: 0.5s ease-in-out;
+   opacity: 0;
+   background: rgba(0, 0, 0, 0.8);
+}
+
+.playBar {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 2px;
+
+   & > div {
+      position: absolute;
+      left: 0;
+      height: 100%;
+      width: 0;
+      z-index: 1;
+      background: var(--primary);
+   }
+
+   &.replay > div {
+      animation: longer 3.5s linear infinite;
+   }
+}
+
+.number {
+   position: absolute;
+   top: 0;
+   left: 0;
+   color: #ccc;
+
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 44px;
+   height: 44px;
+
+   font-size: 14px;
+   font-family: 'Source Sans Pro', sans-serif;
+   letter-spacing: 2px;
+
+   // opacity: 0;
+   transition: all 0.3s ease-in-out;
+}
+
+.buttonWrap {
+   position: absolute;
+   top: 0;
+   right: 0;
+   display: flex;
+   background: #ccc;
+   background: rgba(0, 0, 0, 0.6);
+
+   & > button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 44px;
+      height: 44px;
+      padding: 10px;
+      color: #ccc;
+      font-size: 14px;
+      transition: var(--standard-duration) ease-in-out;
+
+      &:hover {
+         color: #fff;
+      }
+   }
+}
+
+.modalBtn {
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+
+   width: 38px;
+   height: 38px;
+   margin: 0 6px;
+   background: rgba(0, 0, 0, 0.5);
+   color: #ccc;
+   // opacity: 0;
+   transition: var(--standard-duration) ease-in-out;
+
+   &:hover {
+      color: #fff;
+   }
+
+   &.nextBtn {
+      left: 0;
+   }
+
+   &.prevBtn {
+      right: 0;
+   }
+}
+
+.image {
+   max-width: 674px;
+   width: 100%;
+   transition: max-width 0.3s ease-in-out, opacity 0.2s ease-in-out;
+   opacity: 0;
+
+   &.zoom {
+      max-width: 100%;
+
+      & > img {
+         cursor: zoom-out;
+      }
+   }
+
+   & > img {
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+      cursor: zoom-in;
+   }
+}
+
+@keyframes longer {
+   from {
+      width: 0;
+   }
+   to {
+      width: 100%;
+   }
+}

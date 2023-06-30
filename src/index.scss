@@ -89,7 +89,6 @@ ul {
    opacity: 0;
    animation: floatUp 0.6s ease-in-out 0.2s forwards;
 }
-
 @keyframes floatUp {
    from {
       opacity: 0;
@@ -105,7 +104,6 @@ ul {
    opacity: 0;
    animation: floatLeft 0.6s ease-in-out 0.2s forwards;
 }
-
 @keyframes floatLeft {
    from {
       opacity: 0;
@@ -121,7 +119,6 @@ ul {
    opacity: 0;
    animation: floatRight 0.6s ease-in-out 0.2s forwards;
 }
-
 @keyframes floatRight {
    from {
       opacity: 0;
@@ -137,7 +134,6 @@ ul {
    opacity: 0;
    animation: zoomOut 0.6s ease-in-out 0.2s forwards;
 }
-
 @keyframes zoomOut {
    from {
       opacity: 0;
@@ -153,7 +149,6 @@ ul {
    opacity: 0;
    animation: fadeIn 0.6s ease-in-out 0.2s forwards;
 }
-
 @keyframes fadeIn {
    from {
       opacity: 0;

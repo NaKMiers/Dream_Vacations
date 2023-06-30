@@ -19,6 +19,7 @@ import TravelPage from './pages/TravelPage'
 import TravelPurchase from './components/TravelPurchase'
 import Footer from './components/Footer'
 import FooterNav from './components/FooterNav'
+import ImageReviewOverlay from './components/ImageReviewOverlay'
 
 function App() {
    return (
@@ -42,6 +43,7 @@ function App() {
          </Routes>
 
          <ScrollToTopButton />
+         <ImageReviewOverlay />
 
          <Subscribe />
          <TravelPurchase />

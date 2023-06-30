@@ -9,6 +9,7 @@ import AuthorReviews from '../../components/AuthorReviews'
 import EditorPickedNews from '../../components/EditorPickedNews'
 import FeaturedAuthors from '../../components/FeaturedAuthors'
 import RecentPosts from '../../components/RecentPosts'
+import TravelHighlights from '../../components/TravelHighlights'
 
 function HomePage() {
    return (
@@ -22,6 +23,7 @@ function HomePage() {
          <EditorPickedNews />
          <FeaturedAuthors />
          <RecentPosts />
+         <TravelHighlights />
       </div>
    )
 }

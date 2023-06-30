@@ -39,6 +39,15 @@ import editorPickedImage6 from '../assets/imgs/editorPickedImage6.jpg'
 import editorPickedImage7 from '../assets/imgs/editorPickedImage7.jpg'
 import editorPickedImage8 from '../assets/imgs/editorPickedImage8.jpg'
 
+import highlightThumb1 from '../assets/imgs/highlightThumb1.jpg'
+import highlightThumb2 from '../assets/imgs/highlightThumb2.jpg'
+import highlightThumb3 from '../assets/imgs/highlightThumb3.jpg'
+import highlightThumb4 from '../assets/imgs/highlightThumb4.jpg'
+import highlightThumb5 from '../assets/imgs/highlightThumb5.jpg'
+import highlightThumb6 from '../assets/imgs/highlightThumb6.jpg'
+import highlightThumb7 from '../assets/imgs/highlightThumb7.jpg'
+import highlightThumb8 from '../assets/imgs/highlightThumb8.jpg'
+
 const initState = {
    blogs: [
       {
@@ -51,6 +60,7 @@ const initState = {
          date: 'July 2, 2023',
          createAt: 1686735683881,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 1,
       },
@@ -64,6 +74,7 @@ const initState = {
          date: 'July 2, 2023',
          createAt: 1686735683881,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 1,
       },
@@ -78,6 +89,7 @@ const initState = {
          createAt: 1686735683881,
          comments: 2,
          styles: {},
+         likes: 0,
          type: 1,
       },
       {
@@ -90,6 +102,7 @@ const initState = {
          date: 'July 2, 2023',
          createAt: 1686735683881,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 1,
       },
@@ -103,6 +116,7 @@ const initState = {
          date: 'July 2, 2023',
          createAt: 1686735683881,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 1,
       },
@@ -116,6 +130,7 @@ const initState = {
          date: 'July 2, 2023',
          createAt: 1686735683881,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 1,
       },
@@ -158,6 +173,7 @@ const initState = {
          date: 'July 3, 2023',
          createAt: 1686735683881,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 4,
       },
@@ -171,6 +187,7 @@ const initState = {
          date: 'July 3, 2023',
          createAt: 1686735683881,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 4,
       },
@@ -184,6 +201,7 @@ const initState = {
          date: 'July 3, 2023',
          createAt: 1686735683881,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 4,
       },
@@ -197,6 +215,7 @@ const initState = {
          date: 'July 3, 2023',
          createAt: 1686735683881,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 4,
       },
@@ -210,6 +229,7 @@ const initState = {
          date: 'July 3, 2023',
          createAt: 1686735683881,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 4,
       },
@@ -223,6 +243,7 @@ const initState = {
          date: 'July 3, 2023',
          createAt: 1686735683881,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 4,
       },
@@ -236,6 +257,7 @@ const initState = {
          date: 'July 3, 2023',
          createAt: 1686735683881,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 4,
       },
@@ -249,6 +271,7 @@ const initState = {
          date: 'July 3, 2023',
          createAt: 1686735683881,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 4,
       },
@@ -262,6 +285,7 @@ const initState = {
          date: 'July 3, 2023',
          createAt: 1686735683881,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 4,
       },
@@ -275,6 +299,7 @@ const initState = {
          date: 'July 3, 2023',
          createAt: 1686735683881,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 4,
       },
@@ -288,6 +313,7 @@ const initState = {
          date: 'July 3, 2023',
          createAt: 1686735683881,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 4,
       },
@@ -302,6 +328,7 @@ const initState = {
          date: 'November 30, 2020',
          createAt: 1686735683888,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 1,
       },
@@ -316,10 +343,10 @@ const initState = {
          date: 'November 30, 2020',
          createAt: 1686735683123,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 1,
       },
-
       {
          id: 22,
          image: blogThumb22,
@@ -330,10 +357,10 @@ const initState = {
          date: 'November 30, 2020',
          createAt: 1686735683777,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 1,
       },
-
       {
          id: 23,
          image: blogThumb23,
@@ -344,10 +371,10 @@ const initState = {
          date: 'October 26, 2020',
          createAt: 1686735682890,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 1,
       },
-
       {
          id: 24,
          image: blogThumb24,
@@ -358,11 +385,11 @@ const initState = {
          date: 'October 11, 2020',
          createAt: 1686735683583,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 1,
       },
 
-      //
       {
          id: 25,
          image: editorPickedImage6,
@@ -373,10 +400,10 @@ const initState = {
          date: '20 Nov',
          createAt: 1686735683583,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 1,
       },
-
       {
          id: 26,
          image: editorPickedImage7,
@@ -387,10 +414,10 @@ const initState = {
          date: '20 Nov',
          createAt: 1686735683583,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 1,
       },
-
       {
          id: 27,
          image: editorPickedImage8,
@@ -401,10 +428,10 @@ const initState = {
          date: '20 Nov',
          createAt: 1686735683583,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 1,
       },
-
       {
          id: 28,
          image: editorPickedImage1,
@@ -415,10 +442,10 @@ const initState = {
          date: '20 Nov',
          createAt: 1686735683583,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 1,
       },
-
       {
          id: 29,
          image: editorPickedImage2,
@@ -429,10 +456,10 @@ const initState = {
          date: '20 Nov',
          createAt: 1686735683583,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 1,
       },
-
       {
          id: 30,
          image: editorPickedImage3,
@@ -443,10 +470,10 @@ const initState = {
          date: '20 Nov',
          createAt: 1686735683583,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 1,
       },
-
       {
          id: 31,
          image: editorPickedImage4,
@@ -457,10 +484,10 @@ const initState = {
          date: '20 Nov',
          createAt: 1686735683583,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 1,
       },
-
       {
          id: 32,
          image: editorPickedImage5,
@@ -471,10 +498,10 @@ const initState = {
          date: '20 Nov',
          createAt: 1686735683583,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 1,
       },
-
       {
          id: 33,
          image: blogThumb25,
@@ -485,10 +512,10 @@ const initState = {
          date: 'October 25, 2020',
          createAt: 1686735683583,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 1,
       },
-
       {
          id: 34,
          image: blogThumb26,
@@ -499,10 +526,10 @@ const initState = {
          date: 'October 24, 2020',
          createAt: 1686735683583,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 1,
       },
-
       {
          id: 35,
          image: blogThumb27,
@@ -513,10 +540,10 @@ const initState = {
          date: 'October 24, 2020',
          createAt: 1686735683583,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 1,
       },
-
       {
          id: 36,
          image: blogThumb28,
@@ -527,10 +554,10 @@ const initState = {
          date: 'October 20, 2020',
          createAt: 1686735683583,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 1,
       },
-
       {
          id: 37,
          image: blogThumb29,
@@ -541,10 +568,10 @@ const initState = {
          date: 'October 20, 2020',
          createAt: 1686735683583,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 1,
       },
-
       {
          id: 38,
          image: blogThumb30,
@@ -555,6 +582,7 @@ const initState = {
          date: 'October 19, 2020',
          createAt: 1686735683583,
          comments: 2,
+         likes: 0,
          styles: {},
          type: 1,
       },
@@ -587,6 +615,119 @@ const initState = {
          comments: 0,
          likes: 0,
       },
+
+      {
+         id: 39,
+         image: highlightThumb1,
+         author: 'Scott Jackson',
+         avatar: authorAvt1,
+         title: 'Super Simple Post',
+         desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip et dolore magna',
+         date: 'July 3, 2021',
+         createAt: 1686735683583,
+         comments: 2,
+         likes: 0,
+         styles: {},
+         type: 1,
+      },
+      {
+         id: 40,
+         image: highlightThumb2,
+         author: 'Scott Jackson',
+         avatar: authorAvt1,
+         title: 'Super Simple Post',
+         desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip et dolore magna',
+         date: 'July 3, 2021',
+         createAt: 1686735683583,
+         comments: 2,
+         likes: 0,
+         styles: {},
+         type: 1,
+      },
+      {
+         id: 41,
+         image: highlightThumb3,
+         author: 'Scott Jackson',
+         avatar: authorAvt1,
+         title: 'Super Simple Post',
+         desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip et dolore magna',
+         date: 'July 3, 2021',
+         createAt: 1686735683583,
+         comments: 2,
+         likes: 0,
+         styles: {},
+         type: 1,
+      },
+      {
+         id: 42,
+         image: highlightThumb4,
+         author: 'Scott Jackson',
+         avatar: authorAvt1,
+         title: 'Super Simple Post',
+         desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip et dolore magna',
+         date: 'July 3, 2021',
+         createAt: 1686735683583,
+         comments: 2,
+         likes: 0,
+         styles: {},
+         type: 1,
+      },
+      {
+         id: 43,
+         image: highlightThumb5,
+         author: 'Scott Jackson',
+         avatar: authorAvt1,
+         title: 'Super Simple Post',
+         desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip et dolore magna',
+         date: 'July 3, 2021',
+         createAt: 1686735683583,
+         comments: 2,
+         likes: 0,
+         styles: {},
+         type: 1,
+      },
+      {
+         id: 44,
+         image: highlightThumb6,
+         author: 'Scott Jackson',
+         avatar: authorAvt1,
+         title: 'Super Simple Post',
+         desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip et dolore magna',
+         date: 'July 3, 2021',
+         createAt: 1686735683583,
+         comments: 2,
+         likes: 0,
+         styles: {},
+         type: 1,
+      },
+      {
+         id: 45,
+         image: highlightThumb7,
+         author: 'Scott Jackson',
+         avatar: authorAvt1,
+         title: 'Super Simple Post',
+         desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip et dolore magna',
+         date: 'July 3, 2021',
+         createAt: 1686735683583,
+         comments: 2,
+         likes: 0,
+         styles: {},
+         type: 1,
+      },
+      {
+         id: 46,
+         image: highlightThumb8,
+         author: 'Scott Jackson',
+         avatar: authorAvt1,
+         title: 'Super Simple Post',
+         desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip et dolore magna',
+         date: 'July 3, 2021',
+         createAt: 1686735683583,
+         comments: 2,
+         likes: 0,
+         styles: {},
+         type: 1,
+      },
    ],
 
    blogFeed: [
@@ -608,6 +749,8 @@ const initState = {
    editorPinkedNews: [25, 26, 27, 28, 29, 30, 31, 32],
 
    moreStories: [25, 26, 27, 4, 5, 19, 6, 12, 33, 34, 13, 35, 36, 37, 38],
+
+   blogHighlights: [39, 40, 41, 42, 43, 44, 45, 46],
 }
 
 function blogReducer(state = initState, action) {

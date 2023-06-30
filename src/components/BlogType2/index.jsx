@@ -1,4 +1,5 @@
-import { faComment, faPlusCircle, faShareAlt } from '@fortawesome/free-solid-svg-icons'
+import { faFileAlt, faPlusCircle, faShareAlt } from '@fortawesome/free-solid-svg-icons'
+import { faCommentAlt } from '@fortawesome/free-regular-svg-icons'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { memo, useState } from 'react'
@@ -12,27 +13,40 @@ import tumblr from '../../assets/imgs/tumblr.png'
 import twitter from '../../assets/imgs/twitter.png'
 import styles from './style.module.scss'
 
-function BlogType2({ data }) {
+function BlogType2({ data, gridItem, short, tall }) {
    const navigate = useNavigate()
    const [showSocials, setShowSocials] = useState()
 
    return (
-      <div className={styles.BlogType2}>
-         <div className={styles.thumbnail} onClick={() => navigate('/blogs/1')}>
+      <div className={`${styles.BlogType2} ${gridItem ? styles.gridItem + ' grid-item' : ''}`}>
+         <div
+            className={`${styles.thumbnail} ${gridItem ? styles.gridItem : ''}
+             ${short ? styles.short : ''}  ${tall ? styles.tall : ''}`}
+            onClick={() => navigate('/blogs/1')}
+         >
             <img src={data.image} alt='blog' />
 
-            <div className={styles.overlay}>
-               <div className={styles.background}></div>
-               <div className={styles.icon}>
-                  <FontAwesomeIcon icon={faPlusCircle} />
+            {!gridItem ? (
+               <div className={styles.overlay}>
+                  <div className={styles.background}></div>
+                  <div className={styles.icon}>
+                     <FontAwesomeIcon icon={faPlusCircle} />
+                  </div>
                </div>
-            </div>
+            ) : (
+               <div className={styles.overlay2}>
+                  <div className={styles.background}></div>
+                  <div className={styles.icon}>
+                     <FontAwesomeIcon icon={faFileAlt} />
+                  </div>
+               </div>
+            )}
          </div>
 
          <div className={styles.content}>
             <div className={styles.author}>
                <img src={authorAvt1} alt='avatar' />
-               <span className={styles.name}>{data.author}</span> -
+               <span className={styles.name}>By {data.author}</span> -
                <span className={styles.date}>{data.date}</span>
             </div>
             <h4 className={styles.title} onClick={() => navigate('/blogs/1')}>
@@ -42,7 +56,7 @@ function BlogType2({ data }) {
 
             <div className={styles.bottomWrap}>
                <div className={`${styles.icon} ${styles.commentIcon} ${showSocials ? styles.show : ''}`}>
-                  <FontAwesomeIcon icon={faComment} />
+                  <FontAwesomeIcon icon={faCommentAlt} />
                   <span>{data.comments}</span>
                </div>
 
