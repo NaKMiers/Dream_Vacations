@@ -35,29 +35,31 @@ function RecentPosts() {
 
    // appear animation on scroll
    const handleScroll = useCallback(() => {
-      const elements = [...postWrapRef.current.children, ...sideContentRef.current.children]
+      if (postWrapRef.current && sideContentRef.current) {
+         const elements = [...postWrapRef.current.children, ...sideContentRef.current.children]
 
-      elements.forEach(e => {
-         const top = e.getBoundingClientRect().top
-         const bottom = e.getBoundingClientRect().bottom
+         elements.forEach(e => {
+            const top = e.getBoundingClientRect().top
+            const bottom = e.getBoundingClientRect().bottom
 
-         if (top < window.innerHeight && bottom > 0) {
-            e.classList.add('floatUp')
-            e.classList.add(styles.appeared)
+            if (top < window.innerHeight && bottom > 0) {
+               e.classList.add('floatUp')
+               e.classList.add(styles.appeared)
+            }
+         })
+
+         // remove event when all are appeared
+         let countAppeared = 0
+         elements.forEach(e => {
+            if (e.className.includes(styles.appeared)) {
+               countAppeared++
+            }
+         })
+
+         if (countAppeared === elements.length) {
+            console.log('remove---RecentPosts')
+            window.removeEventListener('scroll', handleScroll)
          }
-      })
-
-      // remove event when all are appeared
-      let countAppeared = 0
-      elements.forEach(e => {
-         if (e.className.includes(styles.appeared)) {
-            countAppeared++
-         }
-      })
-
-      if (countAppeared === elements.length) {
-         console.log('remove---RecentPosts')
-         window.removeEventListener('scroll', handleScroll)
       }
    }, [])
 
@@ -127,12 +129,17 @@ function RecentPosts() {
                      straight in your mailbox:
                   </p>
 
-                  <form className={styles.form}>
-                     <input className={styles.input} type='text' placeholder='Your Email Address' />
+                  <form className={styles.form} onSubmit={e => e.preventDefault()}>
+                     <input
+                        className={styles.input}
+                        type='text'
+                        placeholder='Your Email Address'
+                        required
+                     />
 
-                     <div className={styles.icon}>
+                     <button className={styles.icon}>
                         <FontAwesomeIcon icon={faChevronRight} />
-                     </div>
+                     </button>
                   </form>
 
                   <p>* Personal data will be encrypted</p>
@@ -141,22 +148,52 @@ function RecentPosts() {
                <h4 className={styles.sideTitle}>Follow Us</h4>
 
                <div className={styles.socialWrap}>
-                  <a className={styles.socialItem} href='/' target='_blank' rel='noreferrer'>
+                  <a
+                     className={styles.socialItem}
+                     href='https://www.facebook.com/'
+                     target='_blank'
+                     rel='noreferrer'
+                  >
                      <img src={facebook} alt='social' />
                   </a>
-                  <a className={styles.socialItem} href='/' target='_blank' rel='noreferrer'>
+                  <a
+                     className={styles.socialItem}
+                     href='https://www.linkedin.com/'
+                     target='_blank'
+                     rel='noreferrer'
+                  >
                      <img src={linkedin} alt='social' />
                   </a>
-                  <a className={styles.socialItem} href='/' target='_blank' rel='noreferrer'>
+                  <a
+                     className={styles.socialItem}
+                     href='https://twitter.com/'
+                     target='_blank'
+                     rel='noreferrer'
+                  >
                      <img src={twitter} alt='social' />
                   </a>
-                  <a className={styles.socialItem} href='/' target='_blank' rel='noreferrer'>
+                  <a
+                     className={styles.socialItem}
+                     href='https://www.instagram.com/'
+                     target='_blank'
+                     rel='noreferrer'
+                  >
                      <img src={instagram} alt='social' />
                   </a>
-                  <a className={styles.socialItem} href='/' target='_blank' rel='noreferrer'>
+                  <a
+                     className={styles.socialItem}
+                     href='https://www.pinterest.com/'
+                     target='_blank'
+                     rel='noreferrer'
+                  >
                      <img src={pinterest} alt='social' />
                   </a>
-                  <a className={styles.socialItem} href='/' target='_blank' rel='noreferrer'>
+                  <a
+                     className={styles.socialItem}
+                     href='https://www.youtube.com/'
+                     target='_blank'
+                     rel='noreferrer'
+                  >
                      <img src={youtube} alt='social' />
                   </a>
                </div>

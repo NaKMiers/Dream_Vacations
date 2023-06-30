@@ -11,35 +11,37 @@ function AuthorReviews() {
 
    // appear animation on scroll
    const handleScroll = useCallback(() => {
-      const elements = [...containerRef.current.children]
+      if (containerRef.current) {
+         const elements = [...containerRef.current.children]
 
-      elements.forEach(item => {
-         const top = item.getBoundingClientRect().top
-         const bottom = item.getBoundingClientRect().bottom
+         elements.forEach(item => {
+            const top = item.getBoundingClientRect().top
+            const bottom = item.getBoundingClientRect().bottom
 
-         if (top < window.innerHeight && bottom > 0) {
-            item.classList.add(styles.appeared)
-            const items = [...item.children]
+            if (top < window.innerHeight && bottom > 0) {
+               item.classList.add(styles.appeared)
+               const items = [...item.children]
 
-            let delay = 0.2
-            items.forEach(e => {
-               e.style.animation = `floatUp 0.6s ease-in-out ${delay}s forwards`
-               delay += 0.3
-            })
+               let delay = 0.2
+               items.forEach(e => {
+                  e.style.animation = `floatUp 0.6s ease-in-out ${delay}s forwards`
+                  delay += 0.3
+               })
+            }
+         })
+
+         // remove event when all are appeared
+         let countAppeared = 0
+         elements.forEach(e => {
+            if (e.className.includes(styles.appeared)) {
+               countAppeared++
+            }
+         })
+
+         if (countAppeared === elements.length) {
+            console.log('remove---AuthorReviews')
+            window.removeEventListener('scroll', handleScroll)
          }
-      })
-
-      // remove event when all are appeared
-      let countAppeared = 0
-      elements.forEach(e => {
-         if (e.className.includes(styles.appeared)) {
-            countAppeared++
-         }
-      })
-
-      if (countAppeared === elements.length) {
-         console.log('remove---AuthorReviews')
-         window.removeEventListener('scroll', handleScroll)
       }
    }, [])
 

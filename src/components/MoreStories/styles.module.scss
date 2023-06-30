@@ -19,6 +19,7 @@
 .slideTrack {
    display: flex;
    width: 100%;
+   opacity: 0; // for appear
 
    margin-left: 0;
    transition: 0.4s ease-in-out;
@@ -29,7 +30,6 @@
    display: flex;
    justify-content: center;
    width: 100%;
-   opacity: 0; // for appear
 }
 
 .postItem {

@@ -12,50 +12,52 @@ function OurAbout() {
 
    // appear animation on scroll
    const handleScroll = useCallback(() => {
-      const elements = [titleRef.current, paragraphRef.current]
-      const categoryElements = [...categoriesRef.current.children]
+      if (titleRef.current && paragraphRef.current && categoriesRef.current) {
+         const elements = [titleRef.current, paragraphRef.current]
+         const categoryElements = [...categoriesRef.current.children]
 
-      // 1
-      elements.forEach(e => {
-         const top = e.getBoundingClientRect().top
-         const bottom = e.getBoundingClientRect().bottom
+         // 1
+         elements.forEach(e => {
+            const top = e.getBoundingClientRect().top
+            const bottom = e.getBoundingClientRect().bottom
 
-         if (top < window.innerHeight && bottom > 0) {
-            e.classList.add('floatUp')
-            e.classList.add(styles.appeared)
+            if (top < window.innerHeight && bottom > 0) {
+               e.classList.add('floatUp')
+               e.classList.add(styles.appeared)
+            }
+         })
+
+         // 2
+         let delay = 0.2
+         categoryElements.forEach(e => {
+            const top = e.getBoundingClientRect().top
+            const bottom = e.getBoundingClientRect().bottom
+
+            if (top < window.innerHeight && bottom > 0) {
+               e.style.animation = `floatUp 0.6s ease-in-out ${delay}s forwards`
+               e.classList.add(styles.appeared)
+               delay += 0.2
+            }
+         })
+
+         // remove event when all are appeared
+         let countAppeared = 0
+         elements.forEach(e => {
+            if (e.className.includes(styles.appeared)) {
+               countAppeared++
+            }
+         })
+
+         categoryElements.forEach(e => {
+            if (e.className.includes(styles.appeared)) {
+               countAppeared++
+            }
+         })
+
+         if (countAppeared === elements.length + categoryElements.length) {
+            console.log('remove---OurAbout')
+            window.removeEventListener('scroll', handleScroll)
          }
-      })
-
-      // 2
-      let delay = 0.2
-      categoryElements.forEach(e => {
-         const top = e.getBoundingClientRect().top
-         const bottom = e.getBoundingClientRect().bottom
-
-         if (top < window.innerHeight && bottom > 0) {
-            e.style.animation = `floatUp 0.6s ease-in-out ${delay}s forwards`
-            e.classList.add(styles.appeared)
-            delay += 0.2
-         }
-      })
-
-      // remove event when all are appeared
-      let countAppeared = 0
-      elements.forEach(e => {
-         if (e.className.includes(styles.appeared)) {
-            countAppeared++
-         }
-      })
-
-      categoryElements.forEach(e => {
-         if (e.className.includes(styles.appeared)) {
-            countAppeared++
-         }
-      })
-
-      if (countAppeared === elements.length + categoryElements.length) {
-         console.log('remove---OurAbout')
-         window.removeEventListener('scroll', handleScroll)
       }
    }, [])
 

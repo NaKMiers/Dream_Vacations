@@ -1,6 +1,6 @@
 import Masonry from 'masonry-layout'
-import React, { memo, useEffect, useRef } from 'react'
-import { useSelector } from 'react-redux'
+import React, { memo, useCallback, useEffect, useRef } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import flickrImg1 from '../../assets/imgs/flickrImg1.jpg'
 import flickrImg2 from '../../assets/imgs/flickrImg2.jpg'
@@ -17,12 +17,27 @@ import welcomeBanner3 from '../../assets/imgs/welcomeBanner3.png'
 import BlogType2 from '../BlogType2'
 import SeparatorTitle from '../SeparatorTitle'
 import styles from './style.module.scss'
+import actions from '../../actions'
+
+const flickrImages = [
+   flickrImg1,
+   flickrImg2,
+   flickrImg3,
+   flickrImg4,
+   flickrImg5,
+   flickrImg6,
+   flickrImg7,
+   flickrImg8,
+   flickrImg9,
+]
 
 function TravelHighlights() {
    const { blogs, blogHighlights } = useSelector(state => state.blogs)
+   const dispatch = useDispatch()
    const data = blogHighlights.map(id => blogs.find(blog => blog.id === id))
 
    const highLightPostsRef = useRef(null)
+   const sideContent = useRef(null)
 
    // masonry layout
    useEffect(() => {
@@ -31,6 +46,74 @@ function TravelHighlights() {
          gutter: 0,
       })
    }, [])
+
+   // review image
+   const handleReviewImage = (image, flickrImages) => {
+      dispatch(actions.reviewImage(image))
+      dispatch(actions.reviewImages(flickrImages))
+      dispatch(actions.play())
+   }
+
+   // appear animation on scroll
+   const handleScroll = useCallback(() => {
+      if (highLightPostsRef.current && sideContent.current) {
+         const postElements = [...highLightPostsRef.current.children]
+         const sideElements = [...sideContent.current.children]
+
+         // 1
+         let delay = 0.2
+         postElements.forEach(e => {
+            const top = e.getBoundingClientRect().top
+            const bottom = e.getBoundingClientRect().bottom
+
+            if (top < window.innerHeight && bottom > 0) {
+               e.style.animation = `floatUp 0.6s ease-in-out ${delay}s forwards`
+               e.classList.add(styles.appeared)
+               delay += 0.2
+            }
+         })
+
+         // 2
+         sideElements.forEach(e => {
+            const top = e.getBoundingClientRect().top
+            const bottom = e.getBoundingClientRect().bottom
+
+            if (top < window.innerHeight && bottom > 0) {
+               e.classList.add('floatUp')
+               e.classList.add(styles.appeared)
+            }
+         })
+
+         // remove event when all are appeared
+         let countAppeared = 0
+         postElements.forEach(e => {
+            if (e.className.includes(styles.appeared)) {
+               countAppeared++
+            }
+         })
+
+         sideElements.forEach(e => {
+            if (e.className.includes(styles.appeared)) {
+               countAppeared++
+            }
+         })
+
+         if (countAppeared === postElements.length + sideElements.length) {
+            console.log('remove---TravelHighlights')
+            window.removeEventListener('scroll', handleScroll)
+         }
+      }
+   }, [])
+
+   // appear on scroll
+   useEffect(() => {
+      handleScroll()
+      window.addEventListener('scroll', handleScroll)
+
+      return () => {
+         window.removeEventListener('scroll', handleScroll)
+      }
+   }, [handleScroll])
 
    return (
       <section className={styles.TravelHighlights}>
@@ -49,7 +132,7 @@ function TravelHighlights() {
                ))}
             </div>
 
-            <div className={styles.sideContent}>
+            <div className={styles.sideContent} ref={sideContent}>
                <div className={styles.textBox}>
                   <h4>
                      <span>Take only memories,</span>
@@ -103,42 +186,16 @@ function TravelHighlights() {
 
                <h4 className={styles.title}>Flickr Feed</h4>
                <div className={styles.flickrFeedWrap}>
-                  <div className={styles.flickrItem}>
-                     <img src={flickrImg1} alt='flickr' />
-                     <div className={styles.overlay} />
-                  </div>
-                  <div className={styles.flickrItem}>
-                     <img src={flickrImg2} alt='flickr' />
-                     <div className={styles.overlay} />
-                  </div>
-                  <div className={styles.flickrItem}>
-                     <img src={flickrImg3} alt='flickr' />
-                     <div className={styles.overlay} />
-                  </div>
-                  <div className={styles.flickrItem}>
-                     <img src={flickrImg4} alt='flickr' />
-                     <div className={styles.overlay} />
-                  </div>
-                  <div className={styles.flickrItem}>
-                     <img src={flickrImg5} alt='flickr' />
-                     <div className={styles.overlay} />
-                  </div>
-                  <div className={styles.flickrItem}>
-                     <img src={flickrImg6} alt='flickr' />
-                     <div className={styles.overlay} />
-                  </div>
-                  <div className={styles.flickrItem}>
-                     <img src={flickrImg7} alt='flickr' />
-                     <div className={styles.overlay} />
-                  </div>
-                  <div className={styles.flickrItem}>
-                     <img src={flickrImg8} alt='flickr' />
-                     <div className={styles.overlay} />
-                  </div>
-                  <div className={styles.flickrItem}>
-                     <img src={flickrImg9} alt='flickr' />
-                     <div className={styles.overlay} />
-                  </div>
+                  {flickrImages.map((image, index) => (
+                     <div
+                        className={styles.flickrItem}
+                        key={index}
+                        onClick={() => handleReviewImage(image, flickrImages)}
+                     >
+                        <img src={image} alt='flickr' />
+                        <div className={styles.overlay} />
+                     </div>
+                  ))}
                </div>
 
                <h4 className={styles.title}>Tags</h4>

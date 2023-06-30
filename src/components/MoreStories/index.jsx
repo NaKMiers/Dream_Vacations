@@ -77,45 +77,39 @@ function MoreStories() {
 
    // appear animation on scroll
    const handleScroll = useCallback(() => {
-      const elements = [...slideTrackRef.current.children]
+      if (slideTrackRef.current && slideTrackRef.current) {
+         // 1
+         const slideTop = slideTrackRef.current.getBoundingClientRect().top
+         const slideBottom = slideTrackRef.current.getBoundingClientRect().bottom
 
-      // 1
-      let delay = 0.2
-      elements.forEach(e => {
-         const top = e.getBoundingClientRect().top
-         const bottom = e.getBoundingClientRect().bottom
-
-         if (top < window.innerHeight && bottom > 0) {
-            e.style.animation = `floatRight 0.6s ease-in-out ${delay}s forwards`
-            e.classList.add(styles.appeared)
-            delay += 0.2
+         if (slideTop < window.innerHeight && slideBottom > 0) {
+            slideTrackRef.current.classList.add('floatRight')
+            slideTrackRef.current.classList.add(styles.appeared)
          }
-      })
 
-      // 2
-      const navTop = slideNavRef.current.getBoundingClientRect().top
-      const navBottom = slideNavRef.current.getBoundingClientRect().bottom
+         // 2
+         const navTop = slideNavRef.current.getBoundingClientRect().top
+         const navBottom = slideNavRef.current.getBoundingClientRect().bottom
 
-      if (navTop < window.innerHeight && navBottom > 0) {
-         slideNavRef.current.classList.add('floatLeft')
-         slideNavRef.current.classList.add(styles.appeared)
-      }
+         if (navTop < window.innerHeight && navBottom > 0) {
+            slideNavRef.current.classList.add('floatLeft')
+            slideNavRef.current.classList.add(styles.appeared)
+         }
 
-      // remove event when all are appeared
-      let countAppeared = 0
-      elements.forEach(e => {
-         if (e.className.includes(styles.appeared)) {
+         // remove event when all are appeared
+         let countAppeared = 0
+         if (slideTrackRef.current.className.includes(styles.appeared)) {
             countAppeared++
          }
-      })
 
-      if (slideNavRef.current.className.includes(styles.appeared)) {
-         countAppeared++
-      }
+         if (slideNavRef.current.className.includes(styles.appeared)) {
+            countAppeared++
+         }
 
-      if (countAppeared === elements.length + 1) {
-         console.log('remove---TopCategories')
-         window.removeEventListener('scroll', handleScroll)
+         if (countAppeared === 1 + 1) {
+            console.log('remove---TopCategories')
+            window.removeEventListener('scroll', handleScroll)
+         }
       }
    }, [])
 

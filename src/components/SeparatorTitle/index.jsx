@@ -6,15 +6,17 @@ function SeparatorTitle({ title, dark, style }) {
 
    // appear animation on scroll
    const handleScroll = useCallback(() => {
-      const top = titleRef.current.getBoundingClientRect().top
-      const bottom = titleRef.current.getBoundingClientRect().bottom
+      if (titleRef.current) {
+         const top = titleRef.current.getBoundingClientRect().top
+         const bottom = titleRef.current.getBoundingClientRect().bottom
 
-      if (top < window.innerHeight && bottom > 0) {
-         titleRef.current.classList.add('floatUp')
+         if (top < window.innerHeight && bottom > 0) {
+            titleRef.current.classList.add('floatUp')
 
-         // remove event when all are appeared
-         console.log('remove---SeparatorTitle')
-         window.removeEventListener('scroll', handleScroll)
+            // remove event when all are appeared
+            console.log('remove---SeparatorTitle')
+            window.removeEventListener('scroll', handleScroll)
+         }
       }
    }, [])
 

@@ -93,31 +93,33 @@ function Footer() {
 
    // appear animation on scroll
    const handleScroll = useCallback(() => {
-      const elements = [...container.current.children]
+      if (container.current) {
+         const elements = [...container.current.children]
 
-      let delay = 0.2
-      elements.forEach(e => {
-         const top = e.getBoundingClientRect().top
-         const bottom = e.getBoundingClientRect().bottom
+         let delay = 0.2
+         elements.forEach(e => {
+            const top = e.getBoundingClientRect().top
+            const bottom = e.getBoundingClientRect().bottom
 
-         if (top < window.innerHeight && bottom > 0) {
-            e.style.animation = `floatUp 0.6s ease-in-out ${delay}s forwards`
-            e.classList.add(styles.appeared)
-            delay += 0.15
+            if (top < window.innerHeight && bottom > 0) {
+               e.style.animation = `floatUp 0.6s ease-in-out ${delay}s forwards`
+               e.classList.add(styles.appeared)
+               delay += 0.15
+            }
+         })
+
+         // remove event when all are appeared
+         let countAppeared = 0
+         elements.forEach(e => {
+            if (e.className.includes(styles.appeared)) {
+               countAppeared++
+            }
+         })
+
+         if (countAppeared === elements.length) {
+            console.log('remove---Footer')
+            window.removeEventListener('scroll', handleScroll)
          }
-      })
-
-      // remove event when all are appeared
-      let countAppeared = 0
-      elements.forEach(e => {
-         if (e.className.includes(styles.appeared)) {
-            countAppeared++
-         }
-      })
-
-      if (countAppeared === elements.length) {
-         console.log('remove---Footer')
-         window.removeEventListener('scroll', handleScroll)
       }
    }, [])
 

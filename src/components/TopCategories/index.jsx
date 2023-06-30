@@ -16,45 +16,47 @@ function TopCategories() {
 
    // appear animation on scroll
    const handleScroll = useCallback(() => {
-      const elements = [...categoriesWrapRef.current.children]
+      if (categoriesWrapRef.current && buttonWrapRef) {
+         const elements = [...categoriesWrapRef.current.children]
 
-      // 1
-      let delay = 0.2
-      elements.forEach(e => {
-         const top = e.getBoundingClientRect().top
-         const bottom = e.getBoundingClientRect().bottom
+         // 1
+         let delay = 0.2
+         elements.forEach(e => {
+            const top = e.getBoundingClientRect().top
+            const bottom = e.getBoundingClientRect().bottom
 
-         if (top < window.innerHeight && bottom > 0) {
-            e.style.animation = `floatUp 0.6s ease-in-out ${delay}s forwards`
-            e.classList.add(styles.appeared)
-            delay += 0.2
+            if (top < window.innerHeight && bottom > 0) {
+               e.style.animation = `floatUp 0.6s ease-in-out ${delay}s forwards`
+               e.classList.add(styles.appeared)
+               delay += 0.2
+            }
+         })
+
+         // 2
+         const btnTop = buttonWrapRef.current.getBoundingClientRect().top
+         const btnBottom = buttonWrapRef.current.getBoundingClientRect().bottom
+
+         if (btnTop < window.innerHeight && btnBottom > 0) {
+            buttonWrapRef.current.classList.add('floatLeft')
+            buttonWrapRef.current.classList.add(styles.appeared)
          }
-      })
 
-      // 2
-      const btnTop = buttonWrapRef.current.getBoundingClientRect().top
-      const btnBottom = buttonWrapRef.current.getBoundingClientRect().bottom
+         // remove event when all are appeared
+         let countAppeared = 0
+         elements.forEach(e => {
+            if (e.className.includes(styles.appeared)) {
+               countAppeared++
+            }
+         })
 
-      if (btnTop < window.innerHeight && btnBottom > 0) {
-         buttonWrapRef.current.classList.add('floatLeft')
-         buttonWrapRef.current.classList.add(styles.appeared)
-      }
-
-      // remove event when all are appeared
-      let countAppeared = 0
-      elements.forEach(e => {
-         if (e.className.includes(styles.appeared)) {
+         if (buttonWrapRef.current.className.includes(styles.appeared)) {
             countAppeared++
          }
-      })
 
-      if (buttonWrapRef.current.className.includes(styles.appeared)) {
-         countAppeared++
-      }
-
-      if (countAppeared === elements.length + 1) {
-         console.log('remove---TopCategories')
-         window.removeEventListener('scroll', handleScroll)
+         if (countAppeared === elements.length + 1) {
+            console.log('remove---TopCategories')
+            window.removeEventListener('scroll', handleScroll)
+         }
       }
    }, [])
 

@@ -10,9 +10,9 @@ function BlogType3({ data }) {
    const navigate = useNavigate()
 
    return (
-      <div className={styles.BlogType3}>
+      <div className={styles.BlogType3} onClick={() => navigate('/blogs/1')}>
          <div className={styles.container}>
-            <div className={styles.thumbnail} ref={thumbnailRef} onClick={() => navigate('/blogs/1')}>
+            <div className={styles.thumbnail} ref={thumbnailRef}>
                <img src={data.image} alt='thumbnail' />
 
                <div className={styles.overlay}></div>

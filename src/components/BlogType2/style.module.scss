@@ -2,6 +2,7 @@
    width: 50%;
    padding: 21px;
    cursor: pointer;
+   opacity: 0; // for appear
 
    // mobile medium
    @media (max-width: 548px) {

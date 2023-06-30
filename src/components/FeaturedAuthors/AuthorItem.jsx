@@ -1,7 +1,9 @@
 import React, { memo, useRef } from 'react'
 import styles from './style.module.scss'
+import { useNavigate } from 'react-router-dom'
 
 function AuthorItem({ data }) {
+   const navigate = useNavigate()
    const authorItemRef = useRef(null)
 
    const handleMouseOver = () => {
@@ -21,7 +23,12 @@ function AuthorItem({ data }) {
          <p className={styles.name}>{data.name}</p>
          <p className={styles.desc}>{data.desc}</p>
 
-         <button className={styles.btn} onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave}>
+         <button
+            className={styles.btn}
+            onMouseOver={handleMouseOver}
+            onMouseLeave={handleMouseLeave}
+            onClick={() => navigate('/about/author')}
+         >
             READ
          </button>
       </div>

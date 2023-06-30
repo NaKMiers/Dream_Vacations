@@ -17,50 +17,52 @@ function TravelPurchase() {
 
    // appear animation on scroll
    const handleScroll = useCallback(() => {
-      const elements = [...containerRef.current.children]
-      const socialElements = [...socialWrapRef.current.children]
+      if (containerRef.current && socialWrapRef.current) {
+         const elements = [...containerRef.current.children]
+         const socialElements = [...socialWrapRef.current.children]
 
-      // 1
-      elements.forEach(e => {
-         const top = e.getBoundingClientRect().top
-         const bottom = e.getBoundingClientRect().bottom
+         // 1
+         elements.forEach(e => {
+            const top = e.getBoundingClientRect().top
+            const bottom = e.getBoundingClientRect().bottom
 
-         if (top < window.innerHeight && bottom > 0) {
-            e.classList.add('floatUp')
-            e.classList.add(styles.appeared)
+            if (top < window.innerHeight && bottom > 0) {
+               e.classList.add('floatUp')
+               e.classList.add(styles.appeared)
+            }
+         })
+
+         // 2
+         let delay = 0.2
+         socialElements.forEach(e => {
+            const top = e.getBoundingClientRect().top
+            const bottom = e.getBoundingClientRect().bottom
+
+            if (top < window.innerHeight && bottom > 0) {
+               e.style.animation = `floatLeft 0.6s ease-in-out ${delay}s forwards`
+               e.classList.add(styles.appeared)
+               delay += 0.15
+            }
+         })
+
+         // remove event when all are appeared
+         let countAppeared = 0
+         elements.forEach(e => {
+            if (e.className.includes(styles.appeared)) {
+               countAppeared++
+            }
+         })
+
+         socialElements.forEach(e => {
+            if (e.className.includes(styles.appeared)) {
+               countAppeared++
+            }
+         })
+
+         if (countAppeared === elements.length + socialElements.length) {
+            console.log('remove---TravelPurchase')
+            window.removeEventListener('scroll', handleScroll)
          }
-      })
-
-      // 2
-      let delay = 0.2
-      socialElements.forEach(e => {
-         const top = e.getBoundingClientRect().top
-         const bottom = e.getBoundingClientRect().bottom
-
-         if (top < window.innerHeight && bottom > 0) {
-            e.style.animation = `floatLeft 0.6s ease-in-out ${delay}s forwards`
-            e.classList.add(styles.appeared)
-            delay += 0.15
-         }
-      })
-
-      // remove event when all are appeared
-      let countAppeared = 0
-      elements.forEach(e => {
-         if (e.className.includes(styles.appeared)) {
-            countAppeared++
-         }
-      })
-
-      socialElements.forEach(e => {
-         if (e.className.includes(styles.appeared)) {
-            countAppeared++
-         }
-      })
-
-      if (countAppeared === elements.length + socialElements.length) {
-         console.log('remove---TravelPurchase')
-         window.removeEventListener('scroll', handleScroll)
       }
    }, [])
 

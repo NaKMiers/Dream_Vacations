@@ -18,29 +18,31 @@ function BlogFeed() {
 
    // appear animation on scroll
    const handleScroll = useCallback(() => {
-      const elements = [...container1Ref.current.children, ...container2Ref.current.children]
+      if (container1Ref.current && container2Ref.current) {
+         const elements = [...container1Ref.current.children, ...container2Ref.current.children]
 
-      elements.forEach(e => {
-         const top = e.getBoundingClientRect().top
-         const bottom = e.getBoundingClientRect().bottom
+         elements.forEach(e => {
+            const top = e.getBoundingClientRect().top
+            const bottom = e.getBoundingClientRect().bottom
 
-         if (top < window.innerHeight && bottom > 0) {
-            e.classList.add('floatUp')
-            e.classList.add(styles.appeared)
+            if (top < window.innerHeight && bottom > 0) {
+               e.classList.add('floatUp')
+               e.classList.add(styles.appeared)
+            }
+         })
+
+         // remove event when all are appeared
+         let countAppeared = 0
+         elements.forEach(e => {
+            if (e.className.includes(styles.appeared)) {
+               countAppeared++
+            }
+         })
+
+         if (countAppeared === elements.length) {
+            console.log('remove---BlogFeed')
+            window.removeEventListener('scroll', handleScroll)
          }
-      })
-
-      // remove event when all are appeared
-      let countAppeared = 0
-      elements.forEach(e => {
-         if (e.className.includes(styles.appeared)) {
-            countAppeared++
-         }
-      })
-
-      if (countAppeared === elements.length) {
-         console.log('remove---BlogFeed')
-         window.removeEventListener('scroll', handleScroll)
       }
    }, [])
 

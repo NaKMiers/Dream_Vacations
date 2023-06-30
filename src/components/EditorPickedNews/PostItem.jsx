@@ -20,7 +20,8 @@ function PostItem({ data }) {
 
    return (
       <div className={styles.postItem}>
-         <div
+         <Link
+            to='/blogs/1'
             className={styles.postThumb}
             ref={thumbRef}
             onMouseOver={handleMouseOver}
@@ -33,7 +34,7 @@ function PostItem({ data }) {
                   <FontAwesomeIcon icon={faFileLines} />
                </div>
             </div>
-         </div>
+         </Link>
 
          <div className={styles.postContent}>
             <Link to='/blogs/1'>

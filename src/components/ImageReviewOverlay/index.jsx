@@ -1,6 +1,3 @@
-import React, { memo, useCallback, useEffect, useRef, useState } from 'react'
-import styles from './style.module.scss'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
    faArrowLeft,
    faArrowRight,
@@ -9,14 +6,15 @@ import {
    faSearch,
    faX,
 } from '@fortawesome/free-solid-svg-icons'
-// import { useSelector, useDispatch } from 'react-redux'
-// import actions from '../../actions'
-
-import flickrImg1 from '../../assets/imgs/flickrImg1.jpg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React, { memo, useCallback, useEffect, useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import actions from '../../actions'
+import styles from './style.module.scss'
 
 function ImageReviewOverlay() {
-   // const { image: imageReview, autoPlayImages, autoPlay } = useSelector(state => state.imageReview)
-   // const dispatch = useDispatch()
+   const { curImage, imageList, autoPlay } = useSelector(state => state.imageReview)
+   const dispatch = useDispatch()
 
    const [isZoom, setZoom] = useState(false)
    const [isChanging, setChanging] = useState(false)
@@ -42,13 +40,13 @@ function ImageReviewOverlay() {
       imageReviewRef.current.style.opacity = 0
       setTimeout(() => {
          imageReviewRef.current.style.display = 'none'
-         // dispatch(actions.close())
+         dispatch(actions.close())
       }, 510) // imageReview duration 0.5s
 
       setTimeout(() => {
          imageRef.current.style.opacity = 0
       }, 300) // imageReviewRef transition 0.5s - imageRef transition - 0.2s = 0.3s
-   }, [])
+   }, [dispatch])
 
    // close when click out side
    const handleClickOutSide = useCallback(
@@ -61,88 +59,88 @@ function ImageReviewOverlay() {
    )
 
    // open image review
-   // useEffect(() => {
-   //    if (imageReview) {
-   //       if (autoPlayImages.length > 0) {
-   //          const index = autoPlayImages.findIndex(image => image === imageReview)
-   //          setCurNumber(index + 1)
-   //       }
-   //       handleOpenImageReview()
-   //    }
-   // }, [imageReview, autoPlayImages, handleOpenImageReview])
+   useEffect(() => {
+      if (curImage) {
+         if (imageList.length > 0) {
+            const index = imageList.findIndex(image => image === curImage)
+            setCurNumber(index + 1)
+         }
+         handleOpenImageReview()
+      }
+   }, [curImage, imageList, handleOpenImageReview])
 
    // next image review
-   // const handleNextImage = useCallback(() => {
-   //    if (!isChanging) {
-   //       setChanging(true)
-   //       const index = autoPlayImages.findIndex(image => image === imageReview)
-   //       setCurNumber(index + 1)
-   //       imageRef.current.style.opacity = 0
+   const handleNextImage = useCallback(() => {
+      if (!isChanging) {
+         setChanging(true)
+         const index = imageList.findIndex(image => image === curImage)
+         setCurNumber(index + 1)
+         imageRef.current.style.opacity = 0
 
-   //       setTimeout(() => {
-   //          index === autoPlayImages.length - 1
-   //             ? dispatch(actions.reviewImage(autoPlayImages[0]))
-   //             : dispatch(actions.reviewImage(autoPlayImages[index + 1]))
+         setTimeout(() => {
+            index === imageList.length - 1
+               ? dispatch(actions.reviewImage(imageList[0]))
+               : dispatch(actions.reviewImage(imageList[index + 1]))
 
-   //          imageRef.current.style.opacity = 1
-   //          setChanging(false)
-   //       }, 210) // imageRef transition: 0.2s
-   //    }
-   // }, [autoPlayImages, imageReview, isChanging, dispatch])
+            imageRef.current.style.opacity = 1
+            setChanging(false)
+         }, 210) // imageRef transition: 0.2s
+      }
+   }, [imageList, curImage, isChanging, dispatch])
 
    // prev image review
-   // const handlePrevImage = useCallback(() => {
-   //    if (!isChanging) {
-   //       setChanging(true)
-   //       const index = autoPlayImages.findIndex(image => image === imageReview)
-   //       imageRef.current.style.opacity = 0
+   const handlePrevImage = useCallback(() => {
+      if (!isChanging) {
+         setChanging(true)
+         const index = imageList.findIndex(image => image === curImage)
+         imageRef.current.style.opacity = 0
 
-   //       setTimeout(() => {
-   //          index === 0
-   //             ? dispatch(actions.reviewImage(autoPlayImages[autoPlayImages.length - 1]))
-   //             : dispatch(actions.reviewImage(autoPlayImages[index - 1]))
+         setTimeout(() => {
+            index === 0
+               ? dispatch(actions.reviewImage(imageList[imageList.length - 1]))
+               : dispatch(actions.reviewImage(imageList[index - 1]))
 
-   //          imageRef.current.style.opacity = 1
-   //          setChanging(false)
-   //       }, 200)
-   //    }
-   // }, [autoPlayImages, imageReview, isChanging, dispatch])
+            imageRef.current.style.opacity = 1
+            setChanging(false)
+         }, 200)
+      }
+   }, [imageList, curImage, isChanging, dispatch])
 
    // auto play
-   // useEffect(() => {
-   //    let interval
-   //    let timeout
+   useEffect(() => {
+      let interval
+      let timeout
 
-   //    if (autoPlayImages.length > 0) {
-   //       if (autoPlay) {
-   //          playBarRef.current.classList.add(styles.replay)
+      if (imageList.length > 0) {
+         if (autoPlay) {
+            playBarRef.current.classList.add(styles.replay)
 
-   //          timeout = setTimeout(() => {
-   //             handleNextImage()
-   //          }, 3290) // autoPlay: 3.5s - imageRef transition 0.2s = 3.3s
-   //       } else {
-   //          playBarRef.current.classList.remove(styles.replay)
-   //       }
-   //    }
+            timeout = setTimeout(() => {
+               handleNextImage()
+            }, 3290) // autoPlay: 3.5s - imageRef transition 0.2s = 3.3s
+         } else {
+            playBarRef.current.classList.remove(styles.replay)
+         }
+      }
 
-   //    return () => {
-   //       clearInterval(interval)
-   //       clearInterval(timeout)
-   //    }
-   // }, [autoPlay, autoPlayImages, imageReview, dispatch, handleNextImage])
+      return () => {
+         clearInterval(interval)
+         clearInterval(timeout)
+      }
+   }, [autoPlay, imageList, curImage, dispatch, handleNextImage])
 
    return (
-      <div className={styles.imageReview} ref={imageReviewRef} onClick={handleClickOutSide}>
-         {/* {autoPlayImages.length > 0 && (
+      <div className={styles.ImageReviewOverlay} ref={imageReviewRef} onClick={handleClickOutSide}>
+         {imageList.length > 0 && (
             <>
                <div className={styles.playBar} ref={playBarRef}>
                   <div />
                </div>
                <div className={styles.number}>
-                  {curNumber}/{autoPlayImages?.length}
+                  {curNumber}/{imageList?.length}
                </div>
             </>
-         )} */}
+         )}
 
          <div className={styles.buttonWrap}>
             <button
@@ -154,23 +152,23 @@ function ImageReviewOverlay() {
                <FontAwesomeIcon icon={faSearch} />
             </button>
 
-            {/* {autoPlayImages.length > 0 && (
+            {imageList.length > 0 && (
                <button
                   onClick={e => {
                      e.stopPropagation()
-                     dispatch(actions.autoPlay())
+                     dispatch(actions.play())
                   }}
                >
                   <FontAwesomeIcon icon={autoPlay ? faPause : faPlay} />
                </button>
-            )} */}
+            )}
 
             <button>
                <FontAwesomeIcon icon={faX} />
             </button>
          </div>
 
-         {/* {autoPlayImages.length > 0 && (
+         {imageList.length > 0 && (
             <>
                <button
                   className={`${styles.modalBtn} ${styles.nextBtn}`}
@@ -191,10 +189,10 @@ function ImageReviewOverlay() {
                   <FontAwesomeIcon icon={faArrowRight} />
                </button>
             </>
-         )} */}
+         )}
 
          <div className={`${styles.image} ${isZoom ? styles.zoom : ''}`} ref={imageRef}>
-            <img src={flickrImg1} alt='thumbnail' onClick={() => setZoom(!isZoom)} />
+            <img src={curImage} alt='thumbnail' onClick={() => setZoom(!isZoom)} />
          </div>
       </div>
    )

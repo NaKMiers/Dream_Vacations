@@ -15,33 +15,35 @@ function FeaturedAuthors() {
 
    // appear animation on scroll
    const handleScroll = useCallback(() => {
-      const elements = [...containerRef.current.children]
+      if (containerRef.current) {
+         const elements = [...containerRef.current.children]
 
-      let delay = 0
-      elements.forEach(e => {
-         const top = e.getBoundingClientRect().top
-         const bottom = e.getBoundingClientRect().bottom
+         let delay = 0
+         elements.forEach(e => {
+            const top = e.getBoundingClientRect().top
+            const bottom = e.getBoundingClientRect().bottom
 
-         if (top < window.innerHeight && bottom > 0) {
-            e.classList.add('fadeIn')
-            e.classList.add(styles.appeared)
+            if (top < window.innerHeight && bottom > 0) {
+               e.classList.add('fadeIn')
+               e.classList.add(styles.appeared)
 
-            e.children[0].children[0].style.animation = `zoomOut 0.6s ease-in-out ${delay}s forwards`
-            delay += 0.15
+               e.children[0].children[0].style.animation = `zoomOut 0.6s ease-in-out ${delay}s forwards`
+               delay += 0.15
+            }
+         })
+
+         // remove event when all are appeared
+         let countAppeared = 0
+         elements.forEach(e => {
+            if (e.className.includes(styles.appeared)) {
+               countAppeared++
+            }
+         })
+
+         if (countAppeared === elements.length) {
+            console.log('remove---FeaturedAuthors')
+            window.removeEventListener('scroll', handleScroll)
          }
-      })
-
-      // remove event when all are appeared
-      let countAppeared = 0
-      elements.forEach(e => {
-         if (e.className.includes(styles.appeared)) {
-            countAppeared++
-         }
-      })
-
-      if (countAppeared === elements.length) {
-         console.log('remove---FeaturedAuthors')
-         window.removeEventListener('scroll', handleScroll)
       }
    }, [])
 

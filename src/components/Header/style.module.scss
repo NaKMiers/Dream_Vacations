@@ -60,12 +60,14 @@
    // pc
    @media (max-width: 1200px) {
       margin-top: 30px;
+      display: none;
    }
 
    // tablet
    @media (max-width: 980px) {
       height: 37px;
       margin-top: 0;
+      display: flex;
    }
 
    & > img {
@@ -396,7 +398,7 @@
    display: none;
 
    width: 36px;
-   color: #fff;
+   color: #3c3950;
    font-size: 20px;
    margin-bottom: -3px;
 
