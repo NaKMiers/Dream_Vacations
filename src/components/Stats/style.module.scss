@@ -1,0 +1,97 @@
+.Stats {
+   overflow: hidden;
+}
+
+.container {
+   padding: 315px 0 60px;
+}
+
+.subTitle {
+   max-width: 968px;
+   margin: 0 auto;
+
+   font-size: 24px;
+   font-weight: 300;
+   font-family: 'Source Sans Pro', sans-serif;
+   line-height: 37px;
+   color: #fff;
+   text-align: center;
+   padding: 0 21px;
+   background: blueviolet;
+
+   margin-bottom: 100px;
+}
+
+.statWraper {
+   display: flex;
+   flex-wrap: wrap;
+   background: #eee;
+}
+
+.statItem {
+   display: flex;
+   flex-direction: column;
+
+   width: calc(100% / 3);
+   padding: 40px 51px 30px;
+   margin-bottom: 42px;
+   text-align: center;
+
+   background: bisque;
+
+   // mobile large
+   @media (max-width: 768px) {
+      width: 100%;
+   }
+
+   & > .statTitle {
+      font-size: 28px;
+      font-weight: 700;
+      font-size: 700;
+      background: blueviolet;
+   }
+
+   & > .statUnit {
+      font-size: 24px;
+      font-weight: 300;
+      font-family: 'Source Sans Pro', sans-serif;
+      line-height: 37px;
+      color: #fff;
+      background-color: #000;
+   }
+}
+
+.counterNumber {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-wrap: wrap;
+   min-height: 77px;
+   gap: 1px;
+
+   font-size: 50px;
+   font-weight: 700;
+   color: #fff;
+
+   background-color: aquamarine;
+
+   & > .odoWrap {
+      --height: 69px;
+      height: var(--height);
+      overflow: hidden;
+      background: #333;
+
+      & > .odoTrack {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         width: 100%;
+      }
+
+      & > div {
+         display: block;
+         flex-shrink: 0;
+         line-height: var(--height);
+      }
+   }
+}

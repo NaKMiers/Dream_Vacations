@@ -1,0 +1,54 @@
+.WelcomeBannerLite {
+   height: 96.5vh;
+
+   // pc
+   @media (max-width: 1200px) {
+      height: 85.5vh;
+   }
+}
+
+.container {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+
+   height: 100%;
+   // background: #333;
+}
+
+.title {
+   font-size: 185px;
+   font-weight: 100;
+   font-family: 'Maulidah Script', sans-serif;
+   line-height: 60px;
+   letter-spacing: 0.05em;
+   color: #fff;
+   text-align: center;
+
+   background: bisque;
+
+   // pc
+   @media (max-width: 1200px) {
+      font-size: 90px;
+      // line-height: 135px;
+      // margin-top: -20px;
+   }
+}
+
+.subTitle {
+   font-size: 24px;
+   font-weight: 300;
+   font-family: 'Source Sans Pro', sans-serif;
+   line-height: 37px;
+   text-align: center;
+   color: #fff;
+   margin-top: 90px;
+
+   // pc
+   @media (max-width: 1200px) {
+      margin-top: 30px;
+   }
+
+   // background: #000;
+}
