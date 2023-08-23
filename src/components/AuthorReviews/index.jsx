@@ -4,27 +4,65 @@ import styles from './style.module.scss'
 
 function AuthorReviews({ heading, data }) {
    const containerRef = useRef(null)
+   const progressWrapRef = useRef(null)
+   const textBoxWrapRef = useRef(null)
+
+   const isCounting = useRef(false)
 
    // appear animation on scroll
    const handleScroll = useCallback(() => {
       if (containerRef.current) {
-         const elements = [...containerRef.current.children]
+         let elements = [...containerRef.current.children]
+         if (textBoxWrapRef.current) {
+            elements = [...elements, ...textBoxWrapRef.current.children]
+         }
 
+         // 1
          elements.forEach(item => {
             const top = item.getBoundingClientRect().top
             const bottom = item.getBoundingClientRect().bottom
 
+            let delay = 0
             if (top < window.innerHeight && bottom > 0) {
                item.classList.add(styles.appeared)
-               const items = [...item.children]
 
-               let delay = 0.2
-               items.forEach(e => {
-                  e.style.animation = `floatUp 0.6s ease-in-out ${delay}s forwards`
-                  delay += 0.3
-               })
+               item.style.animation = `floatUp 0.6s ease-in-out ${delay}s forwards`
+               delay += 0.3
             }
          })
+
+         // 2
+         if (progressWrapRef.current) {
+            const top = progressWrapRef.current.getBoundingClientRect().top
+            const bottom = progressWrapRef.current.getBoundingClientRect().bottom
+
+            if (top < window.innerHeight && bottom > 0) {
+               const progressElements = [...progressWrapRef.current.children]
+               progressWrapRef.current.classList.add(styles.appeared)
+
+               if (!isCounting.current) {
+                  isCounting.current = true
+
+                  progressElements.forEach(e => {
+                     const label = e.children[0].children[1]
+                     const bar = e.children[1].children[0]
+                     const dataValue = parseInt(label.getAttribute('data-value'))
+
+                     bar.style.width = dataValue + '%'
+
+                     let startValue = 0
+                     let endValue = dataValue
+                     let interval = setInterval(() => {
+                        startValue += 1
+                        label.textContent = startValue + '%'
+                        if (startValue === endValue) {
+                           clearInterval(interval)
+                        }
+                     }, 15)
+                  })
+               }
+            }
+         }
 
          // remove event when all are appeared
          let countAppeared = 0
@@ -34,7 +72,11 @@ function AuthorReviews({ heading, data }) {
             }
          })
 
-         if (countAppeared === elements.length) {
+         if (progressWrapRef.current && progressWrapRef.current.className.includes(styles.appeared)) {
+            countAppeared++
+         }
+
+         if (countAppeared === elements.length + (progressWrapRef.current ? 1 : 0)) {
             console.log('remove---AuthorReviews')
             window.removeEventListener('scroll', handleScroll)
          }
@@ -89,7 +131,7 @@ function AuthorReviews({ heading, data }) {
                            <div className={styles.textBox}>
                               <p className={styles.desc}>{datum.content}</p>
 
-                              <div className={styles.textBoxWrapper}>
+                              <div className={styles.textBoxWrapper} ref={textBoxWrapRef}>
                                  {datum.boxContents.map((content, index) => (
                                     <div
                                        className={styles.textBoxItem}
@@ -110,6 +152,24 @@ function AuthorReviews({ heading, data }) {
                         <div className={styles.item} key={index}>
                            <div className={styles.progression}>
                               <p className={styles.desc}>{datum.content}</p>
+
+                              <div className={styles.progressWrap} ref={progressWrapRef}>
+                                 {datum.progresses.map((progress, index) => (
+                                    <div
+                                       key={index}
+                                       className={styles.progress}
+                                       style={{ '--progress-color': progress.color }}
+                                    >
+                                       <div className={styles.progressLabel}>
+                                          <span>{progress.label}</span>
+                                          <span data-value={progress.percent}>0</span>
+                                       </div>
+                                       <div className={styles.progressBar}>
+                                          <div />
+                                       </div>
+                                    </div>
+                                 ))}
+                              </div>
                            </div>
                         </div>
                      )

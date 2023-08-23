@@ -24,18 +24,22 @@ const moduleData = [
          {
             label: 'Adventure',
             percent: 89,
+            color: '#31dcf2',
          },
          {
             label: 'Travel',
             percent: 60,
+            color: '#97e7af',
          },
          {
             label: 'Active',
             percent: 73,
+            color: '#53b2f0',
          },
          {
             label: 'Lifestyle',
             percent: 80,
+            color: '#608fe6',
          },
       ],
    },
