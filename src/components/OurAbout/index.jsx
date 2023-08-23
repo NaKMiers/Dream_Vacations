@@ -5,7 +5,7 @@ import ourAboutIcon2 from '../../assets/imgs/ourAboutIcon2.png'
 import ourAboutIcon3 from '../../assets/imgs/ourAboutIcon3.png'
 import { Link } from 'react-router-dom'
 
-function OurAbout() {
+function OurAbout({ title, backgroundTitle, content, noBtn }) {
    const titleRef = useRef(null)
    const paragraphRef = useRef(null)
    const categoriesRef = useRef(null)
@@ -75,16 +75,12 @@ function OurAbout() {
       <section className={styles.OurAbout}>
          <div className={`${styles.container} container`}>
             <div className={styles.title}>
-               <h1 ref={titleRef}>Our Stories</h1>
-               <span className={styles.textBackground}>Blog</span>
+               <h1 ref={titleRef}>{title}</h1>
+               <span className={styles.textBackground}>{backgroundTitle}</span>
             </div>
 
             <p className={styles.paragraph} ref={paragraphRef}>
-               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-               ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-               ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-               reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-               sint occaecat
+               {content}
             </p>
 
             <div className={styles.categories} ref={categoriesRef}>
@@ -99,9 +95,11 @@ function OurAbout() {
                      exercitation ullamco nisi ut aliquip ex ea
                   </p>
 
-                  <Link to='/categories/lifestyle' className={styles.btn}>
-                     READ MORE
-                  </Link>
+                  {noBtn || (
+                     <Link to='/categories/lifestyle' className={styles.btn}>
+                        READ MORE
+                     </Link>
+                  )}
                </div>
                <div className={styles.cateItem}>
                   <div className={styles.icon}>
@@ -114,9 +112,11 @@ function OurAbout() {
                      exercitation ullamco nisi ut aliquip ex ea
                   </p>
 
-                  <Link to='/categories/travel' className={styles.btn}>
-                     READ MORE
-                  </Link>
+                  {noBtn || (
+                     <Link to='/categories/travel' className={styles.btn}>
+                        READ MORE
+                     </Link>
+                  )}
                </div>
                <div className={styles.cateItem}>
                   <div className={styles.icon}>
@@ -129,9 +129,11 @@ function OurAbout() {
                      exercitation ullamco nisi ut aliquip ex ea
                   </p>
 
-                  <Link to='/categories/adventure' className={styles.btn}>
-                     READ MORE
-                  </Link>
+                  {noBtn || (
+                     <Link to='/categories/adventure' className={styles.btn}>
+                        READ MORE
+                     </Link>
+                  )}
                </div>
             </div>
          </div>

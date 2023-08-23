@@ -1,9 +1,15 @@
+import authorAvt2 from '../assets/imgs/authorAvt2.jpg'
+import authorAvt3 from '../assets/imgs/authorAvt3.jpg'
 import authorAvt4 from '../assets/imgs/authorAvt4.jpg'
 import authorAvt5 from '../assets/imgs/authorAvt5.jpg'
 import authorAvt6 from '../assets/imgs/authorAvt6.jpg'
 import authorAvt7 from '../assets/imgs/authorAvt7.jpg'
 import authorAvt8 from '../assets/imgs/authorAvt8.jpg'
 import authorAvt9 from '../assets/imgs/authorAvt9.jpg'
+import authorAvt10 from '../assets/imgs/authorAvt10.jpg'
+import authorAvt11 from '../assets/imgs/authorAvt11.jpg'
+import authorAvt12 from '../assets/imgs/authorAvt12.jpg'
+import authorAvt13 from '../assets/imgs/authorAvt13.jpg'
 
 const initState = {
    authors: [
@@ -41,6 +47,48 @@ const initState = {
          id: 6,
          name: 'Scott Morrison',
          avatar: authorAvt9,
+         desc: 'Lorem ipsum dolor sit ametcon sectetur adipisicing elit, sed',
+      },
+
+      {
+         id: 7,
+         name: 'Emerson Anderson',
+         avatar: authorAvt2,
+         desc: 'Lorem ipsum dolor sit ametcon sectetur adipisicing elit, sed',
+      },
+
+      {
+         id: 8,
+         name: 'Herman Ledford',
+         avatar: authorAvt10,
+         desc: 'Lorem ipsum dolor sit ametcon sectetur adipisicing elit, sed',
+      },
+
+      {
+         id: 9,
+         name: 'Kenneth Johnson',
+         avatar: authorAvt11,
+         desc: 'Lorem ipsum dolor sit ametcon sectetur adipisicing elit, sed',
+      },
+
+      {
+         id: 10,
+         name: 'Annllela Sagra',
+         avatar: authorAvt3,
+         desc: 'Lorem ipsum dolor sit ametcon sectetur adipisicing elit, sed',
+      },
+
+      {
+         id: 11,
+         name: 'Jackie Jackson',
+         avatar: authorAvt12,
+         desc: 'Lorem ipsum dolor sit ametcon sectetur adipisicing elit, sed',
+      },
+
+      {
+         id: 12,
+         name: 'Gordon Edwards',
+         avatar: authorAvt13,
          desc: 'Lorem ipsum dolor sit ametcon sectetur adipisicing elit, sed',
       },
    ],

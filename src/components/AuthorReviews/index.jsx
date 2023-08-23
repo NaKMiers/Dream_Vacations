@@ -1,12 +1,8 @@
 import React, { memo, useCallback, useEffect, useRef } from 'react'
-import styles from './style.module.scss'
 import SeparatorTitle from '../SeparatorTitle'
-import authorReviewThumb1 from '../../assets/imgs/authorReviewThumb1.jpg'
-import authorReviewThumb2 from '../../assets/imgs/authorReviewThumb2.jpg'
-import authorAvt2 from '../../assets/imgs/authorAvt2.jpg'
-import authorAvt3 from '../../assets/imgs/authorAvt3.jpg'
+import styles from './style.module.scss'
 
-function AuthorReviews() {
+function AuthorReviews({ heading, data }) {
    const containerRef = useRef(null)
 
    // appear animation on scroll
@@ -57,50 +53,71 @@ function AuthorReviews() {
 
    return (
       <section className={styles.AuthorReviews}>
-         <SeparatorTitle title='Hot Tours Author’s Reviews' dark style={{ margin: '80px 0 65px' }} />
+         <SeparatorTitle title={heading} dark style={{ margin: '80px 0 65px' }} />
 
          <div className={styles.container} ref={containerRef}>
-            <div className={styles.item}>
-               <div className={styles.thumb}>
-                  <img src={authorReviewThumb1} alt='thumbnail' />
-                  <div className={styles.border} />
-               </div>
+            {data.map((datum, index) => {
+               switch (datum.type) {
+                  case 'thumbnail':
+                     return (
+                        <div className={styles.item} key={index}>
+                           <div className={styles.thumb}>
+                              <img src={datum.source} alt='thumbnail' />
+                              <div className={styles.border} />
+                           </div>
+                        </div>
+                     )
 
-               <div className={styles.reviewContent}>
-                  <div className={styles.avatar}>
-                     <img src={authorAvt2} alt='avatar' />
-                  </div>
-                  <h6 className={styles.name}>Nathan Matthews</h6>
-                  <h2 className={styles.title}>{`Wherever you go, go\nwith all your heart!`}</h2>
-                  <h4 className={styles.date}>24 March 2019</h4>
-                  <p className={styles.desc}>
-                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                     incididunt ut labore et dolore
-                  </p>
-               </div>
-            </div>
+                  case 'author':
+                     return (
+                        <div className={styles.item} key={index}>
+                           <div className={styles.reviewContent}>
+                              <div className={styles.avatar}>
+                                 <img src={datum.avatar} alt='avatar' />
+                              </div>
+                              <h6 className={styles.name}>{datum.name}</h6>
+                              <h2 className={styles.title}>{datum.title}</h2>
+                              <h4 className={styles.date}>{datum.date}</h4>
+                              <p className={styles.desc}>{datum.desc}</p>
+                           </div>
+                        </div>
+                     )
 
-            <div className={`${styles.item} ${styles.reverse}`}>
-               <div className={styles.thumb}>
-                  <img src={authorReviewThumb2} alt='thumbnail' />
-                  <div className={styles.border} />
-               </div>
+                  case 'text-box':
+                     return (
+                        <div className={styles.item} key={index}>
+                           <div className={styles.textBox}>
+                              <p className={styles.desc}>{datum.content}</p>
 
-               <div className={styles.reviewContent}>
-                  <div className={styles.avatar}>
-                     <img src={authorAvt3} alt='avatar' />
-                  </div>
-                  <h6 className={styles.name}>Julianna Galanis</h6>
-                  <h2
-                     className={styles.title}
-                  >{`Then I realized adventures\nare the best way to learn.`}</h2>
-                  <h4 className={styles.date}>24 June 2019</h4>
-                  <p className={styles.desc}>
-                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                     incididunt ut labore et dolore
-                  </p>
-               </div>
-            </div>
+                              <div className={styles.textBoxWrapper}>
+                                 {datum.boxContents.map((content, index) => (
+                                    <div
+                                       className={styles.textBoxItem}
+                                       style={{ '--text-color': content.textColor }}
+                                       key={index}
+                                    >
+                                       <span>{index + 1}</span>
+                                       <span>{content.text}</span>
+                                    </div>
+                                 ))}
+                              </div>
+                           </div>
+                        </div>
+                     )
+
+                  case 'progress':
+                     return (
+                        <div className={styles.item} key={index}>
+                           <div className={styles.progression}>
+                              <p className={styles.desc}>{datum.content}</p>
+                           </div>
+                        </div>
+                     )
+
+                  default:
+                     return null
+               }
+            })}
          </div>
       </section>
    )

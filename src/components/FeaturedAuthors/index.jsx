@@ -5,11 +5,15 @@ import AuthorItem from './AuthorItem'
 import styles from './style.module.scss'
 import { useSelector } from 'react-redux'
 
-function FeaturedAuthors() {
+function FeaturedAuthors({ title, all, style }) {
+   console.log('style: ', style)
+
    const { authors, featuredAuthors } = useSelector(state => state.authors)
-   const data = featuredAuthors.map(id => {
-      return authors.find(author => author.id === id)
-   })
+   const data = all
+      ? authors
+      : featuredAuthors.map(id => {
+           return authors.find(author => author.id === id)
+        })
 
    const containerRef = useRef(null)
 
@@ -60,9 +64,9 @@ function FeaturedAuthors() {
    return (
       <section
          className={styles.FeaturedAuthors}
-         style={{ background: `url(${featuredAuthorBG}) no-repeat top center / cover` }}
+         style={{ ...style, background: `url(${featuredAuthorBG}) no-repeat top center / cover` }}
       >
-         <SeparatorTitle title='Featured Authors' />
+         <SeparatorTitle title={title} />
 
          <div className={`${styles.container} container`} ref={containerRef}>
             {data.map(author => (

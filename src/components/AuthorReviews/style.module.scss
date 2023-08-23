@@ -4,8 +4,8 @@
 
 .container {
    display: flex;
-   flex-direction: column;
-   gap: 90px;
+   flex-wrap: wrap;
+   // gap: 90px;
 
    // pc
    @media (max-width: 1200px) {
@@ -16,9 +16,10 @@
 .item {
    display: flex;
    flex-wrap: wrap;
-   width: 100%;
+   width: 50%;
    min-height: 676px;
    // background: #eee;
+   margin-bottom: 90px;
 
    // pc
    @media (max-width: 1200px) {
@@ -38,7 +39,7 @@
 .thumb {
    position: relative;
    min-height: 100%;
-   width: 50%;
+   width: 100%;
    opacity: 0; // for appear
 
    // tablet
@@ -65,7 +66,7 @@
 }
 
 .reviewContent {
-   width: 50%;
+   width: 100%;
    padding: 75px 125px 0;
    text-align: center;
    opacity: 0; // for appear
@@ -131,5 +132,86 @@
       line-height: 37px;
       margin: 0 auto 70px;
       // background: aqua;
+   }
+}
+
+.progression {
+   width: 100%;
+   min-height: 100%;
+   padding: 0 125px;
+   opacity: 0; // for appear
+   background: beige;
+
+   & > .desc {
+      font-size: 24px;
+      font-weight: 300;
+      font-family: 'Source Sans Pro', sans-serif;
+      line-height: 37px;
+      color: #5f727f;
+
+      margin: 100px 0 55px;
+      background: aquamarine;
+   }
+}
+
+.textBox {
+   width: 100%;
+   min-height: 100%;
+   padding: 0 125px;
+   opacity: 0; // for appear
+
+   background: beige;
+
+   & > .desc {
+      font-size: 24px;
+      font-weight: 300;
+      font-family: 'Source Sans Pro', sans-serif;
+      line-height: 37px;
+      margin: 100px 0 55px;
+      background: aquamarine;
+      color: #5f727f;
+   }
+
+   & > .textBoxWrapper {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 45px;
+
+      & > .textBoxItem {
+         --text-color: #00bcd4;
+         padding: 7px 30px 17px;
+         border: 1px solid #dfe5e8;
+         background: #000;
+         color: var(--text-color);
+
+         &:not(:first-child) {
+            border-top: none;
+         }
+
+         & > span:nth-of-type(1) {
+            display: block;
+            width: 48px;
+            height: 48px;
+            margin: 7px 21px 0 0;
+            border: 1px solid var(--text-color);
+            border-radius: 50%;
+
+            float: left;
+            font-size: 30px;
+            font-weight: 300;
+            font-family: 'Source Sans Pro', sans-serif;
+            line-height: 48px;
+            text-align: center;
+         }
+
+         & > span:nth-of-type(2) {
+            display: block;
+            padding-top: 7px;
+
+            font-size: 16px;
+            font-family: 'Source Sans Pro', sans-serif;
+            line-height: 25px;
+         }
+      }
    }
 }

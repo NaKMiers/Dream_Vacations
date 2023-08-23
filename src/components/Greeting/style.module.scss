@@ -20,15 +20,15 @@
 
 .title {
    position: relative;
-   background-color: aqua;
-   text-align: center;
-   margin-bottom: 28px;
-   margin-bottom: 55px;
-   min-height: 153px;
 
    display: flex;
    justify-content: center;
    align-items: center;
+   min-height: 153px;
+   margin-bottom: 55px;
+   text-align: center;
+   color: var(--secondary);
+   // background-color: aqua;
 
    & > h1 {
       position: relative;
@@ -74,10 +74,10 @@
    font-family: 'Source Sans Pro', sans-serif;
    color: #5f727f;
    line-height: 37px;
+   text-align: center;
    margin-bottom: 1.1rem;
    z-index: 1;
-
-   background: beige;
+   // background: beige;
 }
 
 .image {

@@ -1,11 +1,53 @@
-import React, { memo } from 'react'
+import React, { memo, useCallback, useEffect, useRef } from 'react'
 import styles from './style.module.scss'
 import aboutImage from '../../assets/imgs/aboutImage.jpg'
 
 function Greeting() {
+   const containerRef = useRef(null)
+
+   // appear animation on scroll
+   const handleScroll = useCallback(() => {
+      if (containerRef.current) {
+         const elements = [...containerRef.current.children]
+
+         elements.forEach(e => {
+            const top = e.getBoundingClientRect().top
+            const bottom = e.getBoundingClientRect().bottom
+
+            if (top < window.innerHeight && bottom > 0) {
+               e.classList.add('floatUp')
+               e.classList.add(styles.appeared)
+            }
+         })
+
+         // remove event when all are appeared
+         let countAppeared = 0
+         elements.forEach(e => {
+            if (e.className.includes(styles.appeared)) {
+               countAppeared++
+            }
+         })
+
+         if (countAppeared === elements.length) {
+            console.log('remove---Greeting')
+            window.removeEventListener('scroll', handleScroll)
+         }
+      }
+   }, [])
+
+   // appear on scroll
+   useEffect(() => {
+      handleScroll()
+      window.addEventListener('scroll', handleScroll)
+
+      return () => {
+         window.removeEventListener('scroll', handleScroll)
+      }
+   }, [handleScroll])
+
    return (
       <section className={styles.Greeting}>
-         <div className={`${styles.container} container`}>
+         <div className={`${styles.container} container`} ref={containerRef}>
             <div className={styles.title}>
                <h1>Welcome to TheGem Travel Blog</h1>
                <span className={styles.textBackground}>Welcome</span>
