@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useEffect, useRef } from 'react'
 import styles from './style.module.scss'
-import visonBackground from '../../assets/imgs/visionBackground.jpg'
+import visonBackground from '../../assets/images/visionBackground.jpg'
 
 function Vision() {
    const titleRef = useRef(null)

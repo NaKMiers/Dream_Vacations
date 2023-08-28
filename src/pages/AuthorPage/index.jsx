@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import styles from './style.module.scss'
 import WelcomeBannerLite from '../../components/WelcomeBannerLite'
-import aboutBanner2 from '../../assets/imgs/aboutBanner2.jpg'
+import aboutBanner2 from '../../assets/images/aboutBanner2.jpg'
 import AuthorInfo from '../../components/AuthorInfo'
 import MoreBlogByAuthor from '../../components/MoreBlogByAuthor'
 import MoreStories from '../../components/MoreStories'

@@ -1,11 +1,11 @@
 import React, { memo, useCallback, useEffect, useRef } from 'react'
 import styles from './style.module.scss'
-import authorAvt4 from '../../assets/imgs/authorAvt4.jpg'
-import twitter from '../../assets/imgs/twitter.png'
-import facebook from '../../assets/imgs/facebook.png'
-import instagram from '../../assets/imgs/instagram.png'
-import youtube from '../../assets/imgs/youtube.png'
-import pinterest from '../../assets/imgs/pinterest.png'
+import authorAvt4 from '../../assets/images/authorAvt4.jpg'
+import twitter from '../../assets/icons/twitter.png'
+import facebook from '../../assets/icons/facebook.png'
+import instagram from '../../assets/icons/instagram.png'
+import youtube from '../../assets/icons/youtube.png'
+import pinterest from '../../assets/icons/pinterest.png'
 
 function AuthorInfo() {
    const containerRef = useRef(null)

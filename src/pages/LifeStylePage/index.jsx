@@ -4,7 +4,7 @@ import WelcomeBannerLite from '../../components/WelcomeBannerLite'
 import BlogFeed from '../../components/BlogFeed'
 import LatestPodcast from '../../components/LatestPodcast'
 import MoreStories from '../../components/MoreStories'
-import categoryBanner2 from '../../assets/imgs/categoryBanner2.jpg'
+import categoryBanner2 from '../../assets/images/categoryBanner2.jpg'
 
 function LifeStylePage() {
    return (

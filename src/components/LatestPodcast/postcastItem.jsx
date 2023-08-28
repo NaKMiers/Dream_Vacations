@@ -1,11 +1,11 @@
 import { faPauseCircle, faPlayCircle } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { memo, useCallback, useEffect, useRef, useState } from 'react'
-import avatar from '../../assets/imgs/authorAvt1.jpeg'
+import avatar from '../../assets/images/authorAvt1.jpeg'
 import styles from './style.module.scss'
 import podcast1 from '../../assets/audios/letme.mp3'
-import speakerIcon from '../../assets/imgs/speakerIcon.png'
-import muteIcon from '../../assets/imgs/muteIcon.png'
+import speakerIcon from '../../assets/icons/speakerIcon.png'
+import muteIcon from '../../assets/icons/muteIcon.png'
 import { Link } from 'react-router-dom'
 
 function PostcastItem() {

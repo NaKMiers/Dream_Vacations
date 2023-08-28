@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useEffect, useRef } from 'react'
 import styles from './style.module.scss'
-import aboutImage from '../../assets/imgs/aboutImage.jpg'
+import aboutImage from '../../assets/images/aboutImage.jpg'
 
 function Greeting() {
    const containerRef = useRef(null)

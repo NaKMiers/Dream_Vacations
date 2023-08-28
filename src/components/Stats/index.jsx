@@ -1,5 +1,5 @@
 import React, { memo, useCallback, useEffect, useRef, useState } from 'react'
-import statsBackground from '../../assets/imgs/statsBackground.jpg'
+import statsBackground from '../../assets/images/statsBackground.jpg'
 import Odo from './odo'
 import styles from './style.module.scss'
 

@@ -1,11 +1,11 @@
 import React, { memo, useCallback, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import facebook from '../../assets/imgs/facebook-cirle.png'
-import instagram from '../../assets/imgs/instagram-cirle.png'
-import linkedin from '../../assets/imgs/linkedin-cirle.png'
-import pinterest from '../../assets/imgs/pinterest-cirle.png'
-import twitter from '../../assets/imgs/twitter-cirle.png'
-import youtube from '../../assets/imgs/youtube-cirle.png'
+import facebook from '../../assets/icons/facebook-cirle.png'
+import instagram from '../../assets/icons/instagram-cirle.png'
+import linkedin from '../../assets/icons/linkedin-cirle.png'
+import pinterest from '../../assets/icons/pinterest-cirle.png'
+import twitter from '../../assets/icons/twitter-cirle.png'
+import youtube from '../../assets/icons/youtube-cirle.png'
 import styles from './style.module.scss'
 
 function FooterNav() {

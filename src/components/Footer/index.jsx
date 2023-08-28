@@ -2,8 +2,8 @@ import { faChevronRight, faCommentDots } from '@fortawesome/free-solid-svg-icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { memo, useCallback, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import logoFooter from '../../assets/imgs/logo-footer.png'
-import twitter from '../../assets/imgs/twitter-blue.png'
+import logoFooter from '../../assets/logos/logo-footer.png'
+import twitter from '../../assets/icons/twitter-blue.png'
 import styles from './style.module.scss'
 // import 'masonry-layout'
 

@@ -1,5 +1,5 @@
 import React, { memo, useCallback, useEffect, useRef } from 'react'
-import podcastBackground from '../../assets/imgs/podcastBackground.jpg'
+import podcastBackground from '../../assets/images/podcastBackground.jpg'
 import SeparatorTitle from '../SeparatorTitle'
 import PostcastItem from './postcastItem'
 import styles from './style.module.scss'

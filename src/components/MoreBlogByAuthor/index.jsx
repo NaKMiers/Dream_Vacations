@@ -1,12 +1,12 @@
 import React, { memo, useCallback, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
-import moreBlogByAuthorBackground from '../../assets/imgs/moreBlogByAuthorBackground.jpg'
+import moreBlogByAuthorBackground from '../../assets/images/moreBlogByAuthorBackground.jpg'
 import BlogType2 from '../BlogType2'
 import BlogQuote from '../BlogQuote'
 import SeparatorTitle from '../SeparatorTitle'
 import styles from './style.module.scss'
 import Masonry from 'masonry-layout'
-import authorSignature from '../../assets/imgs/authorSignature.png'
+import authorSignature from '../../assets/logos/authorSignature.png'
 
 function MoreBlogByAuthor() {
    const { blogs, moreBlogsByAuthor } = useSelector(state => state.blogs)

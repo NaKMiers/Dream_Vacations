@@ -8,9 +8,9 @@ import FeaturedAuthors from '../../components/FeaturedAuthors'
 import Vision from '../../components/Vision'
 import AuthorReviews from '../../components/AuthorReviews'
 
-import visionThumbnail1 from '../../assets/imgs/visionThumbnail1.jpg'
-import visionThumbnail2 from '../../assets/imgs/visionThumbnail2.jpg'
-import aboutBanner1 from '../../assets/imgs/aboutBanner1.jpg'
+import visionThumbnail1 from '../../assets/images/visionThumbnail1.jpg'
+import visionThumbnail2 from '../../assets/images/visionThumbnail2.jpg'
+import aboutBanner1 from '../../assets/images/aboutBanner1.jpg'
 
 const moduleData = [
    {

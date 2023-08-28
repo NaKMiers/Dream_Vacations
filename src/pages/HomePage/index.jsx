@@ -11,10 +11,10 @@ import FeaturedAuthors from '../../components/FeaturedAuthors'
 import RecentPosts from '../../components/RecentPosts'
 import TravelHighlights from '../../components/TravelHighlights'
 
-import authorReviewThumb1 from '../../assets/imgs/authorReviewThumb1.jpg'
-import authorReviewThumb2 from '../../assets/imgs/authorReviewThumb2.jpg'
-import authorAvt2 from '../../assets/imgs/authorAvt2.jpg'
-import authorAvt3 from '../../assets/imgs/authorAvt3.jpg'
+import authorReviewThumb1 from '../../assets/images/authorReviewThumb1.jpg'
+import authorReviewThumb2 from '../../assets/images/authorReviewThumb2.jpg'
+import authorAvt2 from '../../assets/images/authorAvt2.jpg'
+import authorAvt3 from '../../assets/images/authorAvt3.jpg'
 
 const moduleData = [
    {

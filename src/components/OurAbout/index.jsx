@@ -1,8 +1,8 @@
 import React, { memo, useCallback, useEffect, useRef } from 'react'
 import styles from './style.module.scss'
-import ourAboutIcon1 from '../../assets/imgs/ourAboutIcon1.png'
-import ourAboutIcon2 from '../../assets/imgs/ourAboutIcon2.png'
-import ourAboutIcon3 from '../../assets/imgs/ourAboutIcon3.png'
+import ourAboutIcon1 from '../../assets/icons/ourAboutIcon1.png'
+import ourAboutIcon2 from '../../assets/icons/ourAboutIcon2.png'
+import ourAboutIcon3 from '../../assets/icons/ourAboutIcon3.png'
 import { Link } from 'react-router-dom'
 
 function OurAbout({ title, backgroundTitle, content, noBtn }) {

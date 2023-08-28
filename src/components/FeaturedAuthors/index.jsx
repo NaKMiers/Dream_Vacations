@@ -1,5 +1,5 @@
 import React, { memo, useCallback, useEffect, useRef } from 'react'
-import featuredAuthorBG from '../../assets/imgs/featuredAuthorBG.jpg'
+import featuredAuthorBG from '../../assets/images/featuredAuthorBG.jpg'
 import SeparatorTitle from '../../components/SeparatorTitle'
 import AuthorItem from './AuthorItem'
 import styles from './style.module.scss'
