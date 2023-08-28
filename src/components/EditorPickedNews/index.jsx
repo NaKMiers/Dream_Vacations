@@ -8,7 +8,7 @@ import styles from './style.module.scss'
 const slideLength = 5
 const maxSlideIndex = 5 + 2 - 1
 
-function EditorPickedNews() {
+function EditorPickedNews({ style }) {
    const { blogs, editorPinkedNews } = useSelector(state => state.blogs)
    const data = editorPinkedNews.map(id => {
       return blogs.find(blog => blog.id === id)
@@ -120,7 +120,7 @@ function EditorPickedNews() {
    }, [handleScroll])
 
    return (
-      <section className={styles.EditorPickedNews}>
+      <section className={styles.EditorPickedNews} style={style}>
          <SeparatorTitle title='Editor’s Picked News' dark style={{ margin: '80px 0 65px' }} />
 
          <div className={`${styles.container} container`}>

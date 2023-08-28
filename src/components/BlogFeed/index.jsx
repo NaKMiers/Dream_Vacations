@@ -5,13 +5,17 @@ import BlogType1 from '../BlogType1'
 import BlogType2 from '../BlogType2'
 import styles from './style.module.scss'
 
-function BlogFeed() {
-   const { blogs, blogFeed } = useSelector(state => state.blogs)
-   const data = blogFeed.map(blog => {
-      const datum = blogs.find(e => e.id === blog.blogId)
-
-      return { ...datum, ...blog }
-   })
+function BlogFeed({ blogFeedType2, style }) {
+   const { blogs, blogFeed, blogFeed2 } = useSelector(state => state.blogs)
+   const data = blogFeedType2
+      ? blogFeed2.map(blog => ({
+           ...blogs.find(e => e.id === blog.blogId),
+           ...blog,
+        }))
+      : blogFeed.map(blog => ({
+           ...blogs.find(e => e.id === blog.blogId),
+           ...blog,
+        }))
 
    const container1Ref = useRef(null)
    const container2Ref = useRef(null)
@@ -57,9 +61,12 @@ function BlogFeed() {
    }, [handleScroll])
 
    return (
-      <section className={styles.BlogFeed}>
-         <div className={`${styles.container} container`} ref={container1Ref}>
-            <div className={styles.container1}>
+      <section className={`${styles.BlogFeed}`} style={style}>
+         <div className={`${styles.container} container`}>
+            <div
+               className={`${styles.container1} ${blogFeedType2 ? styles.blogFeed2 : ''}`}
+               ref={container1Ref}
+            >
                {data.map((blog, index) => {
                   if (blog.type === 1) {
                      return <BlogType1 myArea={index === 0} data={blog} key={blog.id} />

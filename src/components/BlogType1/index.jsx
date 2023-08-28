@@ -8,7 +8,7 @@ import styles from './style.module.scss'
 function BlogType1({ data, myArea }) {
    const navigate = useNavigate()
 
-   let { visual, small, extraSmall, noOverlayContent } = data.styles
+   let { visual, small, extraSmall, square, squareSmall, noOverlayContent } = data.styles
    if (extraSmall) {
       visual = true
    }
@@ -17,7 +17,9 @@ function BlogType1({ data, myArea }) {
       <div
          className={`${styles.blogType1} ${myArea ? styles.myArea : ''} ${small ? styles.small : ''} ${
             extraSmall ? styles.extraSmall : ''
-         } ${visual ? styles.visual : ''}`}
+         } ${square ? styles.square : ''} ${squareSmall ? styles.squareSmall : ''} ${
+            visual ? styles.visual : ''
+         }`}
          onClick={() => navigate('/blogs/1')}
       >
          <div className={styles.blogType1Container}>

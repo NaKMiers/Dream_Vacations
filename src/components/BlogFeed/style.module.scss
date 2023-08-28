@@ -44,6 +44,34 @@
    @media (max-width: 548px) {
       grid-template-areas: 'myArea';
    }
+
+   &.blogFeed2 {
+      display: grid;
+      grid-template-areas:
+         'myArea myArea . .'
+         'myArea myArea . .';
+      grid-auto-flow: dense;
+
+      // tablet extra-large
+      @media (max-width: 1100px) {
+         grid-template-areas:
+            'myArea myArea .'
+            'myArea myArea .';
+      }
+
+      // mobile large
+      @media (max-width: 768px) {
+         grid-template-areas:
+            'myArea myArea'
+            'myArea myArea';
+         padding: 49px 0 39px;
+      }
+
+      // mobile medium
+      @media (max-width: 548px) {
+         grid-template-areas: 'myArea';
+      }
+   }
 }
 
 .container2 {

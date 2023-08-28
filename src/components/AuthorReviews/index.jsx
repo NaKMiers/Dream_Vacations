@@ -95,7 +95,7 @@ function AuthorReviews({ heading, data }) {
 
    return (
       <section className={styles.AuthorReviews}>
-         <SeparatorTitle title={heading} dark style={{ margin: '80px 0 65px' }} />
+         {heading && <SeparatorTitle title={heading} dark style={{ margin: '80px 0 65px' }} />}
 
          <div className={styles.container} ref={containerRef}>
             {data.map((datum, index) => {
@@ -113,7 +113,7 @@ function AuthorReviews({ heading, data }) {
                   case 'author':
                      return (
                         <div className={styles.item} key={index}>
-                           <div className={styles.reviewContent}>
+                           <div className={styles.authorContent}>
                               <div className={styles.avatar}>
                                  <img src={datum.avatar} alt='avatar' />
                               </div>
@@ -121,6 +121,24 @@ function AuthorReviews({ heading, data }) {
                               <h2 className={styles.title}>{datum.title}</h2>
                               <h4 className={styles.date}>{datum.date}</h4>
                               <p className={styles.desc}>{datum.desc}</p>
+                           </div>
+                        </div>
+                     )
+
+                  case 'category':
+                     return (
+                        <div className={styles.item} key={index}>
+                           <div className={styles.categoryContent}>
+                              <div className={styles.icon}>
+                                 <img src={datum.icon} alt='icon' />
+                              </div>
+                              <h2 className={styles.title}>{datum.title}</h2>
+                              <span className={styles.numberOfPost}>{datum.posts} Posts</span>
+                              <p className={styles.desc}>{datum.desc}</p>
+
+                              <div className={styles.buttonWrap}>
+                                 <button>View Posts</button>
+                              </div>
                            </div>
                         </div>
                      )
