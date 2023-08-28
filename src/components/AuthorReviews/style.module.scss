@@ -140,7 +140,7 @@
    min-height: 100%;
    padding: 0 125px;
    // opacity: 0; // for appear
-   background: beige;
+   // background: beige;
 
    & > .desc {
       font-size: 24px;
@@ -148,9 +148,8 @@
       font-family: 'Source Sans Pro', sans-serif;
       line-height: 37px;
       color: #5f727f;
-
       margin: 100px 0 55px;
-      background: aquamarine;
+      // background: aquamarine;
    }
 
    & > .progressWrap {
@@ -212,8 +211,7 @@
    min-height: 100%;
    padding: 0 125px;
    // opacity: 0; // for appear
-
-   background: beige;
+   // background: beige;
 
    & > .desc {
       font-size: 24px;
@@ -221,8 +219,8 @@
       font-family: 'Source Sans Pro', sans-serif;
       line-height: 37px;
       margin: 100px 0 55px;
-      background: aquamarine;
       color: #5f727f;
+      // background: aquamarine;
    }
 
    & > .textBoxWrapper {

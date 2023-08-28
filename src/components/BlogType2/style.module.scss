@@ -139,6 +139,23 @@
    cursor: auto;
    // background: beige;
 
+   &.byAuthor {
+      padding: 35px 38px 8px;
+      background: #fff;
+
+      & > .author {
+         flex-wrap: wrap;
+      }
+
+      & > .desc {
+         letter-spacing: -0.01em;
+      }
+
+      & > .bottomWrap {
+         margin: 0 -23px;
+      }
+   }
+
    & > .author {
       display: flex;
       align-items: center;
@@ -182,6 +199,7 @@
       line-height: 25px;
       color: #5f727f;
       margin-bottom: 26px;
+
       // background: aquamarine;
    }
 
@@ -190,6 +208,7 @@
       align-items: center;
       height: 27px;
       gap: 16px;
+
       // background: aquamarine;
 
       & > .icon {

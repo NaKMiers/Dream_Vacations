@@ -4,7 +4,7 @@ import SeparatorTitle from '../SeparatorTitle'
 import PostItem from './PostItem'
 import styles from './styles.module.scss'
 
-function MoreStories() {
+function MoreStories({ floating, style }) {
    const { blogs, moreStories } = useSelector(state => state.blogs)
    const data = moreStories.map(id => blogs.find(blog => blog.id === id))
    const [itemPerSlide, setItemPerSlide] = useState(3)
@@ -124,7 +124,7 @@ function MoreStories() {
    }, [handleScroll])
 
    return (
-      <section className={styles.MoreStories}>
+      <section className={`${styles.MoreStories} ${floating ? styles.floating : ''}`} style={style}>
          <SeparatorTitle title='More Stories' dark style={{ marginBottom: 5, paddingTop: 35 }} />
 
          <div className={`${styles.container} container`}>

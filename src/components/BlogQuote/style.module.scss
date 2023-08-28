@@ -19,6 +19,12 @@
          height: 100%;
          background: var(--primary);
 
+         &.byAuthor {
+            top: 21px;
+            width: calc(100% - 2 * 21px);
+            height: calc(100% - 2 * 21px);
+         }
+
          // pc
          @media (max-width: 1200px) {
             padding: 25px 30px;

@@ -3,6 +3,11 @@
    padding-bottom: 50px;
    box-shadow: 0px 0px 80px 0 rgba(93, 232, 248, 0.3);
    background: #fff;
+
+   &.floating {
+      max-width: 1212px;
+      margin: 0 auto;
+   }
 }
 
 .container {

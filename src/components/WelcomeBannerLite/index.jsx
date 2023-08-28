@@ -1,8 +1,7 @@
 import React, { memo, useCallback, useEffect, useRef } from 'react'
 import styles from './style.module.scss'
-import aboutBanner from '../../assets/imgs/AboutBanner.jpg'
 
-function WelcomeBannerLite({ title, subTitle }) {
+function WelcomeBannerLite({ title, subTitle, background }) {
    const titleRef = useRef(null)
    const subTitleRef = useRef(null)
 
@@ -49,7 +48,7 @@ function WelcomeBannerLite({ title, subTitle }) {
    return (
       <section
          className={styles.WelcomeBannerLite}
-         style={{ background: `url(${aboutBanner}) no-repeat center / cover` }}
+         style={{ background: `url(${background}) no-repeat center / cover` }}
       >
          <div className={`${styles.container} container`}>
             <h1 className={styles.title} ref={titleRef}>

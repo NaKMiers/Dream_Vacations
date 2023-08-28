@@ -10,6 +10,7 @@ import AuthorReviews from '../../components/AuthorReviews'
 
 import visionThumbnail1 from '../../assets/imgs/visionThumbnail1.jpg'
 import visionThumbnail2 from '../../assets/imgs/visionThumbnail2.jpg'
+import aboutBanner1 from '../../assets/imgs/aboutBanner1.jpg'
 
 const moduleData = [
    {
@@ -71,7 +72,11 @@ const moduleData = [
 function AboutUsPage() {
    return (
       <div className={styles.AboutUsPage}>
-         <WelcomeBannerLite title='About The Gem' subTitle='«Travel is the healthiest addiction»' />
+         <WelcomeBannerLite
+            title='About The Gem'
+            subTitle='«Travel is the healthiest addiction»'
+            background={aboutBanner1}
+         />
          <Greeting />
          <Stats />
          <OurAbout

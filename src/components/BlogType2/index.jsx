@@ -13,12 +13,15 @@ import tumblr from '../../assets/imgs/tumblr.png'
 import twitter from '../../assets/imgs/twitter.png'
 import styles from './style.module.scss'
 
-function BlogType2({ data, gridItem, short, tall }) {
+function BlogType2({ data, gridItem, short, tall, byAuthor, style }) {
    const navigate = useNavigate()
    const [showSocials, setShowSocials] = useState()
 
    return (
-      <div className={`${styles.BlogType2} ${gridItem ? styles.gridItem + ' grid-item' : ''}`}>
+      <div
+         className={`${styles.BlogType2} ${gridItem ? styles.gridItem + ' grid-item' : ''}`}
+         style={style}
+      >
          <div
             className={`${styles.thumbnail} ${gridItem ? styles.gridItem : ''}
              ${short ? styles.short : ''}  ${tall ? styles.tall : ''}`}
@@ -43,7 +46,7 @@ function BlogType2({ data, gridItem, short, tall }) {
             )}
          </div>
 
-         <div className={styles.content}>
+         <div className={`${styles.content} ${byAuthor ? styles.byAuthor : ''}`}>
             <div className={styles.author}>
                <img src={authorAvt1} alt='avatar' />
                <span className={styles.name}>By {data.author}</span> -
