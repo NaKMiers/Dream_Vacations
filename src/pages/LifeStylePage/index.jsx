@@ -14,7 +14,7 @@ function LifeStylePage() {
             subTitle='«Travel is the healthiest addiction»'
             background={categoryBanner2}
          />
-         <BlogFeed blogFeedType2 style={{ margin: '-158px 0 -125px' }} />
+         <BlogFeed blogFeedType2 style={{ margin: '-160px 0 -125px' }} />
          <LatestPodcast />
          <MoreStories floating style={{ margin: '-120px auto 100px' }} />
       </div>

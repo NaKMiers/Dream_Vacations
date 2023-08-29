@@ -1,0 +1,135 @@
+.LatestVideo {
+   padding: 205px 0 70px;
+}
+
+.container {
+   bottom: #ccc;
+}
+
+.videoWrapper {
+   display: flex;
+   flex-wrap: wrap;
+   margin: 0 0 55px;
+   // background: beige;
+}
+
+.videoItem {
+   width: 25%;
+   padding: 21px;
+
+   // pc
+   @media (max-width: 1200px) {
+      width: calc(100% / 3);
+   }
+
+   // mobile extra-large
+   @media (max-width: 830px) {
+      width: 50%;
+   }
+
+   // mobile medium
+   @media (max-width: 548px) {
+      width: 100%;
+   }
+
+   & > .body {
+      position: relative;
+      width: 100%;
+      padding-top: 100%;
+      background: #333;
+      cursor: pointer;
+
+      & > .thumbnail {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+
+         & > img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+         }
+      }
+
+      & > .overlay {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+
+         display: flex;
+         align-items: flex-end;
+         padding: 15px;
+
+         & > .icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            font-size: 50px;
+            color: #fff;
+            opacity: 0.7;
+            cursor: pointer;
+
+            &:hover {
+               opacity: 1;
+               transition: var(--standard-duration) ease-in-out;
+            }
+         }
+
+         & > .content {
+            color: #fff;
+
+            & > .date {
+               font-size: 12px;
+               // font-weight: 400;
+               font-family: 'Source Sans Pro', sans-serif;
+               line-height: 21px;
+               margin-bottom: 3px;
+            }
+
+            & > .title {
+               font-size: 20px;
+               // font-family: 'Source Sans Pro', sans-serif;
+               line-height: 30px;
+               letter-spacing: 0.05em;
+            }
+         }
+      }
+   }
+}
+
+.buttonWrap {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   // background: #000;
+
+   & > .button {
+      height: 50px;
+      padding: 0 25px;
+      margin: 30px 0;
+      border: 1px solid #fff;
+      border-radius: 24px;
+
+      font-size: 20px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      font-family: 'Source Sans Pro', sans-serif;
+      text-transform: uppercase;
+      white-space: nowrap;
+      color: #fff;
+
+      transition: var(--standard-duration) ease-in-out;
+
+      &:hover {
+         background: #fff;
+         color: #101213;
+      }
+   }
+}

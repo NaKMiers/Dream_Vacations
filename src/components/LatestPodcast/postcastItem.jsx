@@ -5,7 +5,7 @@ import avatar from '../../assets/images/authorAvt1.jpeg'
 import styles from './style.module.scss'
 import podcast1 from '../../assets/audios/letme.mp3'
 import speakerIcon from '../../assets/icons/speakerIcon.png'
-import muteIcon from '../../assets/icons/muteIcon.png'
+import muteIcon from '../../assets/icons/speakerMuteIcon.png'
 import { Link } from 'react-router-dom'
 
 function PostcastItem() {
