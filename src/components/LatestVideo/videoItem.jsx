@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { memo } from 'react'
 import styles from './style.module.scss'
 
-function VideoItem({ data }) {
+function VideoItem({ data, setVideoSrc }) {
    return (
       <div className={styles.videoItem}>
          <div className={styles.body}>
@@ -11,7 +11,7 @@ function VideoItem({ data }) {
                <img src={data.image} alt='thumbnail' />
             </div>
             <div className={styles.overlay}>
-               <div className={styles.icon}>
+               <div className={styles.icon} onClick={() => setVideoSrc(data.video)}>
                   <FontAwesomeIcon icon={faPlayCircle} />
                </div>
 
