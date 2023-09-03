@@ -54,6 +54,8 @@ function LatestVideo() {
    const [duration, setDuration] = useState('00:00')
    const [volume, setVolume] = useState(1)
 
+   const videoWrapperRef = useRef(null)
+   const buttonWrapRef = useRef(null)
    const videoModalRef = useRef(null)
    const videoRef = useRef(null)
    const timelineBarRef = useRef(null)
@@ -83,6 +85,7 @@ function LatestVideo() {
       }, 510)
    }, [])
 
+   // open modal
    useEffect(() => {
       if (videoSrc) {
          handleOpenVideoModal()
@@ -222,6 +225,46 @@ function LatestVideo() {
       clearTimeout(timeoutId.current)
    }, [])
 
+   // appear animation on scroll
+   const handleScroll = useCallback(() => {
+      if (videoWrapperRef.current && buttonWrapRef.current) {
+         const elements = [...videoWrapperRef.current.children, buttonWrapRef.current]
+
+         elements.forEach(e => {
+            const top = e.getBoundingClientRect().top
+            const bottom = e.getBoundingClientRect().bottom
+
+            if (top < window.innerHeight && bottom > 0) {
+               e.classList.add('floatUp')
+               e.classList.add(styles.appeared)
+            }
+         })
+
+         // remove event when all are appeared
+         let countAppeared = 0
+         elements.forEach(e => {
+            if (e.className.includes(styles.appeared)) {
+               countAppeared++
+            }
+         })
+
+         if (countAppeared === elements.length) {
+            console.log('remove---LatestVideo')
+            window.removeEventListener('scroll', handleScroll)
+         }
+      }
+   }, [])
+
+   // appear on scroll
+   useEffect(() => {
+      handleScroll()
+      window.addEventListener('scroll', handleScroll)
+
+      return () => {
+         window.removeEventListener('scroll', handleScroll)
+      }
+   }, [handleScroll])
+
    return (
       <section
          className={styles.LatestVideo}
@@ -230,13 +273,13 @@ function LatestVideo() {
          <SeparatorTitle title='Latest Video' />
 
          <div className={`${styles.container} container`}>
-            <div className={styles.videoWrapper}>
+            <div className={styles.videoWrapper} ref={videoWrapperRef}>
                {data.map(video => (
                   <VideoItem key={video.id} data={video} setVideoSrc={setVideoSrc} />
                ))}
             </div>
 
-            <div className={styles.buttonWrap}>
+            <div className={styles.buttonWrap} ref={buttonWrapRef}>
                <button className={styles.button}>View All</button>
             </div>
          </div>

@@ -1,10 +1,10 @@
-import { faFileLines } from '@fortawesome/free-solid-svg-icons'
+import { faComment, faFileLines, faHeart } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './style.module.scss'
 
-function PostItem({ data }) {
+function PostItem({ data, type2 }) {
    const thumbRef = useRef(null)
    const iconRef = useRef(null)
 
@@ -44,8 +44,28 @@ function PostItem({ data }) {
             </Link>
 
             <p className={styles.desc}>{data.desc}</p>
-
-            <p className={styles.author}>By {data.author}</p>
+            {type2 ? (
+               <div className={styles.authorWrapper}>
+                  <p className={styles.author}>By {data.author}</p>
+                  <div className={styles.postMetaWrap}>
+                     <div className={styles.meta} style={{ color: '#99a9b5' }}>
+                        <div className={`${styles.icon} ${styles.commentIcon}`}>
+                           <FontAwesomeIcon icon={faComment} />
+                        </div>
+                        <span>2</span>
+                     </div>
+                     <div className={styles.sep} />
+                     <div className={styles.meta} style={{ color: '#f44336' }}>
+                        <div className={`${styles.icon} ${styles.heartIcon}`}>
+                           <FontAwesomeIcon icon={faHeart} />
+                        </div>
+                        <span>0</span>
+                     </div>
+                  </div>
+               </div>
+            ) : (
+               <p className={styles.author}>By {data.author}</p>
+            )}
          </div>
       </div>
    )

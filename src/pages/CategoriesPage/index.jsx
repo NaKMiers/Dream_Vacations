@@ -114,7 +114,7 @@ function CategoriesPage() {
             background={categoryBanner1}
          />
          <AuthorReviews data={moduleData} />
-         <EditorPickedNews style={{ marginTop: -80 }} />
+         <EditorPickedNews title='Editor’s Picked News' style={{ marginTop: -80 }} />
       </div>
    )
 }

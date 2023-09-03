@@ -4,11 +4,12 @@ import SeparatorTitle from '../../components/SeparatorTitle'
 import PostItem from './PostItem'
 import Slide from './Slide'
 import styles from './style.module.scss'
+import thumb from '../../assets/images/blogThumb1.png'
 
 const slideLength = 5
 const maxSlideIndex = 5 + 2 - 1
 
-function EditorPickedNews({ style }) {
+function EditorPickedNews({ title, noTitle, reverse, type2, style }) {
    const { blogs, editorPinkedNews } = useSelector(state => state.blogs)
    const data = editorPinkedNews.map(id => {
       return blogs.find(blog => blog.id === id)
@@ -26,11 +27,13 @@ function EditorPickedNews({ style }) {
    const postWrapRef = useRef(null)
 
    useEffect(() => {
-      slideTrackRef.current.style.marginLeft = `calc(-100% * ${slide})`
+      if (slideTrackRef.current) {
+         slideTrackRef.current.style.marginLeft = `calc(-100% * ${slide})`
+      }
    }, [slide])
 
    const nextSlide = useCallback(() => {
-      if (!isSliding) {
+      if (!isSliding && slideTrackRef.current) {
          setSliding(true)
 
          if (slide === slideLength) {
@@ -55,7 +58,7 @@ function EditorPickedNews({ style }) {
    }, [isSliding, slide])
 
    const prevSlide = useCallback(() => {
-      if (!isSliding) {
+      if (!isSliding && slideTrackRef.current) {
          setSliding(true)
 
          if (slide === 1) {
@@ -121,28 +124,45 @@ function EditorPickedNews({ style }) {
 
    return (
       <section className={styles.EditorPickedNews} style={style}>
-         <SeparatorTitle title='Editor’s Picked News' dark style={{ margin: '80px 0 65px' }} />
+         {noTitle || <SeparatorTitle title={title} dark style={{ margin: '80px 0 65px' }} />}
 
-         <div className={`${styles.container} container`}>
-            <div className={styles.sliderWrap}>
-               <div className={styles.slider} ref={sliderRef}>
-                  <div className={styles.slideTrack} ref={slideTrackRef}>
-                     <Slide data={slideData[slideData.length - 1]} />
-                     {/* --- */}
+         <div
+            className={`${styles.container}  ${type2 ? styles.type2 : ''} ${
+               reverse ? styles.reverse : ''
+            } container`}
+         >
+            {type2 ? (
+               <div className={styles.bigThumbnail}>
+                  <img src={thumb} alt='big-thumbnail' />
 
-                     {slideData.map(slide => (
-                        <Slide nextSlide={nextSlide} prevSlide={prevSlide} data={slide} key={slide.id} />
-                     ))}
+                  <div className={styles.thumbBorder} />
+               </div>
+            ) : (
+               <div className={styles.sliderWrap}>
+                  <div className={styles.slider} ref={sliderRef}>
+                     <div className={styles.slideTrack} ref={slideTrackRef}>
+                        <Slide data={slideData[slideData.length - 1]} />
+                        {/* --- */}
 
-                     {/* --- */}
-                     <Slide data={slideData[0]} />
+                        {slideData.map(slide => (
+                           <Slide
+                              nextSlide={nextSlide}
+                              prevSlide={prevSlide}
+                              data={slide}
+                              key={slide.id}
+                           />
+                        ))}
+
+                        {/* --- */}
+                        <Slide data={slideData[0]} />
+                     </div>
                   </div>
                </div>
-            </div>
+            )}
 
-            <div className={styles.postWrap} ref={postWrapRef}>
+            <div className={`${styles.postWrap} ${type2 ? styles.type2 : ''}`} ref={postWrapRef}>
                {postData.map(post => (
-                  <PostItem data={post} key={post.id} />
+                  <PostItem data={post} key={post.id} type2={type2} />
                ))}
             </div>
          </div>
