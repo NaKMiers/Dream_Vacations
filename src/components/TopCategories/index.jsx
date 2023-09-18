@@ -10,7 +10,7 @@ import topCatImg6 from '../../assets/images/topCatImg6.jpg'
 import { Link } from 'react-router-dom'
 import SeparatorTitle from '../SeparatorTitle'
 
-function TopCategories() {
+function TopCategories({ style }) {
    const categoriesWrapRef = useRef(null)
    const buttonWrapRef = useRef(null)
 
@@ -73,7 +73,7 @@ function TopCategories() {
    return (
       <section
          className={styles.TopCategories}
-         style={{ background: `url(${topCategoriesBG}) no-repeat center / cover` }}
+         style={{ background: `url(${topCategoriesBG}) no-repeat center / cover`, ...style }}
       >
          <div className={`${styles.container} container`}>
             <SeparatorTitle title='Top Categories' />
