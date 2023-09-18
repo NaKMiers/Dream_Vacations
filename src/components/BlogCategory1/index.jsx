@@ -223,19 +223,19 @@ function BlogCategory1({ style }) {
                      className={filter === 'all' ? styles.active : ''}
                      onClick={() => filter !== 'all' && handleFilter('all')}
                   >
-                     all
+                     All
                   </button>
                   <button
                      className={filter === 'active' ? styles.active : ''}
                      onClick={() => filter !== 'active' && handleFilter('active')}
                   >
-                     active
+                     Active
                   </button>
                   <button
                      className={filter === 'reviews' ? styles.active : ''}
                      onClick={() => filter !== 'reviews' && handleFilter('reviews')}
                   >
-                     reviews
+                     Reviews
                   </button>
                   <button
                      className={filter === 'routes' ? styles.active : ''}
@@ -247,7 +247,7 @@ function BlogCategory1({ style }) {
                      className={filter === 'travel' ? styles.active : ''}
                      onClick={() => filter !== 'travel' && handleFilter('travel')}
                   >
-                     travel
+                     Travel
                   </button>
                </div>
 

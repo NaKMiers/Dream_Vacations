@@ -658,6 +658,7 @@ const initState = {
          likes: 0,
       },
 
+      // travel highlights
       {
          id: 39,
          image: highlightThumb1,
@@ -670,6 +671,7 @@ const initState = {
          comments: 2,
          likes: 0,
          styles: {},
+         categories: ['argentina', 'europe'],
          type: 1,
       },
       {
@@ -684,6 +686,7 @@ const initState = {
          comments: 2,
          likes: 0,
          styles: {},
+         categories: ['argentina', 'brazil'],
          type: 1,
       },
       {
@@ -698,6 +701,7 @@ const initState = {
          comments: 2,
          likes: 0,
          styles: {},
+         categories: ['brazil', 'europe'],
          type: 1,
       },
       {
@@ -712,6 +716,7 @@ const initState = {
          comments: 2,
          likes: 0,
          styles: {},
+         categories: ['brazil', 'mexico'],
          type: 1,
       },
       {
@@ -726,6 +731,7 @@ const initState = {
          comments: 2,
          likes: 0,
          styles: {},
+         categories: ['argentina', 'mexico'],
          type: 1,
       },
       {
@@ -740,6 +746,7 @@ const initState = {
          comments: 2,
          likes: 0,
          styles: {},
+         categories: ['europe', 'mexico'],
          type: 1,
       },
       {
@@ -754,6 +761,7 @@ const initState = {
          comments: 2,
          likes: 0,
          styles: {},
+         categories: ['mexico'],
          type: 1,
       },
       {
@@ -768,9 +776,11 @@ const initState = {
          comments: 2,
          likes: 0,
          styles: {},
+         categories: ['argentina', 'brazil', 'mexico'],
          type: 1,
       },
 
+      // moreBlogsByAuthor
       {
          id: 47,
          image: blogThumb25,

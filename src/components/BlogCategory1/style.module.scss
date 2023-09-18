@@ -111,7 +111,7 @@
       }
 
       &:hover {
-         color: #000;
+         color: var(--secondary);
       }
    }
 }
@@ -128,9 +128,9 @@
       margin: 0 10px 10px 0;
       border-radius: 16px;
 
-      font-size: 14px;
+      font-size: 16px;
+      font-family: 'Source Sans Pro', sans-serif;
       font-weight: 300;
-      text-transform: uppercase;
 
       background: #f0f3f2;
       transition: all var(--standard-duration) ease-in-out;
