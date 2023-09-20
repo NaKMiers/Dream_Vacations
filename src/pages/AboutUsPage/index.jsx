@@ -11,6 +11,7 @@ import AuthorReviews from '../../components/AuthorReviews'
 import visionThumbnail1 from '../../assets/images/visionThumbnail1.jpg'
 import visionThumbnail2 from '../../assets/images/visionThumbnail2.jpg'
 import aboutBanner1 from '../../assets/images/aboutBanner1.jpg'
+import aboutImage from '../../assets/images/aboutImage.jpg'
 
 const moduleData = [
    {
@@ -77,7 +78,16 @@ function AboutUsPage() {
             subTitle='«Travel is the healthiest addiction»'
             background={aboutBanner1}
          />
-         <Greeting />
+         <Greeting
+            type='about'
+            title='Welcome to TheGem Travel Blog'
+            behindTitle='Welcome'
+            contents={[
+               'Our goal at Vacations & Travel TheGem Blog is to connect our readers and audience with the vast amount of travel destinations throughout our wonderful planet.',
+               'Our mission is to inspire people to discover unique locations and show them ways to plan and book their dream vacation. Established in 2000, Vacations & Travel magazine is highly respected and the longest-running quarterly travel blog title.',
+            ]}
+            images={[aboutImage]}
+         />
          <Stats />
          <OurAbout
             title='Our Mission'

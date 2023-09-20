@@ -1,13 +1,15 @@
-import { faChevronLeft, faChevronRight, faEllipsis } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { memo, useCallback, useEffect, useRef, useState } from 'react'
-import { useSelector } from 'react-redux'
-import BlogType2 from '../../components/BlogType2'
 import styles from './style.module.scss'
+import podcastFeedBackground from '../../assets/images/podcastFeedBackground.jpg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEllipsis } from '@fortawesome/free-solid-svg-icons'
+import { useSelector } from 'react-redux'
 
-function BlogCategory1({ style }) {
-   const { blogs, travelBlogs } = useSelector(state => state.blogs)
-   let initialData = travelBlogs.map(id => blogs.find(blog => blog.id === id))
+import PodcastItem from '../../components/LatestPodcast/PodcastItem'
+
+function PodcastFeed() {
+   const { podcasts, podcastFeeds } = useSelector(state => state.podcasts)
+   let initialData = podcastFeeds.map(id => podcasts.find(podcast => podcast.id === id))
    initialData.sort((a, b) => {
       return a.createdAt < b.createdAt ? -1 : a.createdAt > b.createdAt ? 1 : 0
    })
@@ -21,45 +23,47 @@ function BlogCategory1({ style }) {
    const itemPerPage = 8
    const [numberOfPage, setNumberOfPage] = useState(Math.ceil(initialData.length / itemPerPage))
 
-   const [data, setData] = useState(initialData.slice((page - 1) * itemPerPage, page * itemPerPage))
+   const [data, setData] = useState(initialData.slice(0, page * itemPerPage))
 
+   // refs
    const filterWrapRef = useRef(null)
-   const blogWrapperRef = useRef(null)
+   const podcastWrapperRef = useRef(null)
    const interval = useRef(undefined)
 
-   // show on scroll
+   // appear animation on scroll
    const handleScroll = useCallback(() => {
-      // console.log('handleScroll')
-      if (blogWrapperRef.current) {
-         const elements = [...blogWrapperRef.current.children, filterWrapRef.current]
-         let delay = 0.2
+      if (podcastWrapperRef.current && filterWrapRef.current) {
+         const elements = [filterWrapRef.current, ...podcastWrapperRef.current.children]
+
+         // 1
+         let delay = 0
          elements.forEach(e => {
             const top = e.getBoundingClientRect().top
             const bottom = e.getBoundingClientRect().bottom
-            e.style.opacity = 0
 
-            if (top < window.innerHeight && bottom > 0 && !e.className.includes(styles.appeared)) {
+            if (top < window.innerHeight && bottom > 0) {
                e.style.animation = `floatUp 0.6s ease-in-out ${delay}s forwards`
                e.classList.add(styles.appeared)
-               delay += 0.2
+               delay += 0.1
             }
          })
 
-         // remove event listener after all showed
+         // remove event when all are appeared
          let countAppeared = 0
          elements.forEach(e => {
             if (e.className.includes(styles.appeared)) {
                countAppeared++
             }
          })
-         if (countAppeared === elements.length) {
-            console.log('removed---BlogCategory1')
+
+         if (countAppeared === initialData.length + 1) {
+            console.log('remove---PodcastFeed')
             window.removeEventListener('scroll', handleScroll)
          }
       }
-   }, [])
+   }, [initialData.length])
 
-   // show on scroll
+   // appear animation on scroll
    useEffect(() => {
       handleScroll()
       window.addEventListener('scroll', handleScroll)
@@ -71,8 +75,8 @@ function BlogCategory1({ style }) {
 
    // clear animation appear
    const handleClearAnimation = useCallback(() => {
-      if (blogWrapperRef.current) {
-         const elements = [...blogWrapperRef.current.children]
+      if (podcastWrapperRef.current) {
+         const elements = [...podcastWrapperRef.current.children]
          elements.forEach(e => {
             e.classList.remove(styles.appeared)
             e.style.animation = 'none'
@@ -91,24 +95,25 @@ function BlogCategory1({ style }) {
          interval.current = setInterval(() => {
             handleScroll()
          }, 300)
+         setPage(1)
 
          switch (type) {
             case 'all':
-               setData(initialData)
-               setNumberOfPage(Math.ceil(initialData.length / itemPerPage))
                setFilter(type)
+               setNumberOfPage(Math.ceil(initialData.length / itemPerPage))
+               setData(initialData.slice(0, itemPerPage))
                break
 
             default:
                console.log(initialData)
-               const newData = initialData.filter(blog => {
+               let newData = initialData.filter(blog => {
                   console.log('blog: ', blog.categories, type)
                   return blog.categories.includes(type)
                })
-               console.log(newData)
-               setData(newData)
-               setNumberOfPage(Math.ceil(newData.length / itemPerPage))
+               console.log('infilter newData: ', newData)
                setFilter(type)
+               setNumberOfPage(Math.ceil(newData.length / itemPerPage))
+               setData(newData.slice(0, itemPerPage))
          }
       },
       [handleClearAnimation, handleScroll, initialData]
@@ -158,25 +163,29 @@ function BlogCategory1({ style }) {
       [data, handleClearAnimation, handleScroll]
    )
 
-   // handle change page
-   const handleChangePage = useCallback(
-      page => {
-         clearInterval(interval.current)
-         handleClearAnimation()
-         // clear undefine animation delay
-         interval.current = setInterval(() => {
-            handleScroll()
-         }, 300)
+   // handle load more
+   const handleLoadMore = useCallback(() => {
+      let newData = initialData
+      if (filter !== 'all') {
+         newData = initialData.filter(blog => {
+            return blog.categories.includes(filter)
+         })
+      }
 
-         const dataPage = initialData.slice((page - 1) * itemPerPage, page * itemPerPage)
-         setData(dataPage)
-         setPage(page)
-      },
-      [initialData, handleClearAnimation, handleScroll]
-   )
+      const dataPage = newData.slice(0, (page + 1) * itemPerPage)
+      setData(dataPage)
+      setPage(page + 1)
+
+      setTimeout(() => {
+         handleScroll()
+      }, 0)
+   }, [initialData, page, filter, handleScroll])
 
    return (
-      <section className={styles.BlogCategory1} style={style}>
+      <section
+         className={styles.PodcastFeed}
+         style={{ background: `url(${podcastFeedBackground}) no-repeat center / cover` }}
+      >
          <div className={`${styles.container} container`}>
             <div className={styles.filterWrap} ref={filterWrapRef}>
                <div className={styles.filterMenuBtn} onClick={() => setOpenFilter(!openFilter)}>
@@ -193,28 +202,22 @@ function BlogCategory1({ style }) {
                      All
                   </li>
                   <li
-                     className={`${filter === 'active' ? styles.active : ''}`}
-                     onClick={() => filter !== 'active' && handleFilter('active')}
+                     className={`${filter === 'adventure' ? styles.active : ''}`}
+                     onClick={() => filter !== 'adventure' && handleFilter('adventure')}
                   >
-                     Active
+                     Adventure
                   </li>
                   <li
-                     className={`${filter === 'reviews' ? styles.active : ''}`}
-                     onClick={() => filter !== 'reviews' && handleFilter('reviews')}
+                     className={`${filter === 'cruise' ? styles.active : ''}`}
+                     onClick={() => filter !== 'cruise' && handleFilter('cruise')}
                   >
-                     Reviews
+                     Cruise
                   </li>
                   <li
-                     className={`${filter === 'routes' ? styles.active : ''}`}
-                     onClick={() => filter !== 'routes' && handleFilter('routes')}
+                     className={`${filter === 'diving' ? styles.active : ''}`}
+                     onClick={() => filter !== 'diving' && handleFilter('diving')}
                   >
-                     Routes
-                  </li>
-                  <li
-                     className={`${filter === 'travel' ? styles.active : ''}`}
-                     onClick={() => filter !== 'travel' && handleFilter('travel')}
-                  >
-                     Travel
+                     Diving
                   </li>
                </ul>
 
@@ -226,28 +229,22 @@ function BlogCategory1({ style }) {
                      All
                   </button>
                   <button
-                     className={filter === 'active' ? styles.active : ''}
-                     onClick={() => filter !== 'active' && handleFilter('active')}
+                     className={filter === 'adventure' ? styles.active : ''}
+                     onClick={() => filter !== 'adventure' && handleFilter('adventure')}
                   >
-                     Active
+                     Adventure
                   </button>
                   <button
-                     className={filter === 'reviews' ? styles.active : ''}
-                     onClick={() => filter !== 'reviews' && handleFilter('reviews')}
+                     className={filter === 'cruise' ? styles.active : ''}
+                     onClick={() => filter !== 'cruise' && handleFilter('cruise')}
                   >
-                     Reviews
+                     Cruise
                   </button>
                   <button
-                     className={filter === 'routes' ? styles.active : ''}
-                     onClick={() => filter !== 'routes' && handleFilter('routes')}
+                     className={filter === 'diving' ? styles.active : ''}
+                     onClick={() => filter !== 'diving' && handleFilter('diving')}
                   >
-                     routes
-                  </button>
-                  <button
-                     className={filter === 'travel' ? styles.active : ''}
-                     onClick={() => filter !== 'travel' && handleFilter('travel')}
-                  >
-                     Travel
+                     Diving
                   </button>
                </div>
 
@@ -281,41 +278,15 @@ function BlogCategory1({ style }) {
                </div>
             </div>
 
-            <div className={styles.blogWrapper} ref={blogWrapperRef}>
-               {data.map(blog => (
-                  <BlogType2 data={blog} key={blog.id} />
+            <div className={styles.podcastWrapper} ref={podcastWrapperRef}>
+               {data.map((podcast, index) => (
+                  <PodcastItem data={podcast} type2 key={index} />
                ))}
             </div>
 
-            {numberOfPage > 1 && (
-               <div className={styles.pagination}>
-                  {page !== 1 && (
-                     <button
-                        className={`${styles.pageBtn} ${styles.prev}`}
-                        onClick={() => handleChangePage(page - 1)}
-                     >
-                        <FontAwesomeIcon icon={faChevronLeft} />
-                     </button>
-                  )}
-
-                  {[...Array.from({ length: numberOfPage })].map((_, index) => (
-                     <button
-                        key={index}
-                        className={`${styles.pageBtn} ${page === index + 1 ? styles.active : ''}`}
-                        onClick={() => handleChangePage(index + 1)}
-                     >
-                        {index + 1}
-                     </button>
-                  ))}
-
-                  {page !== numberOfPage && (
-                     <button
-                        className={`${styles.pageBtn} ${styles.next}`}
-                        onClick={() => handleChangePage(page + 1)}
-                     >
-                        <FontAwesomeIcon icon={faChevronRight} />
-                     </button>
-                  )}
+            {numberOfPage > 1 && page !== numberOfPage && (
+               <div className={styles.buttonWrap}>
+                  <button onClick={handleLoadMore}>Load More</button>
                </div>
             )}
          </div>
@@ -323,4 +294,4 @@ function BlogCategory1({ style }) {
    )
 }
 
-export default memo(BlogCategory1)
+export default memo(PodcastFeed)

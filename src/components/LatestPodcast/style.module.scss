@@ -11,6 +11,7 @@
 .podcastItem {
    width: calc(100% / 3);
    padding: 21px;
+   opacity: 0; // for appear
    // background: beige;
 
    // mobile extra-large
@@ -22,9 +23,19 @@
    @media (max-width: 548px) {
       width: 100%;
    }
+
+   &.type2 {
+      width: 50%;
+
+      // mobile medium
+      @media (max-width: 548px) {
+         width: 100%;
+      }
+   }
 }
 
 .podcastItemWrap {
+   position: relative;
    width: 100%;
    // background: #333;
 
@@ -42,8 +53,12 @@
    justify-content: space-between;
    align-items: center;
    padding: 0 10px;
-   background: #46485c;
    user-select: none;
+   background: #46485c;
+
+   &.type2 {
+      background: #e3ebe8;
+   }
 
    & > .controlBtn {
       position: relative;
@@ -160,14 +175,31 @@
 
 .podcastBody {
    padding: 35px 38px;
-   background: #2e313b;
    transition: var(--standard-duration) ease-in-out;
+   background: #2e313b;
+
+   &.type2 {
+      background: #fff;
+      padding: 35px 38px 60px;
+
+      & > .author {
+         color: var(--secondary);
+      }
+
+      & > .title {
+         color: var(--secondary);
+      }
+
+      & > .desc {
+         display: none;
+      }
+   }
 
    & > .author {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
 
       // background: cyan;
       padding-bottom: 17px;
@@ -181,6 +213,7 @@
       & > .avatar {
          width: 20px;
          height: 20px;
+         margin-right: 3px;
 
          & > img {
             display: block;
@@ -212,5 +245,38 @@
       line-height: 25px;
       color: #5f727f;
       // background-color: cyan;
+   }
+}
+
+.postMetaBar {
+   position: absolute;
+   left: 0;
+   right: 0;
+   bottom: 8px;
+
+   display: flex;
+   gap: 8px;
+   padding: 0 15px;
+   // background: beige;
+
+   & > .postMetaItem {
+      display: flex;
+      align-items: center;
+      color: #57737f;
+
+      & > .icon {
+         font-size: 13px;
+         cursor: pointer;
+      }
+
+      & > span {
+         margin-left: 6px;
+         font-size: 14px;
+         font-family: 'Source Sans Pro', sans-serif;
+      }
+
+      &.shareItem {
+         margin-left: auto;
+      }
    }
 }

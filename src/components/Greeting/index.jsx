@@ -1,8 +1,9 @@
 import React, { memo, useCallback, useEffect, useRef } from 'react'
 import styles from './style.module.scss'
-import aboutImage from '../../assets/images/aboutImage.jpg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheck } from '@fortawesome/free-solid-svg-icons'
 
-function Greeting() {
+function Greeting({ type, title, behindTitle, contents, images, checkList }) {
    const containerRef = useRef(null)
 
    // appear animation on scroll
@@ -45,28 +46,54 @@ function Greeting() {
       }
    }, [handleScroll])
 
+   // split checkList into chunks
+   const chunkArray = (inputArray, chunkSize) => {
+      const result = []
+      for (let i = 0; i < inputArray.length; i += chunkSize) {
+         result.push(inputArray.slice(i, i + chunkSize))
+      }
+      return result
+   }
+
    return (
-      <section className={styles.Greeting}>
-         <div className={`${styles.container} container`} ref={containerRef}>
+      <section className={`${styles.Greeting} ${type === 'podcast' ? styles.podcast : ''}`}>
+         <div
+            className={`${styles.container} ${type === 'podcast' ? styles.podcast : ''} container`}
+            ref={containerRef}
+         >
             <div className={styles.title}>
-               <h1>Welcome to TheGem Travel Blog</h1>
-               <span className={styles.textBackground}>Welcome</span>
+               <h1>{title}</h1>
+               <span className={styles.textBackground}>{behindTitle}</span>
             </div>
 
-            <p className={styles.paragraph}>
-               Our goal at Vacations & Travel TheGem Blog is to connect our readers and audience with the
-               vast amount of travel destinations throughout our wonderful planet.
-            </p>
+            {contents?.map((content, index) => (
+               <p key={index} className={styles.paragraph}>
+                  {content}
+               </p>
+            ))}
 
-            <p className={styles.paragraph}>
-               Our mission is to inspire people to discover unique locations and show them ways to plan
-               and book their dream vacation. Established in 2000, Vacations & Travel magazine is highly
-               respected and the longest-running quarterly travel blog title.
-            </p>
+            {images?.map((image, index) => (
+               <div key={index} className={styles.image}>
+                  <img src={image} alt='about' />
+               </div>
+            ))}
 
-            <div className={styles.image}>
-               <img src={aboutImage} alt='about' />
-            </div>
+            {checkList && (
+               <div className={styles.checkList}>
+                  {chunkArray(checkList, 5).map((chunk, index) => (
+                     <ul key={index} className={styles.separatedCheckList}>
+                        {chunk.map((item, index) => (
+                           <li key={index} className={styles.checkItem}>
+                              <div className={styles.icon}>
+                                 <FontAwesomeIcon icon={faCheck} />
+                              </div>
+                              <span>{item}</span>
+                           </li>
+                        ))}
+                     </ul>
+                  ))}
+               </div>
+            )}
          </div>
       </section>
    )

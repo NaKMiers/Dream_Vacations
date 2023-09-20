@@ -1,0 +1,233 @@
+.PodcastFeed {
+   overflow: hidden;
+}
+
+.container {
+   padding: 265px 21px 110px;
+}
+
+.filterWrap {
+   position: relative;
+   z-index: 1;
+
+   display: flex;
+   margin-bottom: 55px;
+   // background: cyan;
+
+   // mobile
+   @media (max-width: 768px) {
+      display: flex;
+      align-items: center;
+      height: 60px;
+      margin-bottom: 0;
+
+      & > .filterLeft,
+      & > .filterRight {
+         display: none;
+      }
+
+      & > .filterMenuBtn,
+      & > .filterMenu {
+         display: block;
+      }
+   }
+}
+
+.filterMenuBtn {
+   display: none;
+   width: 32px;
+   margin: 2px 0;
+
+   line-height: 32px;
+   font-size: 32px;
+   text-align: center;
+   color: #bbb;
+
+   user-select: none;
+   cursor: pointer;
+   // background: beige;
+}
+
+.filterMenu {
+   position: absolute;
+   top: calc(100% - 13px);
+   left: 0;
+   z-index: 2;
+   overflow: hidden;
+
+   display: none;
+   width: 100%;
+   max-height: 0;
+   // padding: 0 21px;
+   transition: 0.5s ease-in-out;
+   // background-color: #eee;
+
+   &.show {
+      max-height: 100vh;
+   }
+
+   & > li {
+      position: relative;
+      padding: 14px 34px 17px;
+      border: 1px solid #dfe5e8;
+
+      font-size: 16px;
+      font-family: 'Source Sans Pro', sans-serif;
+      line-height: 20px;
+      word-wrap: break-word;
+
+      color: #5f728f;
+      background: #f4f6f7;
+
+      user-select: none;
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+
+      &.active {
+         background: #fff;
+         color: #3c3950;
+
+         &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 5px;
+            background: var(--primary);
+         }
+      }
+
+      &:hover {
+         color: var(--secondary);
+      }
+   }
+}
+
+.filterLeft {
+   flex: 1;
+   display: flex;
+   flex-wrap: wrap;
+   // background: bisque;
+
+   & > button {
+      height: 30px;
+      padding: 0 28.5px;
+      margin: 0 10px 10px 0;
+      border-radius: 16px;
+
+      font-size: 16px;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-weight: 300;
+
+      color: #fff;
+      background: #3b384f;
+      transition: all var(--standard-duration) ease-in-out;
+
+      &:hover {
+         background: var(--primary);
+         color: #fff;
+      }
+
+      &.active {
+         background: var(--primary);
+         color: #fff;
+      }
+   }
+}
+
+.filterRight {
+   min-width: 31%;
+   display: flex;
+   justify-content: flex-end;
+   // background: #eee;
+   color: #fff;
+
+   & > .sort {
+      display: flex;
+      align-items: center;
+      height: 30px;
+      cursor: pointer;
+      // background: cyan;
+
+      & > span {
+         font-size: 14px;
+         font-weight: 300;
+         text-transform: uppercase;
+         color: var(--text-secondary);
+      }
+
+      & > .switchBtn {
+         position: relative;
+         width: 40px;
+         height: 24px;
+
+         margin: 0 8px;
+         border-radius: 16px;
+
+         background-color: #3b384f;
+
+         & > div {
+            position: absolute;
+            top: 50%;
+            left: 12px;
+            transform: translate(-50%, -50%);
+
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+
+            background: #fff;
+            transition: all var(--standard-duration) ease-in-out;
+
+            &.active {
+               left: calc(100% - 12px);
+            }
+         }
+      }
+   }
+
+   & > .separate {
+      width: 1px;
+      height: 30px;
+      margin: 0 20px;
+      background: #ccc;
+   }
+}
+
+//
+.podcastWrapper {
+   display: flex;
+   flex-wrap: wrap;
+   margin: -21px -21px 0;
+   // background: blueviolet;
+}
+
+.buttonWrap {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   // background: #000;
+
+   & > button {
+      height: 50px;
+      border: 1px solid #fff;
+      border-radius: 24px;
+      padding: 0 25px;
+      margin: 30px 0;
+
+      font-size: 21px;
+      font-weight: 300;
+      font-family: 'Source Sans Pro', sans-serif;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+
+      transition: 0.2s ease-in-out;
+
+      &:hover {
+         color: var(--secondary);
+         background: #fff;
+      }
+   }
+}

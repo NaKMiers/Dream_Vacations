@@ -1,14 +1,13 @@
 import { faPauseCircle, faPlayCircle } from '@fortawesome/free-regular-svg-icons'
+import { faCommentAlt, faHeart, faShareAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { memo, useCallback, useEffect, useRef, useState } from 'react'
-import avatar from '../../assets/images/authorAvt1.jpeg'
-import styles from './style.module.scss'
-import podcast1 from '../../assets/audios/letme.mp3'
+import { Link } from 'react-router-dom'
 import speakerIcon from '../../assets/icons/speakerIcon.png'
 import muteIcon from '../../assets/icons/speakerMuteIcon.png'
-import { Link } from 'react-router-dom'
+import styles from './style.module.scss'
 
-function PostcastItem() {
+function PostcastItem({ data, type2 }) {
    const [play, setPlay] = useState(false)
    const [curTime, setCurTime] = useState(0)
    const [time, setTime] = useState('00:00')
@@ -104,11 +103,11 @@ function PostcastItem() {
    }, [])
 
    return (
-      <div className={styles.podcastItem}>
-         <audio src={podcast1} ref={audioRef} type='audio/mpeg' onTimeUpdate={handleTimeUpdate} />
+      <div className={`${styles.podcastItem} ${type2 ? styles.type2 : ''}`}>
+         <audio src={data.audio} ref={audioRef} type='audio/mpeg' onTimeUpdate={handleTimeUpdate} />
 
          <div className={styles.podcastItemWrap}>
-            <div className={styles.podcastControls}>
+            <div className={`${styles.podcastControls} ${type2 ? styles.type2 : ''}`}>
                <div className={`${styles.controlBtn} ${styles.playBtn}`}>
                   <div className={styles.icon} onClick={handlePlayPause}>
                      <FontAwesomeIcon icon={play ? faPauseCircle : faPlayCircle} />
@@ -147,24 +146,43 @@ function PostcastItem() {
                </div>
             </div>
 
-            <div className={styles.podcastBody}>
+            <div className={`${styles.podcastBody} ${type2 ? styles.type2 : ''}`}>
                <div className={styles.author}>
                   <div className={styles.avatar}>
-                     <img src={avatar} alt='avatar' />
+                     <img src={data.avatar} alt='avatar' />
                   </div>
-                  <span className={styles.name}>By Nathan Matthews</span> -
-                  <span className={styles.date}>October 8, 2020</span>
+                  <span className={styles.name}>By {data.author}</span> -
+                  <span className={styles.date}>{data.date}</span>
                </div>
 
                <h4 className={styles.title}>
-                  <Link to='/blogs/1'>How to use less plastic in trip</Link>
+                  <Link to='/blogs/1'>{data.title}</Link>
                </h4>
 
-               <p className={styles.desc}>
-                  Lorem ipsum dolor sit amet, consectetur loerm adipisicing elit, sed do eiusmod tempor
-                  incididunt ut labore et dolore…
-               </p>
+               <p className={styles.desc}>{data.desc}</p>
             </div>
+
+            {type2 && (
+               <div className={styles.postMetaBar}>
+                  <div className={styles.postMetaItem}>
+                     <div className={styles.icon}>
+                        <FontAwesomeIcon icon={faCommentAlt} />
+                     </div>
+                     <span>{data.comments}</span>
+                  </div>
+                  <div className={styles.postMetaItem}>
+                     <div className={styles.icon}>
+                        <FontAwesomeIcon icon={faHeart} />
+                     </div>
+                     <span>{data.likes}</span>
+                  </div>
+                  <div className={`${styles.postMetaItem} ${styles.shareItem}`}>
+                     <div className={styles.icon}>
+                        <FontAwesomeIcon icon={faShareAlt} />
+                     </div>
+                  </div>
+               </div>
+            )}
          </div>
       </div>
    )

@@ -1,10 +1,15 @@
 import React, { memo, useCallback, useEffect, useRef } from 'react'
 import podcastBackground from '../../assets/images/podcastBackground.jpg'
 import SeparatorTitle from '../SeparatorTitle'
-import PostcastItem from './postcastItem'
+import PodcastItem from './PodcastItem'
 import styles from './style.module.scss'
+import { useSelector } from 'react-redux'
 
 function LatestPodcast() {
+   const { podcasts, latestPodcasts } = useSelector(state => state.podcasts)
+   const data = latestPodcasts.map(id => podcasts.find(podcast => podcast.id === id))
+
+   // refs
    const podcastWrapperRef = useRef(null)
 
    // appear animation on scroll
@@ -56,9 +61,9 @@ function LatestPodcast() {
 
          <div className={`${styles.container} container`}>
             <div className={styles.podcastWrapper} ref={podcastWrapperRef}>
-               <PostcastItem />
-               <PostcastItem />
-               <PostcastItem />
+               {data.map(podcast => (
+                  <PodcastItem data={podcast} key={podcast.id} />
+               ))}
             </div>
          </div>
       </section>
