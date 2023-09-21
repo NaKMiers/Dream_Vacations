@@ -7,7 +7,7 @@ import speakerIcon from '../../assets/icons/speakerIcon.png'
 import muteIcon from '../../assets/icons/speakerMuteIcon.png'
 import styles from './style.module.scss'
 
-function PostcastItem({ data, type2 }) {
+function PostcastItem({ data, type }) {
    const [play, setPlay] = useState(false)
    const [curTime, setCurTime] = useState(0)
    const [time, setTime] = useState('00:00')
@@ -103,11 +103,15 @@ function PostcastItem({ data, type2 }) {
    }, [])
 
    return (
-      <div className={`${styles.podcastItem} ${type2 ? styles.type2 : ''}`}>
+      <div
+         className={`${styles.podcastItem} ${type === 2 ? styles.type2 : ''} ${
+            type === 3 ? styles.type3 : ''
+         }`}
+      >
          <audio src={data.audio} ref={audioRef} type='audio/mpeg' onTimeUpdate={handleTimeUpdate} />
 
          <div className={styles.podcastItemWrap}>
-            <div className={`${styles.podcastControls} ${type2 ? styles.type2 : ''}`}>
+            <div className={`${styles.podcastControls} ${type === 2 ? styles.type2 : ''}`}>
                <div className={`${styles.controlBtn} ${styles.playBtn}`}>
                   <div className={styles.icon} onClick={handlePlayPause}>
                      <FontAwesomeIcon icon={play ? faPauseCircle : faPlayCircle} />
@@ -146,7 +150,7 @@ function PostcastItem({ data, type2 }) {
                </div>
             </div>
 
-            <div className={`${styles.podcastBody} ${type2 ? styles.type2 : ''}`}>
+            <div className={`${styles.podcastBody} ${type === 2 ? styles.type2 : ''}`}>
                <div className={styles.author}>
                   <div className={styles.avatar}>
                      <img src={data.avatar} alt='avatar' />
@@ -162,7 +166,7 @@ function PostcastItem({ data, type2 }) {
                <p className={styles.desc}>{data.desc}</p>
             </div>
 
-            {type2 && (
+            {type === 2 && (
                <div className={styles.postMetaBar}>
                   <div className={styles.postMetaItem}>
                      <div className={styles.icon}>

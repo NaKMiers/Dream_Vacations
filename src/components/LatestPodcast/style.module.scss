@@ -11,7 +11,7 @@
 .podcastItem {
    width: calc(100% / 3);
    padding: 21px;
-   opacity: 0; // for appear
+   // opacity: 0; // for appear
    // background: beige;
 
    // mobile extra-large
@@ -24,7 +24,8 @@
       width: 100%;
    }
 
-   &.type2 {
+   &.type2,
+   &.type3 {
       width: 50%;
 
       // mobile medium

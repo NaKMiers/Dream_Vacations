@@ -280,7 +280,7 @@ function PodcastFeed() {
 
             <div className={styles.podcastWrapper} ref={podcastWrapperRef}>
                {data.map((podcast, index) => (
-                  <PodcastItem data={podcast} type2 key={index} />
+                  <PodcastItem data={podcast} type={2} key={index} />
                ))}
             </div>
 

@@ -5,6 +5,7 @@ import podcastBanner from '../../assets/images/podcastBanner.jpg'
 import Greeting from '../../components/Greeting'
 import PodcastFeed from '../../components/PodcastFeed'
 import Subscribe2 from '../../components/Subscribe2'
+import FeaturedPodcasts from '../../components/FeaturedPodcasts'
 
 function PodcastPage() {
    return (
@@ -38,6 +39,7 @@ function PodcastPage() {
 
          <PodcastFeed />
          <Subscribe2 />
+         <FeaturedPodcasts />
       </div>
    )
 }
