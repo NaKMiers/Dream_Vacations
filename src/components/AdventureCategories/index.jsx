@@ -60,7 +60,7 @@ const categories = [
    'World',
 ]
 
-function TravelHighlights2() {
+function AdventureCategories() {
    const { blogs, blogHighlights } = useSelector(state => state.blogs)
    let initialData = blogHighlights.map(id => blogs.find(blog => blog.id === id))
 
@@ -129,7 +129,7 @@ function TravelHighlights2() {
          })
 
          if (countAppeared === postElements.length + sideElements.length) {
-            console.log('remove---TravelHighlights2')
+            console.log('remove---AdventureCategories')
             window.removeEventListener('scroll', handleScroll)
          }
       }
@@ -189,7 +189,7 @@ function TravelHighlights2() {
    )
 
    return (
-      <section className={styles.TravelHighlights}>
+      <section className={styles.AdventureCategories}>
          <div className={`${styles.container} container`}>
             <div className={styles.mainContent}>
                <div className={styles.filterMenuBtn} onClick={() => setOpenFilter(!openFilter)}>
@@ -460,4 +460,4 @@ function TravelHighlights2() {
    )
 }
 
-export default memo(TravelHighlights2)
+export default memo(AdventureCategories)

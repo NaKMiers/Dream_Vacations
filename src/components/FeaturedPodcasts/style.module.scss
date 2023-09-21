@@ -4,7 +4,7 @@
 
 .container {
    display: flex;
-   background: blueviolet;
+   // background: blueviolet;
 
    // tablet
    @media (max-width: 980px) {
@@ -18,14 +18,15 @@
    flex: 1;
    display: flex;
    flex-wrap: wrap;
-   background: beige;
+   margin-top: -21px;
+   // background: beige;
 }
 
 //
 .sideWrap {
    width: calc(100% / 3);
    padding: 0 21px;
-   background: burlywood;
+   // background: burlywood;
 
    // tablet
    @media (max-width: 980px) {
@@ -128,11 +129,11 @@
 //
 .description {
    font-size: 16px;
-   color: var(--light-gray);
+   font-family: 'Source Sans Pro', sans-serif;
    line-height: 25px;
+   color: var(--light-gray);
    margin-bottom: 50px;
-
-   background: black;
+   // background: black;
 }
 
 //
@@ -141,7 +142,7 @@
    flex-wrap: wrap;
    margin: -7.5px;
    margin-bottom: calc(50px - 7.5px);
-   background: blue;
+   // background: blue;
 
    & > .galeryItem {
       width: calc(100% / 3);
@@ -152,6 +153,18 @@
          width: 100%;
          padding-top: 100%;
          overflow: hidden;
+
+         &:hover {
+            & > .overlay {
+               background: rgba(77, 216, 225, 0.8);
+
+               & > .icon {
+                  top: 50%;
+                  transform: translate(-50%, -50%);
+                  opacity: 1;
+               }
+            }
+         }
 
          & > img {
             position: absolute;
@@ -171,18 +184,24 @@
             top: 0;
             left: 0;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
             width: 100%;
             height: 100%;
+            cursor: pointer;
 
-            background: rgba(77, 216, 225, 0.73);
+            background: rgba(77, 216, 225, 0);
+            transition: 0.4s ease-in-out;
 
             & > .icon {
+               position: absolute;
+               top: 0;
+               left: 50%;
+               transform: translate(-50%, -100%);
+               opacity: 0;
+
                font-size: 43px;
                color: #fff;
-               cursor: pointer;
+
+               transition: var(--standard-duration) ease-in-out 0.3s;
             }
          }
       }
@@ -194,8 +213,7 @@
    display: flex;
    justify-content: center;
    flex-wrap: wrap;
-
-   background: black;
+   // background: black;
 
    & > .socialItem {
       width: 32px;

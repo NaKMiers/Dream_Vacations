@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import styles from './style.module.scss'
 import WelcomeBannerLite from '../../components/WelcomeBannerLite'
 import adventureBanner from '../../assets/images/adventureBanner.jpg'
-import TravelHighlights2 from '../../components/TravelHighlights2'
+import AdventureCategories from '../../components/AdventureCategories'
 
 function AdventurePage() {
    return (
@@ -13,7 +13,7 @@ function AdventurePage() {
             background={adventureBanner}
          />
 
-         <TravelHighlights2 />
+         <AdventureCategories />
       </div>
    )
 }

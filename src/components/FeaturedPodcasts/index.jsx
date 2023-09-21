@@ -3,7 +3,7 @@ import styles from './style.module.scss'
 import SeparatorTitle from '../../components/SeparatorTitle'
 import featuredPodcastsBG from '../../assets/images/featuredPodcastsBG.jpg'
 import PodcastItem from '../../components/LatestPodcast/PodcastItem'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import authorAvt from '../../assets/images/authorAvt11.jpg'
 import facebook from '../../assets/icons/facebook-color.png'
 import twitter from '../../assets/icons/twitter-color.png'
@@ -21,10 +21,13 @@ import galery5 from '../../assets/images/galeryItem2.jpg'
 import galery6 from '../../assets/images/editorPickedImage8.jpg'
 import galery7 from '../../assets/images/editorPickedImage7.jpg'
 import galery8 from '../../assets/images/blogThumb28.jpg'
+import galery9 from '../../assets/images/blogThumb26.jpg'
+import actions from '../../actions'
 
-const galeries = [galery1, galery2, galery3, galery4, galery5, galery6, galery7, galery8]
+const galeries = [galery1, galery2, galery3, galery4, galery5, galery6, galery7, galery8, galery9]
 
 function FeaturedPodcasts() {
+   const dispatch = useDispatch()
    const { podcasts, featuredPodcasts } = useSelector(state => state.podcasts)
    const data = featuredPodcasts.map(id => podcasts.find(podcast => podcast.id === id))
 
@@ -79,7 +82,7 @@ function FeaturedPodcasts() {
       >
          <SeparatorTitle
             title='The Best Author This Week'
-            style={{ marginBottom: 30, paddingTop: 80 }}
+            style={{ marginBottom: 60, paddingTop: 80 }}
          />
 
          <div className={`${styles.container} container`}>
@@ -143,7 +146,13 @@ function FeaturedPodcasts() {
                <div className={styles.galeryWrap}>
                   {galeries.map((galery, index) => (
                      <div className={styles.galeryItem} key={index}>
-                        <div className={styles.galeryContainer}>
+                        <div
+                           className={styles.galeryContainer}
+                           onClick={() => {
+                              dispatch(actions.reviewImage(galery))
+                              dispatch(actions.reviewImages(galeries))
+                           }}
+                        >
                            <img src={galery} alt='thumbnail' />
 
                            <div className={styles.overlay}>
