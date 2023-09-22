@@ -1,5 +1,5 @@
 import { faPauseCircle, faPlayCircle } from '@fortawesome/free-regular-svg-icons'
-import { faCommentAlt, faHeart, faShareAlt } from '@fortawesome/free-solid-svg-icons'
+import { faComment, faCommentAlt, faHeart, faShareAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { memo, useCallback, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
@@ -106,12 +106,16 @@ function PostcastItem({ data, type }) {
       <div
          className={`${styles.podcastItem} ${type === 2 ? styles.type2 : ''} ${
             type === 3 ? styles.type3 : ''
-         }`}
+         } ${type === 4 ? styles.type4 : ''}`}
       >
          <audio src={data.audio} ref={audioRef} type='audio/mpeg' onTimeUpdate={handleTimeUpdate} />
 
          <div className={styles.podcastItemWrap}>
-            <div className={`${styles.podcastControls} ${type === 2 ? styles.type2 : ''}`}>
+            <div
+               className={`${styles.podcastControls} ${type === 2 ? styles.type2 : ''} ${
+                  type === 4 ? styles.type4 : ''
+               }`}
+            >
                <div className={`${styles.controlBtn} ${styles.playBtn}`}>
                   <div className={styles.icon} onClick={handlePlayPause}>
                      <FontAwesomeIcon icon={play ? faPauseCircle : faPlayCircle} />
@@ -150,20 +154,64 @@ function PostcastItem({ data, type }) {
                </div>
             </div>
 
-            <div className={`${styles.podcastBody} ${type === 2 ? styles.type2 : ''}`}>
-               <div className={styles.author}>
-                  <div className={styles.avatar}>
-                     <img src={data.avatar} alt='avatar' />
+            <div
+               className={`${styles.podcastBody} ${type === 2 ? styles.type2 : ''} ${
+                  type === 4 ? styles.type4 : ''
+               }`}
+            >
+               {type === 4 ? (
+                  <div className={styles.postMeta}>
+                     <div className={styles.postMetaLeft}>
+                        <span className={styles.authorName}>By {data.author}</span>
+                        {data?.categories.map((category, index) => (
+                           <React.Fragment key={index}>
+                              <div className={styles.sep} />
+                              <a href={`/blogs/categories/${category}`} className={styles.category}>
+                                 {category}
+                              </a>
+                           </React.Fragment>
+                        ))}
+                     </div>
+                     <div className={styles.postMetaRight}>
+                        <div className={`${styles.postMetaLink} ${styles.comment}`}>
+                           <div className={styles.icon}>
+                              <FontAwesomeIcon icon={faComment} />
+                           </div>
+                           <span>2</span>
+                        </div>
+                        <div className={styles.sep} />
+                        <div className={`${styles.postMetaLink} ${styles.heart}`}>
+                           <div className={styles.icon}>
+                              <FontAwesomeIcon icon={faHeart} />
+                           </div>
+                           <span>0</span>
+                        </div>
+                     </div>
                   </div>
-                  <span className={styles.name}>By {data.author}</span> -
-                  <span className={styles.date}>{data.date}</span>
-               </div>
+               ) : (
+                  <div className={styles.author}>
+                     <div className={styles.avatar}>
+                        <img src={data.avatar} alt='avatar' />
+                     </div>
+                     <span className={styles.name}>By {data.author}</span> -
+                     <span className={styles.date}>{data.date}</span>
+                  </div>
+               )}
 
                <h4 className={styles.title}>
                   <Link to='/blogs/1'>{data.title}</Link>
                </h4>
 
                <p className={styles.desc}>{data.desc}</p>
+
+               {type === 4 && (
+                  <div className={styles.postFooter}>
+                     <button className={styles.shareBtn}>
+                        <FontAwesomeIcon icon={faShareAlt} />
+                     </button>
+                     <button className={styles.readMoreBtn}>Read More</button>
+                  </div>
+               )}
             </div>
 
             {type === 2 && (

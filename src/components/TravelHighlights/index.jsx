@@ -133,6 +133,7 @@ function TravelHighlights() {
             </div>
 
             <div className={styles.sideContent} ref={sideContent}>
+               {/* Text box */}
                <div className={styles.textBox}>
                   <h4>
                      <span>Take only memories,</span>
@@ -144,6 +145,7 @@ function TravelHighlights() {
                   <span>Evelyn Snyder</span>
                </div>
 
+               {/* Recent Posts */}
                <h4 className={styles.title}>Recent Posts</h4>
                <div className={styles.recentPostWrap}>
                   <div className={styles.recentPostItem}>
@@ -184,6 +186,7 @@ function TravelHighlights() {
                   </div>
                </div>
 
+               {/* Flickr Feed */}
                <h4 className={styles.title}>Flickr Feed</h4>
                <div className={styles.flickrFeedWrap}>
                   {flickrImages.map((image, index) => (
@@ -198,6 +201,7 @@ function TravelHighlights() {
                   ))}
                </div>
 
+               {/* Tags */}
                <h4 className={styles.title}>Tags</h4>
                <div className={styles.tagWrap}>
                   <Link to='/blogs/categories/1' className={styles.tagItem}>

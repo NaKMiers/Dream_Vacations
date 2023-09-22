@@ -6,6 +6,7 @@ import Greeting from '../../components/Greeting'
 import PodcastFeed from '../../components/PodcastFeed'
 import Subscribe2 from '../../components/Subscribe2'
 import FeaturedPodcasts from '../../components/FeaturedPodcasts'
+import PopularPodcasts from '../../components/PopularPodcasts'
 
 function PodcastPage() {
    return (
@@ -40,6 +41,8 @@ function PodcastPage() {
          <PodcastFeed />
          <Subscribe2 />
          <FeaturedPodcasts />
+
+         <PopularPodcasts />
       </div>
    )
 }

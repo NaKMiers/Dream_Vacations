@@ -200,6 +200,60 @@ const initState = {
          likes: 0,
          categories: ['adventure', 'cruise', 'diving'],
       },
+
+      // popular podcasts
+      {
+         id: 16,
+         audio: podcast1,
+         author: 'Scott Jackson',
+         avatar: authorAvt1,
+         title: '17 Unconventional Travel Hacks You Need for Your Next Trip',
+         desc: 'Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.',
+         date: 'November 20, 2020',
+         createdAt: 1686735683583,
+         comments: 2,
+         likes: 0,
+         categories: ['wave', 'wave', 'wave'],
+      },
+      {
+         id: 17,
+         audio: podcast1,
+         author: 'Scott Jackson',
+         avatar: authorAvt1,
+         title: 'Keeping travelling memories close on my next adventure',
+         desc: 'Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.',
+         date: 'November 20, 2020',
+         createdAt: 1686735683583,
+         comments: 2,
+         likes: 0,
+         categories: ['wave', 'wave', 'wave'],
+      },
+      {
+         id: 18,
+         audio: podcast1,
+         author: 'Scott Jackson',
+         avatar: authorAvt1,
+         title: 'Vacation Photos: Palm Springs and San Francisco',
+         desc: 'Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.',
+         date: 'November 20, 2020',
+         createdAt: 1686735683583,
+         comments: 2,
+         likes: 0,
+         categories: ['wave', 'wave', 'wave'],
+      },
+      {
+         id: 19,
+         audio: podcast1,
+         author: 'Scott Jackson',
+         avatar: authorAvt1,
+         title: 'You don’t have to be rich to travel well around the world',
+         desc: 'Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.',
+         date: 'November 20, 2020',
+         createdAt: 1686735683583,
+         comments: 2,
+         likes: 0,
+         categories: ['wave', 'wave', 'wave'],
+      },
    ],
 
    latestPodcasts: [1, 2, 3],
@@ -207,6 +261,8 @@ const initState = {
    podcastFeeds: [1, 2, 3, 4, 5, 6, 7, 8, 9],
 
    featuredPodcasts: [10, 11, 12, 13, 14, 15],
+
+   popularPodcasts: [16, 17, 18, 19],
 }
 
 function podcastReducer(state = initState, action) {
