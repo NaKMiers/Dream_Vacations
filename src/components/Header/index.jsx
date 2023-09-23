@@ -100,6 +100,7 @@ function Header() {
       }
    }, [isFixed])
 
+   // appear on scroll
    useEffect(() => {
       handleScroll()
       window.addEventListener('scroll', handleScroll)
@@ -209,7 +210,7 @@ function Header() {
                </div>
                <div className={styles.navItem}>
                   <NavLink
-                     to='/colicy'
+                     to='/policy'
                      className={({ isActive }) => `${styles.link} ${isActive ? styles.active : ''}`}
                   >
                      Policy

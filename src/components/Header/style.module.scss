@@ -19,6 +19,10 @@
       & .navItem {
          padding: 18px 3px;
       }
+
+      & .menuBtn {
+         color: #3c3950;
+      }
    }
 
    // tablet
@@ -398,9 +402,11 @@
    display: none;
 
    width: 36px;
-   color: #3c3950;
+   color: #fff;
    font-size: 20px;
    margin-bottom: -3px;
+
+   transition: var(--standard-duration) ease-in-out;
 
    // tablet
    @media (max-width: 990px) {

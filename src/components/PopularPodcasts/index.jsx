@@ -15,6 +15,22 @@ import pinterest from '../../assets/icons/pinterest-color.png'
 import twitter from '../../assets/icons/twitter-color.png'
 import youtube from '../../assets/icons/youtube-color.png'
 
+const tags = [
+   'Agency',
+   'Design',
+   'Fly',
+   'Holiday',
+   'Lifestyle',
+   'Media',
+   'Nature',
+   'News',
+   'People',
+   'Photo',
+   'Sea',
+   'Sun',
+   'Travel',
+]
+
 function PopularPodcasts() {
    const { podcasts, popularPodcasts } = useSelector(state => state.podcasts)
    const initialData = popularPodcasts.map(id => podcasts.find(podcast => podcast.id === id))
@@ -247,45 +263,15 @@ function PopularPodcasts() {
                {/* Hot Tags */}
                <h4 className={styles.title}>Hot Tags</h4>
                <div className={styles.tagWrap}>
-                  <Link to='/blogs/categories/1' className={styles.tagItem}>
-                     Agency
-                  </Link>
-                  <Link to='/blogs/categories/1' className={styles.tagItem}>
-                     Design
-                  </Link>
-                  <Link to='/blogs/categories/1' className={styles.tagItem}>
-                     Fy
-                  </Link>
-                  <Link to='/blogs/categories/1' className={styles.tagItem}>
-                     Holiday
-                  </Link>
-                  <Link to='/blogs/categories/1' className={styles.tagItem}>
-                     Lifestyle
-                  </Link>
-                  <Link to='/blogs/categories/1' className={styles.tagItem}>
-                     Media
-                  </Link>
-                  <Link to='/blogs/categories/1' className={styles.tagItem}>
-                     Nature
-                  </Link>
-                  <Link to='/blogs/categories/1' className={styles.tagItem}>
-                     News
-                  </Link>
-                  <Link to='/blogs/categories/1' className={styles.tagItem}>
-                     People
-                  </Link>
-                  <Link to='/blogs/categories/1' className={styles.tagItem}>
-                     Photo
-                  </Link>
-                  <Link to='/blogs/categories/1' className={styles.tagItem}>
-                     Sea
-                  </Link>
-                  <Link to='/blogs/categories/1' className={styles.tagItem}>
-                     Sun
-                  </Link>
-                  <Link to='/blogs/categories/1' className={styles.tagItem}>
-                     Travel
-                  </Link>
+                  {tags.map((tag, index) => (
+                     <Link
+                        to={`/blogs/categories/${tag.toLowerCase()}`}
+                        className={styles.tagItem}
+                        key={index}
+                     >
+                        {tag}
+                     </Link>
+                  ))}
                </div>
             </div>
          </div>

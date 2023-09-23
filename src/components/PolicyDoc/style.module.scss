@@ -1,0 +1,70 @@
+.PolicyDoc {
+   width: 100%;
+   margin: -160px 0 120px;
+   // background: #000;
+}
+
+.container {
+   position: relative;
+   z-index: 1;
+
+   padding: 70px 70px 100px;
+   background: #fff;
+   box-shadow: 0px 0px 80px 0 rgba(93, 232, 248, 0.3);
+
+   // pc
+   @media (max-width: 1200px) {
+      padding: 70px 21px 100px;
+   }
+}
+
+.title {
+   font-size: 19px;
+   font-weight: 700;
+   line-height: 30px;
+   letter-spacing: 0.05em;
+   color: var(--secondary);
+   margin-bottom: 25px;
+   // background: aquamarine;
+}
+
+.paragraph {
+   font-size: 16px;
+   font-size: 400;
+   font-family: 'Source Sans Pro', sans-serif;
+   line-height: 25px;
+   color: #83909a;
+   margin-bottom: 25px;
+   // background: aquamarine;
+}
+
+.checkList {
+   width: 100%;
+   margin-bottom: 25px;
+   // background: beige;
+
+   & > .checkItem {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+      color: #fff;
+
+      & > .icon {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-size: 16px;
+         color: var(--primary);
+         margin-right: 6px;
+         // background: blue;
+      }
+
+      & > span {
+         font-size: 16px;
+         font-weight: 400;
+         font-family: 'Source Sans Pro', sans-serif;
+         line-height: 25px;
+         color: #83909a;
+      }
+   }
+}
