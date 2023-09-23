@@ -1,0 +1,19 @@
+.Advertising {
+   width: 100%;
+   margin: -192px 0 115px;
+   // background: #000;
+}
+
+.container {
+   position: relative;
+   z-index: 1;
+
+   padding: 50px 21px 0;
+   background: #fff;
+   box-shadow: 0px 0px 80px 0 rgba(93, 232, 248, 0.3);
+
+   // // mobile large
+   // @media (max-width: 768px) {
+   //    padding: 49px 0 39px;
+   // }
+}
