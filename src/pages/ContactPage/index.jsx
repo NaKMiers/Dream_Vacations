@@ -52,7 +52,6 @@ function ContactPage() {
          />
 
          <GetInTouch />
-
          <Advertising />
       </div>
    )
