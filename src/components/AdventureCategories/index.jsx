@@ -427,9 +427,8 @@ function AdventureCategories() {
                   <span>Evelyn Snyder</span>
                </div>
 
-               {/* Tags */}
-               <h4 className={styles.title}>Hot Tags</h4>
                {/* Hot Tags */}
+               <h4 className={styles.title}>Hot Tags</h4>
                <div className={styles.tagWrap}>
                   {tags.map((tag, index) => (
                      <Link

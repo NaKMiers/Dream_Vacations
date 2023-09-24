@@ -1,12 +1,54 @@
-import React, { memo } from 'react'
-import styles from './styles.module.scss'
-import SeparatorTitle from '../../components/SeparatorTitle'
+import React, { memo, useCallback, useEffect, useRef } from 'react'
 import advertiseBanner from '../../assets/images/advertiseBanner2.jpg'
+import SeparatorTitle from '../../components/SeparatorTitle'
+import styles from './styles.module.scss'
 
 function Advertising() {
+   const containerRef = useRef(null)
+
+   // show on scroll
+   const handleScroll = useCallback(() => {
+      // console.log('handleScroll')
+      if (containerRef.current) {
+         const elements = [...containerRef.current.children]
+
+         elements.forEach(e => {
+            const top = e.getBoundingClientRect().top
+            const bottom = e.getBoundingClientRect().bottom
+
+            if (top < window.innerHeight && bottom > 0) {
+               e.classList.add('floatUp')
+               e.classList.add(styles.appeared)
+            }
+         })
+
+         // remove event listener after all showed
+         let countAppeared = 0
+         elements.forEach(e => {
+            if (e.className.includes(styles.appeared)) {
+               countAppeared++
+            }
+         })
+         if (countAppeared === elements.length) {
+            console.log('removed---Advertising')
+            window.removeEventListener('scroll', handleScroll)
+         }
+      }
+   }, [])
+
+   // show on scroll
+   useEffect(() => {
+      handleScroll()
+      window.addEventListener('scroll', handleScroll)
+
+      return () => {
+         window.removeEventListener('scroll', handleScroll)
+      }
+   }, [handleScroll])
+
    return (
       <section className={styles.Advertising}>
-         <div className={`${styles.container} container`}>
+         <div className={`${styles.container} container`} ref={containerRef}>
             <SeparatorTitle title='Advertise With Us' dark style={{ marginBottom: '30px' }} />
 
             <p className={styles.paragraph}>
