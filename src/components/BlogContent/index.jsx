@@ -1,5 +1,6 @@
 import {
    faBars,
+   faCamera,
    faChevronLeft,
    faChevronRight,
    faComment,
@@ -38,6 +39,8 @@ import blogGallery2 from '../../assets/images/highlightThumb4.jpg'
 
 import authorAvt1 from '../../assets/images/authorAvt2.jpg'
 import Comment from '../Comment'
+import { useDispatch } from 'react-redux'
+import actions from '../../actions'
 
 const categories = [
    'Active',
@@ -116,6 +119,8 @@ const postTags = [
 ]
 
 function BlogContent() {
+   const dispatch = useDispatch()
+
    // refs
    const blogContentWrapRef = useRef(null)
    const sideContent = useRef(null)
@@ -293,7 +298,20 @@ function BlogContent() {
                <div className={styles.galleriesWrap}>
                   {galleries.map((gallery, index) => (
                      <div className={styles.galleryItem} key={index}>
-                        <img src={gallery} alt='gallery' />
+                        <div
+                           className={styles.galleryInnerWrap}
+                           onClick={() => {
+                              dispatch(actions.reviewImage(gallery))
+                              dispatch(actions.reviewImages(galleries))
+                           }}
+                        >
+                           <img src={gallery} alt='gallery' />
+                           <div className={styles.overlay}>
+                              <div className={styles.icon}>
+                                 <FontAwesomeIcon icon={faCamera} />
+                              </div>
+                           </div>
+                        </div>
                      </div>
                   ))}
                </div>

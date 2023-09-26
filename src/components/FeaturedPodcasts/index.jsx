@@ -24,7 +24,7 @@ import galery8 from '../../assets/images/blogThumb28.jpg'
 import galery9 from '../../assets/images/blogThumb26.jpg'
 import actions from '../../actions'
 
-const galeries = [galery1, galery2, galery3, galery4, galery5, galery6, galery7, galery8, galery9]
+const galleries = [galery1, galery2, galery3, galery4, galery5, galery6, galery7, galery8, galery9]
 
 function FeaturedPodcasts() {
    const dispatch = useDispatch()
@@ -144,16 +144,16 @@ function FeaturedPodcasts() {
 
                {/* galery */}
                <div className={styles.galeryWrap}>
-                  {galeries.map((galery, index) => (
+                  {galleries.map((gallery, index) => (
                      <div className={styles.galeryItem} key={index}>
                         <div
                            className={styles.galeryContainer}
                            onClick={() => {
-                              dispatch(actions.reviewImage(galery))
-                              dispatch(actions.reviewImages(galeries))
+                              dispatch(actions.reviewImage(gallery))
+                              dispatch(actions.reviewImages(galleries))
                            }}
                         >
-                           <img src={galery} alt='thumbnail' />
+                           <img src={gallery} alt='thumbnail' />
 
                            <div className={styles.overlay}>
                               <div className={styles.icon}>
