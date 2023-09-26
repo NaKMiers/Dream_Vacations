@@ -1,16 +1,29 @@
-import { faBars, faChevronLeft, faComment, faHeart, faSearch } from '@fortawesome/free-solid-svg-icons'
+import {
+   faBars,
+   faChevronLeft,
+   faChevronRight,
+   faComment,
+   faHeart,
+   faSearch,
+} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { memo, useCallback, useEffect, useRef } from 'react'
 import advertiseBanner from '../../assets/images/advertiseBanner.png'
 import styles from './style.module.scss'
+import RelatedPosts from '../../components/RelatedPosts'
 
 import { Link } from 'react-router-dom'
 import facebook from '../../assets/icons/facebook-color.png'
+import _facebook from '../../assets/icons/facebook.png'
 import instagram from '../../assets/icons/instagram-color.png'
 import linkedin from '../../assets/icons/linkedin-color.png'
+import _linkedin from '../../assets/icons/linkedin.png'
 import pinterest from '../../assets/icons/pinterest-color.png'
+import _pinterest from '../../assets/icons/pinterest.png'
 import twitter from '../../assets/icons/twitter-color.png'
+import _twitter from '../../assets/icons/twitter.png'
 import youtube from '../../assets/icons/youtube-color.png'
+import _reddit from '../../assets/icons/reddit.png'
 
 import welcomeBanner1 from '../../assets/images/welcomeBanner1.jpg'
 import welcomeBanner2 from '../../assets/images/welcomeBanner2.png'
@@ -22,6 +35,9 @@ import blogGallery3 from '../../assets/images/blogGallery2.jpg'
 import blogGallery5 from '../../assets/images/blogGallery3.jpg'
 import blogGallery6 from '../../assets/images/blogGallery4.jpg'
 import blogGallery2 from '../../assets/images/highlightThumb4.jpg'
+
+import authorAvt1 from '../../assets/images/authorAvt2.jpg'
+import Comment from '../Comment'
 
 const categories = [
    'Active',
@@ -65,7 +81,7 @@ const categories = [
    'World',
 ]
 
-const tags = [
+const hotTags = [
    'Agency',
    'Design',
    'Fly',
@@ -82,6 +98,22 @@ const tags = [
 ]
 
 const galleries = [blogGallery1, blogGallery2, blogGallery3, blogGallery4, blogGallery5, blogGallery6]
+
+const postTags = [
+   'agency',
+   'design',
+   'fly',
+   'holiday',
+   'lifestyle',
+   'media',
+   'nature',
+   'news',
+   'people',
+   'photo',
+   'sea',
+   'sun',
+   'travel',
+]
 
 function BlogContent() {
    // refs
@@ -131,157 +163,7 @@ function BlogContent() {
    return (
       <section className={styles.BlogContent}>
          <div className={`${styles.container} container`}>
-            {/* Side */}
-            <div className={styles.sideContent} ref={sideContent}>
-               {/* Search */}
-               <div className={styles.searchWrap}>
-                  <input className={styles.searchInput} type='text' />
-
-                  <div className={styles.searchIcon}>
-                     <FontAwesomeIcon icon={faSearch} />
-                  </div>
-               </div>
-
-               {/* Advertise */}
-               <h4 className={styles.title}>Advertise</h4>
-               <div className={styles.advertiseBanner}>
-                  <img src={advertiseBanner} alt='advertise-banner' />
-               </div>
-
-               {/* Categories */}
-               <h4 className={styles.title}>Categories</h4>
-               <ul className={styles.categoryList}>
-                  {categories.map(category => (
-                     <li key={category} className={styles.categoryItem}>
-                        <a className={styles.categoryLink} href={`/blogs/categories/${category}`}>
-                           {category}
-                        </a>
-                     </li>
-                  ))}
-               </ul>
-
-               {/* Recent Posts */}
-               <h4 className={styles.title}>Recent Posts</h4>
-               <div className={styles.recentPostWrap}>
-                  <div className={styles.recentPostItem}>
-                     <Link to='/blogs/1' className={styles.thumbnail}>
-                        <img src={welcomeBanner1} alt='thumbnail' />
-                     </Link>
-
-                     <div className={styles.content}>
-                        <Link to='/blogs/1' className={styles.label}>
-                           Coral Bay Travel
-                        </Link>
-                        <p className={styles.date}>August 27, 2021</p>
-                     </div>
-                  </div>
-                  <div className={styles.recentPostItem}>
-                     <Link to='/blogs/1' className={styles.thumbnail}>
-                        <img src={welcomeBanner2} alt='thumbnail' />
-                     </Link>
-
-                     <div className={styles.content}>
-                        <Link to='/blogs/1' className={styles.label}>
-                           Best Weekend
-                        </Link>
-                        <p className={styles.date}>August 27, 2021</p>
-                     </div>
-                  </div>
-                  <div className={styles.recentPostItem}>
-                     <Link to='/blogs/1' className={styles.thumbnail}>
-                        <img src={welcomeBanner3} alt='thumbnail' />
-                     </Link>
-
-                     <div className={styles.content}>
-                        <Link to='/blogs/1' className={styles.label}>
-                           Flying Over
-                        </Link>
-                        <p className={styles.date}>August 27, 2021</p>
-                     </div>
-                  </div>
-               </div>
-
-               {/* Follow Us */}
-               <h4 className={styles.title}>Follow Us</h4>
-               <div className={styles.socialsWrap}>
-                  <a
-                     className={styles.socialItem}
-                     href='https://www.facebook.com'
-                     target='_blank'
-                     rel='noreferrer'
-                  >
-                     <img src={facebook} alt='social' />
-                  </a>
-                  <a
-                     className={styles.socialItem}
-                     href='https://www.linkedin.com'
-                     target='_blank'
-                     rel='noreferrer'
-                  >
-                     <img src={linkedin} alt='social' />
-                  </a>
-                  <a
-                     className={styles.socialItem}
-                     href='https://twitter.com'
-                     target='_blank'
-                     rel='noreferrer'
-                  >
-                     <img src={twitter} alt='social' />
-                  </a>
-                  <a
-                     className={styles.socialItem}
-                     href='https://www.instagram.com'
-                     target='_blank'
-                     rel='noreferrer'
-                  >
-                     <img src={instagram} alt='social' />
-                  </a>
-                  <a
-                     className={styles.socialItem}
-                     href='https://www.pinterest.com'
-                     target='_blank'
-                     rel='noreferrer'
-                  >
-                     <img src={pinterest} alt='social' />
-                  </a>
-                  <a
-                     className={styles.socialItem}
-                     href='https://www.youtube.com'
-                     target='_blank'
-                     rel='noreferrer'
-                  >
-                     <img src={youtube} alt='social' />
-                  </a>
-               </div>
-
-               {/* Text box */}
-               <div className={styles.textBox}>
-                  <h4>
-                     <span>Take only memories,</span>
-                     <br />
-                     <span>Leave</span>
-                     <span> Only Footprints.</span>
-                  </h4>
-
-                  <span>Evelyn Snyder</span>
-               </div>
-
-               {/* Hot Tags */}
-               <h4 className={styles.title}>Hot Tags</h4>
-               <div className={styles.tagWrap}>
-                  {tags.map((tag, index) => (
-                     <Link
-                        to={`/blogs/categories/${tag.toLowerCase()}`}
-                        className={styles.tagItem}
-                        key={index}
-                     >
-                        {tag}
-                     </Link>
-                  ))}
-               </div>
-            </div>
-
-            {/* Content */}
+            {/* CONTENTS */}
             <div className={`${styles.blogContentWrap}`} ref={blogContentWrapRef}>
                {/* thumb */}
                <div className={styles.mainThumbnail}>
@@ -447,6 +329,242 @@ function BlogContent() {
                   sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam
                   quaerat voluptatem.
                </p>
+
+               {/* Tags */}
+               <div className={styles.postTags}>
+                  {postTags.map(tag => (
+                     <Link to='/categories' className={styles.tag} key={tag}>
+                        {tag}
+                     </Link>
+                  ))}
+               </div>
+
+               {/* Socials */}
+               <div className={styles.socialsLiteWrap}>
+                  <a
+                     href='https://www.facebook.com'
+                     className={styles.socialItem}
+                     target='_blank'
+                     rel='noreferrer'
+                  >
+                     <img src={_facebook} alt='social' />
+                  </a>
+                  <a
+                     href='https://www.linkedin.com'
+                     className={styles.socialItem}
+                     target='_blank'
+                     rel='noreferrer'
+                  >
+                     <img src={_linkedin} alt='social' />
+                  </a>
+                  <a
+                     href='https://www.pinterest.com'
+                     className={styles.socialItem}
+                     target='_blank'
+                     rel='noreferrer'
+                  >
+                     <img src={_pinterest} alt='social' />
+                  </a>
+                  <a
+                     href='https://twitter.com'
+                     className={styles.socialItem}
+                     target='_blank'
+                     rel='noreferrer'
+                  >
+                     <img src={_twitter} alt='social' />
+                  </a>
+                  <a
+                     href='https://www.reddit.com'
+                     className={styles.socialItem}
+                     target='_blank'
+                     rel='noreferrer'
+                  >
+                     <img src={_reddit} alt='social' />
+                  </a>
+               </div>
+
+               {/* Author */}
+               <div className={styles.author}>
+                  <div className={styles.avatar}>
+                     <img src={authorAvt1} alt='avatar' />
+                  </div>
+
+                  <div className={styles.detail}>
+                     <p>
+                        <span>Nathan Matthews</span> / About Author
+                     </p>
+                     <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                        fugiat nulla pariatur. Excepteur sint.
+                     </p>
+
+                     <Link to='/blogs' className={styles.more}>
+                        <div>
+                           <FontAwesomeIcon icon={faChevronRight} />
+                        </div>
+                        <span>More posts by Nathan Matthews</span>
+                     </Link>
+                  </div>
+               </div>
+
+               {/* RelatedPosts */}
+               <RelatedPosts />
+
+               {/* Comment */}
+               <Comment />
+            </div>
+
+            {/* SIDE */}
+            <div className={styles.sideContent} ref={sideContent}>
+               {/* Search */}
+               <div className={styles.searchWrap}>
+                  <input className={styles.searchInput} type='text' />
+
+                  <div className={styles.searchIcon}>
+                     <FontAwesomeIcon icon={faSearch} />
+                  </div>
+               </div>
+
+               {/* Advertise */}
+               <h4 className={styles.title}>Advertise</h4>
+               <div className={styles.advertiseBanner}>
+                  <img src={advertiseBanner} alt='advertise-banner' />
+               </div>
+
+               {/* Categories */}
+               <h4 className={styles.title}>Categories</h4>
+               <ul className={styles.categoryList}>
+                  {categories.map(category => (
+                     <li key={category} className={styles.categoryItem}>
+                        <a className={styles.categoryLink} href={`/blogs/categories/${category}`}>
+                           {category}
+                        </a>
+                     </li>
+                  ))}
+               </ul>
+
+               {/* Recent Posts */}
+               <h4 className={styles.title}>Recent Posts</h4>
+               <div className={styles.recentPostWrap}>
+                  <div className={styles.recentPostItem}>
+                     <Link to='/blogs/1' className={styles.thumbnail}>
+                        <img src={welcomeBanner1} alt='thumbnail' />
+                     </Link>
+
+                     <div className={styles.content}>
+                        <Link to='/blogs/1' className={styles.label}>
+                           Coral Bay Travel
+                        </Link>
+                        <p className={styles.date}>August 27, 2021</p>
+                     </div>
+                  </div>
+                  <div className={styles.recentPostItem}>
+                     <Link to='/blogs/1' className={styles.thumbnail}>
+                        <img src={welcomeBanner2} alt='thumbnail' />
+                     </Link>
+
+                     <div className={styles.content}>
+                        <Link to='/blogs/1' className={styles.label}>
+                           Best Weekend
+                        </Link>
+                        <p className={styles.date}>August 27, 2021</p>
+                     </div>
+                  </div>
+                  <div className={styles.recentPostItem}>
+                     <Link to='/blogs/1' className={styles.thumbnail}>
+                        <img src={welcomeBanner3} alt='thumbnail' />
+                     </Link>
+
+                     <div className={styles.content}>
+                        <Link to='/blogs/1' className={styles.label}>
+                           Flying Over
+                        </Link>
+                        <p className={styles.date}>August 27, 2021</p>
+                     </div>
+                  </div>
+               </div>
+
+               {/* Follow Us */}
+               <h4 className={styles.title}>Follow Us</h4>
+               <div className={styles.socialsWrap}>
+                  <a
+                     className={styles.socialItem}
+                     href='https://www.facebook.com'
+                     target='_blank'
+                     rel='noreferrer'
+                  >
+                     <img src={facebook} alt='social' />
+                  </a>
+                  <a
+                     className={styles.socialItem}
+                     href='https://www.linkedin.com'
+                     target='_blank'
+                     rel='noreferrer'
+                  >
+                     <img src={linkedin} alt='social' />
+                  </a>
+                  <a
+                     className={styles.socialItem}
+                     href='https://twitter.com'
+                     target='_blank'
+                     rel='noreferrer'
+                  >
+                     <img src={twitter} alt='social' />
+                  </a>
+                  <a
+                     className={styles.socialItem}
+                     href='https://www.instagram.com'
+                     target='_blank'
+                     rel='noreferrer'
+                  >
+                     <img src={instagram} alt='social' />
+                  </a>
+                  <a
+                     className={styles.socialItem}
+                     href='https://www.pinterest.com'
+                     target='_blank'
+                     rel='noreferrer'
+                  >
+                     <img src={pinterest} alt='social' />
+                  </a>
+                  <a
+                     className={styles.socialItem}
+                     href='https://www.youtube.com'
+                     target='_blank'
+                     rel='noreferrer'
+                  >
+                     <img src={youtube} alt='social' />
+                  </a>
+               </div>
+
+               {/* Text box */}
+               <div className={styles.textBox}>
+                  <h4>
+                     <span>Take only memories,</span>
+                     <br />
+                     <span>Leave</span>
+                     <span> Only Footprints.</span>
+                  </h4>
+
+                  <span>Evelyn Snyder</span>
+               </div>
+
+               {/* Hot Tags */}
+               <h4 className={styles.title}>Hot Tags</h4>
+               <div className={styles.tagWrap}>
+                  {hotTags.map((tag, index) => (
+                     <Link
+                        to={`/blogs/categories/${tag.toLowerCase()}`}
+                        className={styles.tagItem}
+                        key={index}
+                     >
+                        {tag}
+                     </Link>
+                  ))}
+               </div>
             </div>
          </div>
       </section>

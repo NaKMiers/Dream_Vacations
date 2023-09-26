@@ -1925,6 +1925,8 @@ const initState = {
          subs: [118, 119, 120, 121],
       },
    ],
+
+   relatedPosts: [84, 69, 41, 31, 19, 20, 59, 6, 8, 34, 51, 42, 36, 30, 38],
 }
 
 function blogReducer(state = initState, action) {

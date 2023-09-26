@@ -1,0 +1,153 @@
+.relatedPosts {
+   margin-bottom: 100px;
+   // background: lightcyan;
+}
+
+.relatedTitle {
+   display: flex;
+   // padding: 0 21px;
+
+   & > .icon {
+      margin-right: 25px;
+      font-size: 48px;
+      color: var(--primary);
+      // background: #eee;
+   }
+
+   & > h2 {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      line-height: 53px;
+   }
+
+   & > .relatedSlideBtn {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-left: auto;
+      // background: #ccc;
+
+      & > button {
+         width: 30px;
+         height: 30px;
+         border-radius: 3px;
+         border: 2px solid #000;
+         transition: 0.2s ease-in-out;
+         font-size: 14px;
+         color: #000;
+
+         &:hover {
+            color: #fff;
+            background: #000;
+         }
+      }
+   }
+}
+
+.slider {
+   position: relative;
+   padding: 50px 0;
+   overflow: hidden;
+   margin: 0 -21px;
+   // background: beige;
+
+   &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+
+      width: calc(100% - 2 * 21px);
+      height: 1px;
+      background: #dfe5e8;
+   }
+}
+
+.slideTrack {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 100%;
+   transition: all 0.5s ease-in-out;
+}
+
+.postItem {
+   display: flex;
+   flex-shrink: 0;
+   max-width: 303px;
+   padding: 0 21px;
+   width: 100%;
+
+   &:hover > .content > p {
+      color: #000;
+   }
+
+   & > .postThumbnail {
+      width: 72px;
+      height: 72px;
+      margin-right: 14px;
+
+      & > img {
+         width: 100%;
+         height: 100%;
+
+         border-radius: 50%;
+         object-fit: cover;
+         object-position: center;
+      }
+   }
+
+   & > .content {
+      // background: #eee;
+      flex: 1;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      & > p {
+         font-size: 16px;
+         font-family: 'Source Sans Pro', sans-serif;
+         color: var(--primary);
+         line-height: 25px;
+         transition: 0.2s ease-in-out;
+      }
+
+      & > div {
+         background: #fff;
+
+         display: flex;
+         justify-content: flex-end;
+         align-items: center;
+         height: 23px;
+         gap: 8px;
+
+         & > span {
+            font-size: 13.6px;
+            font-family: 'Source Sans Pro', sans-serif;
+            white-space: nowrap;
+            color: #bebebe;
+            margin-right: auto;
+         }
+
+         & > div {
+            display: flex;
+            align-items: center;
+
+            font-size: 14px;
+
+            & > span {
+               margin-left: 4px;
+               font-size: 16px;
+               font-family: 'Source Sans Pro', sans-serif;
+            }
+
+            &:nth-of-type(1) {
+               color: #bebebe;
+            }
+         }
+      }
+   }
+}
