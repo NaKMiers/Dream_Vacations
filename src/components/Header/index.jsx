@@ -113,9 +113,9 @@ function Header() {
    return (
       <header className={`${styles.Header} ${isFixed ? styles.fixed : ''}`} ref={headerRef}>
          <div className={`${styles.container} container`}>
-            <div className={styles.logo}>
+            <Link to='/' className={styles.logo}>
                <img src={isFixed ? logo2 : logo} alt='logo' />
-            </div>
+            </Link>
 
             <nav className={styles.navBar}>
                <div className={styles.navItem}>
